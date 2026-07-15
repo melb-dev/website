@@ -1,0 +1,45 @@
+---
+const { group, topics, next } = Astro.props;
+
+const d = group.data;
+const topicEntries = d.topics
+  .map((ref: any) => topics.find((topic: any) => topic.id === ref.id))
+  .filter(Boolean);
+const searchText = [
+  d.name,
+  d.summary,
+  d.description,
+  d.location,
+  ...topicEntries.map((topic: any) => topic.data.name),
+].join(' ');
+const location = d.location
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
+---
+
+<article
+  class="cardx directory-card"
+  data-id={d.uid}
+  data-search={searchText}
+  data-name={d.name}
+  data-topics={d.topics.map((ref: any) => ref.id).join(',')}
+  data-location={location}
+  data-recommended={String(d.communityFirst)}
+>
+  <h2 class="group-title text-xl font-bold">
+    <a href={`/groups/${group.id}/`}>{d.name}</a>{
+      d.communityFirst && <span class="community-first-badge">Recommended</span>
+    }
+  </h2>
+  <p>{d.summary}</p>
+  <p class="mt-2">{d.location}</p>
+  <div>{topicEntries.map((topic: any) => <span class="pill">{topic.data.name}</span>)}</div>
+  {
+    next && (
+      <p class="mt-2">
+        Next: <strong>{next.data.title}</strong>
+      </p>
+    )
+  }
+</article>

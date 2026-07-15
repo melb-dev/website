@@ -1,0 +1,6 @@
+dist/
+.astro/
+.playwright-mcp/
+bun.lock
+*.md
+public/images/

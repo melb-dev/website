@@ -1,0 +1,58 @@
+---
+import { formatEventDate, localDate, slug } from '../lib/events';
+
+const { event, groups, venues, topics, period, hideUntilFiltered = false } = Astro.props;
+const d = event.data;
+const group = groups.find((item: any) => item.id === d.group.id);
+const venue = venues.find((item: any) => item.id === d.venue?.id);
+const topicNames = d.topics
+  .map((ref: any) => topics.find((item: any) => item.id === ref.id))
+  .filter(Boolean);
+const locationId = d.format === 'online' ? 'online' : slug(venue.data.suburb);
+const searchText = [
+  d.title,
+  group.data.name,
+  venue?.data.name,
+  venue?.data.suburb,
+  ...topicNames.map((topic: any) => topic.data.name),
+  d.rsvpNote,
+]
+  .filter(Boolean)
+  .join(' ');
+const isPast = period === 'past';
+---
+
+<article
+  class="cardx directory-card"
+  hidden={hideUntilFiltered && isPast}
+  data-id={d.uid}
+  data-search={searchText}
+  data-name={d.title}
+  data-period={period}
+  data-date={localDate(d.start)}
+  data-topics={d.topics.map((ref: any) => ref.id).join(',')}
+  data-location={locationId}
+  data-format={d.format}
+>
+  <h2 class="event-title text-xl font-bold">
+    <a href={d.url}>{d.title}</a>{isPast && <span class="past-badge">Past event</span>}
+  </h2>
+  <p class="mt-2 font-medium">
+    <time datetime={d.start.toISOString()}>{formatEventDate(d.start, d.end)}</time>
+  </p>
+  <p>
+    By <a href={`/groups/${group.id}/`}>{group.data.name}</a> · {
+      d.format === 'online' ? 'Online' : `${venue.data.name}, ${venue.data.suburb}`
+    } · <span class="capitalize">{d.format}</span>
+  </p>
+  <div class="my-2">
+    {topicNames.map((topic: any) => <span class="pill">{topic.data.name}</span>)}{
+      d.status !== 'scheduled' && <strong class="pill status">{d.status}</strong>
+    }
+  </div>
+  {d.rsvpNote && <p class="text-sm">{d.rsvpNote}</p>}
+  <a class:list={['btn btn-sm mt-3', isPast ? 'btn-past' : 'btn-primary']} href={d.url}>
+    {isPast ? 'View past event' : 'View event & RSVP'}
+    <span class="sr-only">for {d.title}</span>
+  </a>
+</article>

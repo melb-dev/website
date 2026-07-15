@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import GroupCard from '../../components/GroupCard.astro';
+import { isFuture, sortEvents, slug } from '../../lib/events';
+
+const now = new Date();
+const [groups, topics, events] = await Promise.all([
+  getCollection('groups'),
+  getCollection('topics'),
+  getCollection('events'),
+]);
+const active = groups
+  .filter((group) => group.data.status === 'active')
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const usedTopics = topics
+  .filter((topic) => active.some((group) => group.data.topics.some((ref) => ref.id === topic.id)))
+  .sort(
+    (a, b) =>
+      (a.data.order ?? 999) - (b.data.order ?? 999) || a.data.name.localeCompare(b.data.name),
+  );
+const locations = [
+  ...new Map(active.map((group) => [slug(group.data.location), group.data.location])).entries(),
+].sort((a, b) => a[1].localeCompare(b[1]));
+---
+
+<Layout
+  title="Community Groups"
+  description="Find active technology groups and communities across Melbourne."
+>
+  <header class="mb-6">
+    <h1 class="text-4xl font-black">Community Groups</h1>
+    <p class="mt-2">Discover active technology communities across Melbourne.</p>
+  </header>
+  <section id="directory" data-kind="groups" class="directory-layout">
+    <aside class="filter-sidebar">
+      <details class="filter-disclosure" open>
+        <summary>Filters</summary>
+        <form id="filters" class="cardx filter-form" aria-labelledby="filter-heading">
+          <div class="filter-heading-row">
+            <h2 id="filter-heading" class="text-lg font-bold">Find a group</h2>
+            <button type="reset" class="reset-button" hidden>Reset</button>
+          </div>
+          <label class="block mt-3">
+            Keyword Search
+            <input name="q" class="input input-bordered w-full" type="search" autocomplete="off" />
+          </label>
+          <p class="filter-note">Enter at least 3 characters.</p>
+          <fieldset class="choice-group">
+            <legend>Show</legend>
+            <div class="choice-list">
+              <label class="filter-choice">
+                <input type="radio" name="recommended" value="all" checked />
+                <span>All</span>
+              </label>
+              <label class="filter-choice">
+                <input type="radio" name="recommended" value="recommended" />
+                <span>Recommended</span>
+              </label>
+            </div>
+            <p class="filter-note">
+              Recommended groups have been reviewed by melb.dev and align with our <a
+                href="/standards/">Community Standards</a
+              >.
+            </p>
+          </fieldset>
+          <fieldset data-facet-group="location">
+            <legend>Locations</legend>{
+              locations.map(([id, name]) => (
+                <label class="check-option">
+                  <>
+                    <input type="checkbox" name="location" value={id} data-label={name} />
+                    <span>
+                      {name} <span class="facet-count" data-count-for={id} />
+                    </span>
+                  </>
+                </label>
+              ))
+            }
+          </fieldset>
+          <fieldset data-facet-group="topic">
+            <legend>Topics</legend>{
+              usedTopics.map((topic) => (
+                <label class="check-option">
+                  <>
+                    <input
+                      type="checkbox"
+                      name="topic"
+                      value={topic.id}
+                      data-label={topic.data.name}
+                    />
+                    <span>
+                      {topic.data.name} <span class="facet-count" data-count-for={topic.id} />
+                    </span>
+                  </>
+                </label>
+              ))
+            }
+          </fieldset>
+        </form>
+      </details>
+    </aside>
+    <div class="directory-results">
+      <p id="count" class="result-summary font-semibold" role="status" aria-live="polite">
+        {active.length} groups
+      </p>
+      <div id="results" class="grid gap-4 md:grid-cols-2">
+        {
+          active.map((group) => {
+            const next = sortEvents(
+              events.filter((event) => event.data.group.id === group.id && isFuture(event, now)),
+              true,
+            )[0];
+            return <GroupCard group={group} topics={topics} next={next} />;
+          })
+        }
+      </div>
+      <p id="empty" class="cardx hidden">
+        No groups match these filters. Try resetting your search.
+      </p>
+    </div>
+  </section>
+  <script src="../../scripts/search.js"></script>
+</Layout>

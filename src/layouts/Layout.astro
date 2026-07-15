@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+const {
+  title = "Find Melbourne's best tech community events",
+  description = 'Melb.dev is the best place to find, attend, speak at, and organise meetups, conferences, events, and communities for developers and people working in tech in Melbourne.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const social = new URL('/social.svg', Astro.site);
+const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'melb.dev',
+  url: 'https://melb.dev',
+  description: "Strengthening Melbourne's tech community and technical excellence.",
+};
+const navigation = [
+  ['Tech Events', '/'],
+  ['Groups', '/groups/'],
+  ['Community Standards', '/standards/'],
+  ['For Organisers', '/organisers/'],
+  ['About', '/about/'],
+];
+const current = (href: string) =>
+  href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | melb.dev</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={`${title} | melb.dev`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={social} />
+    <meta property="og:image:alt" content="melb.dev — Melbourne's community technology calendar" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="melb.dev events" href="/events.xml" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organisation)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="bg-white border-b border-base-300">
+      <div class="shell navbar px-0">
+        <a href="/" class="text-xl font-black no-underline" aria-label="melb.dev home">
+          <span class="text-[#075ea8]">M</span> melb.dev
+        </a>
+        <nav class="ml-auto" aria-label="Primary">
+          <ul class="primary-links flex flex-wrap gap-x-2 gap-y-1 text-sm">
+            {
+              navigation.map(([label, href]) => (
+                <li>
+                  <a class="nav-link" href={href} aria-current={current(href) ? 'page' : undefined}>
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="shell py-8">
+      <slot />
+    </main>
+    <footer class="site-footer mt-12 bg-[#152434] text-white">
+      <div class="shell py-10 grid gap-8 md:grid-cols-2">
+        <div>
+          <strong>melb.dev</strong>
+          <p class="mt-2">Strengthening Melbourne's tech community and technical excellence.</p>
+          <p class="mt-3">
+            <a href="https://github.com/melb-dev/website/issues">
+              Found an issue? Report it on GitHub
+            </a>
+          </p>
+        </div>
+        <nav aria-label="Footer" class="footer-links">
+          <div>
+            <a href="/">Discover Events</a>
+            <a href="/groups/">Community Groups</a>
+            <a href="/standards/">Community Standards</a>
+          </div>
+          <div>
+            <a href="/events.ics">Events Calendar</a>
+            <a href="/events.xml">Events RSS Feed</a>
+            <a href="/about/">About</a>
+          </div>
+        </nav>
+        <p class="copyright md:col-span-2 text-sm">
+          © {new Date().getFullYear()} melb.dev. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+{ "ignorePatterns": ["dist/**", ".astro/**", "src/scripts/search.js"] }

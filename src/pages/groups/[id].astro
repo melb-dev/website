@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import EventCard from '../../components/EventCard.astro';
+import { isFuture, sortEvents } from '../../lib/events';
+
+export async function getStaticPaths() {
+  return (await getCollection('groups')).map((g) => ({
+    params: { id: g.id },
+    props: { group: g },
+  }));
+}
+
+const { group } = Astro.props;
+const now = new Date();
+const [events, groups, venues, topics] = await Promise.all([
+  getCollection('events'),
+  getCollection('groups'),
+  getCollection('venues'),
+  getCollection('topics'),
+]);
+const own = events.filter((e) => e.data.group.id === group.id);
+const future = sortEvents(
+  own.filter((e) => isFuture(e, now)),
+  true,
+);
+const past = sortEvents(
+  own.filter((e) => !isFuture(e, now)),
+  false,
+);
+const groupTopics = group.data.topics.map((r) => topics.find((t) => t.id === r.id)).filter(Boolean);
+---
+
+<Layout title={group.data.name} description={group.data.summary}>
+  <h1 class="group-title text-4xl font-black">
+    {group.data.name}{
+      group.data.communityFirst && <span class="community-first-badge">Recommended</span>
+    }
+  </h1>
+  {group.data.status === 'inactive' && <p class="badge badge-warning my-3">Inactive group</p>}
+  <p class="text-lg mt-3 max-w-3xl">{group.data.description}</p>
+  <div class="mt-3">
+    {groupTopics.map((t) => <span class="pill">{t?.data.name}</span>)}
+  </div>
+  <p class="mt-3">
+    {group.data.location} · <a href={group.data.url}>Community website</a>{
+      group.data.contact && (
+        <>
+          {' '}
+          ·{' '}
+          <a
+            href={
+              group.data.contact.includes('@') ? `mailto:${group.data.contact}` : group.data.contact
+            }
+          >
+            Public contact
+          </a>
+        </>
+      )
+    }
+  </p>
+  <h2 class="text-2xl font-bold mt-8 mb-3">Upcoming events</h2>
+  <div class="grid gap-4 md:grid-cols-2">
+    {
+      future.length ? (
+        future.map((e) => (
+          <EventCard event={e} groups={groups} venues={venues} topics={topics} period="future" />
+        ))
+      ) : (
+        <p>No upcoming events are listed.</p>
+      )
+    }
+  </div>
+  <h2 class="text-2xl font-bold mt-8 mb-3">Past events</h2>
+  <div class="grid gap-4 md:grid-cols-2">
+    {
+      past.length ? (
+        past.map((e) => (
+          <EventCard event={e} groups={groups} venues={venues} topics={topics} period="past" />
+        ))
+      ) : (
+        <p>No past events are listed.</p>
+      )
+    }
+  </div>
+</Layout>

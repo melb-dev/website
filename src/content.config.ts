@@ -28,7 +28,6 @@ const topics = defineCollection({
       uid,
       name: z.string().min(1),
       description: z.string().optional(),
-      order: z.number().int().optional(),
     })
     .strict(),
 });
@@ -57,7 +56,8 @@ const groups = defineCollection({
       summary: z.string().max(180),
       description: z.string(),
       topics: unique(reference('topics')),
-      url: https,
+      websiteUrl: https,
+      eventsUrl: https,
       location: z.string().default('Melbourne'),
       logo: z.string().optional(),
       contact: z.union([z.email(), https]).optional(),
@@ -74,8 +74,11 @@ const events = defineCollection({
       title: z.string(),
       start: datetime,
       end: datetime.optional(),
+      allDay: z.boolean().default(false),
       group: reference('groups'),
       topics: unique(reference('topics')),
+      eventType: z.enum(['meetup', 'conference']),
+      paid: z.boolean(),
       format: z.enum(['in-person', 'online', 'hybrid']),
       venue: reference('venues').optional(),
       url: https,
@@ -88,6 +91,8 @@ const events = defineCollection({
     .superRefine((e, ctx) => {
       if (e.end && e.end <= e.start)
         ctx.addIssue({ code: 'custom', message: 'end must follow start' });
+      if (e.allDay && e.end)
+        ctx.addIssue({ code: 'custom', message: 'all-day events cannot have an end time' });
       if (e.format === 'online' && e.venue)
         ctx.addIssue({ code: 'custom', message: 'online events cannot have a venue' });
       if (e.format !== 'online' && !e.venue)

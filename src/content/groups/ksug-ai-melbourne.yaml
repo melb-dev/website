@@ -1,0 +1,14 @@
+uid: 019f65f1-367f-79b1-8aa4-6f9da990b845
+name: 'KSUG.AI Melbourne'
+summary: 'Curated Melbourne events from the KSUG.AI Australia community.'
+description: 'KSUG.AI Melbourne covers Melbourne meetups from the Australia group about Kubernetes, cloud, platform engineering, DevOps, SRE, and AI.'
+topics:
+  - 'kubernetes'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'sre'
+  - 'ai'
+websiteUrl: 'https://www.meetup.com/en-au/ksug-au/'
+eventsUrl: 'https://www.meetup.com/en-au/ksug-au/events/'
+location: 'Melbourne'

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import EventCard from '../components/EventCard.astro';
-import { isFuture, sortEvents, slug } from '../lib/events';
+import { isFuture, localDate, sortEvents, slug } from '../lib/events';
 
 const now = new Date();
 const [events, groups, venues, topics] = await Promise.all([
@@ -22,10 +22,7 @@ const past = sortEvents(
 const sorted = [...future, ...past];
 const usedTopics = topics
   .filter((topic) => events.some((event) => event.data.topics.some((ref) => ref.id === topic.id)))
-  .sort(
-    (a, b) =>
-      (a.data.order ?? 999) - (b.data.order ?? 999) || a.data.name.localeCompare(b.data.name),
-  );
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
 const locationMap = new Map<string, string>();
 for (const venue of venues)
   if (events.some((event) => event.data.venue?.id === venue.id))
@@ -40,21 +37,32 @@ const jsonLd = events
       '@context': 'https://schema.org',
       '@type': 'Event',
       name: event.data.title,
-      startDate: event.data.start.toISOString(),
+      startDate: event.data.allDay ? localDate(event.data.start) : event.data.start.toISOString(),
       endDate: event.data.end?.toISOString(),
       eventStatus: `https://schema.org/Event${event.data.status === 'cancelled' ? 'Cancelled' : event.data.status === 'postponed' ? 'Postponed' : 'Scheduled'}`,
       eventAttendanceMode: `https://schema.org/${event.data.format === 'online' ? 'OnlineEventAttendanceMode' : event.data.format === 'hybrid' ? 'MixedEventAttendanceMode' : 'OfflineEventAttendanceMode'}`,
+      isAccessibleForFree: !event.data.paid,
       location: venue
         ? { '@type': 'Place', name: venue.data.name, address: venue.data.address }
         : { '@type': 'VirtualLocation', url: event.data.url },
       url: event.data.url,
-      organizer: { '@type': 'Organization', name: group?.data.name, url: group?.data.url },
+      organizer: { '@type': 'Organization', name: group?.data.name, url: group?.data.websiteUrl },
     };
   });
 const choices = {
   period: [
     ['future', 'Upcoming'],
     ['past', 'Past'],
+  ],
+  eventType: [
+    ['all', 'All'],
+    ['meetup', 'Meetups'],
+    ['conference', 'Conferences'],
+  ],
+  cost: [
+    ['all', 'Free & Paid'],
+    ['free', 'Free Only'],
+    ['paid', 'Paid Only'],
   ],
   range: [
     ['', 'Any date'],
@@ -100,7 +108,11 @@ const choices = {
               <fieldset class="choice-group">
                 <>
                   <legend>
-                    {name === 'range' ? 'Date range' : name[0].toUpperCase() + name.slice(1)}
+                    {name === 'range'
+                      ? 'Date range'
+                      : name === 'eventType'
+                        ? 'Event Type'
+                        : name[0].toUpperCase() + name.slice(1)}
                   </legend>
                   <div class="choice-list">
                     {options.map(([value, label], index) => (

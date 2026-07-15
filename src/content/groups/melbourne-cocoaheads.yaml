@@ -1,0 +1,14 @@
+uid: 019f65f1-367e-7032-9e89-599b4359e77e
+name: 'Melbourne CocoaHeads'
+summary: 'Melbourne’s independent community for Apple platform developers.'
+description: 'Melbourne CocoaHeads hosts community events for developers working with iOS, macOS, Swift, Objective-C, and related mobile technology.'
+topics:
+  - 'ios'
+  - 'macos'
+  - 'swift'
+  - 'objective-c'
+  - 'mobile'
+  - 'software-engineering'
+websiteUrl: 'https://melbournecocoaheads.com/'
+eventsUrl: 'https://www.meetup.com/en-au/melbourne-cocoaheads/events/'
+location: 'Melbourne'

@@ -29,7 +29,7 @@ export function slug(value: string) {
     .replace(/^-|-$/g, '')
     .toLowerCase();
 }
-export function formatEventDate(start: Date, end?: Date) {
+export function formatEventDate(start: Date, end?: Date, allDay = false) {
   const d = new Intl.DateTimeFormat('en-AU', {
     timeZone: MELBOURNE_TZ,
     weekday: 'short',
@@ -37,6 +37,7 @@ export function formatEventDate(start: Date, end?: Date) {
     month: 'short',
     year: 'numeric',
   }).format(start);
+  if (allDay) return d;
   const t = new Intl.DateTimeFormat('en-AU', {
     timeZone: MELBOURNE_TZ,
     hour: 'numeric',

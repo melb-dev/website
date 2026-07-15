@@ -63,8 +63,13 @@ export function validate(rows: Row[], base: Row[] = []) {
           )
         )
           errors.push(`${r.path}: ${field} must be an ISO datetime with UTC offset`);
+      if (!['meetup', 'conference'].includes(r.data.eventType))
+        errors.push(`${r.path}: invalid event type`);
+      if (typeof r.data.paid !== 'boolean') errors.push(`${r.path}: paid must be a boolean`);
       if (r.data.end && new Date(r.data.end) <= new Date(r.data.start))
         errors.push(`${r.path}: end must follow start`);
+      if (r.data.allDay && r.data.end)
+        errors.push(`${r.path}: all-day events cannot have an end time`);
       if (r.data.updated && !/^\d{4}-\d{2}-\d{2}$/.test(r.data.updated))
         errors.push(`${r.path}: updated must be an ISO date`);
       if (
@@ -87,7 +92,12 @@ export function validate(rows: Row[], base: Row[] = []) {
       errors.push(`${old.path}: event deletion forbidden`);
       continue;
     }
-    if (!now) continue;
+    if (!now) {
+      errors.push(
+        `${old.path}: content identity missing; ${old.kind} UUID must be preserved across renames and deletion`,
+      );
+      continue;
+    }
     if (now.kind !== old.kind) errors.push(`${now.path}: uid changed type`);
     if (old.kind === 'events') {
       const material = [
@@ -96,6 +106,8 @@ export function validate(rows: Row[], base: Row[] = []) {
         'end',
         'group',
         'topics',
+        'eventType',
+        'paid',
         'format',
         'venue',
         'url',
@@ -118,23 +130,27 @@ if (process.argv[1]?.endsWith('validate-content.ts')) {
   try {
     const ref = process.env.GITHUB_BASE_REF
       ? `origin/${process.env.GITHUB_BASE_REF}`
-      : execFileSync('git', ['merge-base', 'HEAD', 'HEAD~1'], { encoding: 'utf8' }).trim();
-    const files = execFileSync('git', ['ls-tree', '-r', '--name-only', ref, 'src/content'], {
-      encoding: 'utf8',
-    })
-      .trim()
-      .split('\n')
-      .filter((x) => x.endsWith('.yaml'));
-    base = files.map((path) => {
-      const [, , kind, ...parts] = path.split('/');
-      const file = parts.join('/');
-      return {
-        kind,
-        id: file.slice(0, -5),
-        path,
-        data: parse(execFileSync('git', ['show', `${ref}:${path}`], { encoding: 'utf8' })),
-      };
-    });
+      : execFileSync('git', ['rev-list', '--parents', '-n', '1', 'HEAD'], { encoding: 'utf8' })
+          .trim()
+          .split(' ')[1];
+    if (ref) {
+      const files = execFileSync('git', ['ls-tree', '-r', '--name-only', ref, 'src/content'], {
+        encoding: 'utf8',
+      })
+        .trim()
+        .split('\n')
+        .filter((x) => x.endsWith('.yaml'));
+      base = files.map((path) => {
+        const [, , kind, ...parts] = path.split('/');
+        const file = parts.join('/');
+        return {
+          kind,
+          id: file.slice(0, -5),
+          path,
+          data: parse(execFileSync('git', ['show', `${ref}:${path}`], { encoding: 'utf8' })),
+        };
+      });
+    }
   } catch (error) {
     if (process.env.GITHUB_BASE_REF) throw error;
   }

@@ -1,0 +1,12 @@
+uid: 019f65f1-367e-794e-b53c-4c950d3b3444
+name: 'Golang Melbourne'
+summary: 'A Melbourne community for people who use and learn Go.'
+description: 'The group hosts Melbourne meetups for Go developers to share practical experience with the language and backend development.'
+topics:
+  - 'golang'
+  - 'backend'
+  - 'software-engineering'
+  - 'open-source'
+websiteUrl: 'https://www.meetup.com/golang-mel/'
+eventsUrl: 'https://www.meetup.com/golang-mel/events/'
+location: 'Melbourne'

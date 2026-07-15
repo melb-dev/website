@@ -1,0 +1,11 @@
+uid: 019f65f1-367f-753c-a7ec-983b24b32117
+name: 'Gen AI Enthusiasts'
+summary: 'An online-only community exploring generative AI.'
+description: 'Gen AI Enthusiasts is an online-only group for discussions and demonstrations about AI, AI agents, and prompt engineering.'
+topics:
+  - 'ai'
+  - 'ai-agents'
+  - 'prompt-engineering'
+websiteUrl: 'https://www.meetup.com/en-au/genai_enthusiasts_aiusers-online/'
+eventsUrl: 'https://www.meetup.com/en-au/genai_enthusiasts_aiusers-online/events/'
+location: 'Online'

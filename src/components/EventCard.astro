@@ -33,12 +33,19 @@ const isPast = period === 'past';
   data-topics={d.topics.map((ref: any) => ref.id).join(',')}
   data-location={locationId}
   data-format={d.format}
+  data-event-type={d.eventType}
+  data-paid={String(d.paid)}
 >
   <h2 class="event-title text-xl font-bold">
-    <a href={d.url}>{d.title}</a>{isPast && <span class="past-badge">Past event</span>}
+    <a href={d.url} rel="nofollow noopener noreferrer" target="_blank">{d.title}</a>
+    <span class="event-type-badge">{d.eventType === 'meetup' ? 'Meetup' : 'Conference'}</span>
+    {d.paid && <span class="cost-badge">Paid</span>}
+    {isPast && <span class="past-badge">Past event</span>}
   </h2>
   <p class="mt-2 font-medium">
-    <time datetime={d.start.toISOString()}>{formatEventDate(d.start, d.end)}</time>
+    <time datetime={d.allDay ? localDate(d.start) : d.start.toISOString()}>
+      {formatEventDate(d.start, d.end, d.allDay)}
+    </time>
   </p>
   <p>
     By <a href={`/groups/${group.id}/`}>{group.data.name}</a> · {
@@ -51,7 +58,12 @@ const isPast = period === 'past';
     }
   </div>
   {d.rsvpNote && <p class="text-sm">{d.rsvpNote}</p>}
-  <a class:list={['btn btn-sm mt-3', isPast ? 'btn-past' : 'btn-primary']} href={d.url}>
+  <a
+    class:list={['btn btn-sm mt-3', isPast ? 'btn-past' : 'btn-primary']}
+    href={d.url}
+    rel="nofollow noopener noreferrer"
+    target="_blank"
+  >
     {isPast ? 'View past event' : 'View event & RSVP'}
     <span class="sr-only">for {d.title}</span>
   </a>

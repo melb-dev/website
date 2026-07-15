@@ -1,0 +1,13 @@
+uid: 019f65f1-367e-747b-a76c-4bd6cc459ad8
+name: 'GDG Melbourne'
+summary: 'Melbourne’s Google Developer Group for local software developers.'
+description: 'GDG Melbourne runs community events covering Android and mobile development, including Kotlin, Java, and Flutter.'
+topics:
+  - 'kotlin'
+  - 'java'
+  - 'flutter'
+  - 'mobile'
+  - 'software-engineering'
+websiteUrl: 'https://www.meetup.com/en-au/gdg-melbourne/'
+eventsUrl: 'https://www.meetup.com/en-au/gdg-melbourne/events/'
+location: 'Melbourne'

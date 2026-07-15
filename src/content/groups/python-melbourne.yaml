@@ -1,0 +1,11 @@
+uid: 019f65f1-367e-7498-b2f1-c9f40a78af14
+name: 'Python Melbourne'
+summary: 'Melbourne’s user group for Python developers and learners.'
+description: 'Python Melbourne hosts community meetups about Python, practical software engineering, and open-source development.'
+topics:
+  - 'python'
+  - 'software-engineering'
+  - 'open-source'
+websiteUrl: 'https://www.meetup.com/en-au/melbourne-python-user-group/'
+eventsUrl: 'https://www.meetup.com/en-au/melbourne-python-user-group/events/'
+location: 'Melbourne'

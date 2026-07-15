@@ -1,0 +1,11 @@
+uid: 019f65f1-367f-79af-b548-ee4b6f7c6062
+name: 'Melbourne .NET User Group'
+summary: 'A Melbourne user group for .NET developers.'
+description: 'The group brings local developers together to share knowledge about .NET, C#, cloud technology, and software engineering.'
+topics:
+  - 'dotnet'
+  - 'csharp'
+  - 'software-engineering'
+websiteUrl: 'https://www.meetup.com/melbourne-net-user-group/'
+eventsUrl: 'https://www.meetup.com/melbourne-net-user-group/events/'
+location: 'Melbourne'

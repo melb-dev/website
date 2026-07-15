@@ -1,6 +1,6 @@
 import ical, { ICalCalendarMethod, ICalEventStatus } from 'ical-generator';
 import { getCollection } from 'astro:content';
-import { sortEvents } from '../lib/events';
+import { localDate, sortEvents } from '../lib/events';
 export async function GET() {
   const now = Date.now();
   const [events, groups, venues] = await Promise.all([
@@ -22,10 +22,11 @@ export async function GET() {
     cal.createEvent({
       id: `event-${e.data.uid}@melb.dev`,
       stamp: e.data.updated ?? e.data.start,
-      start: e.data.start,
+      start: e.data.allDay ? new Date(`${localDate(e.data.start)}T00:00:00Z`) : e.data.start,
       end: e.data.end,
+      allDay: e.data.allDay,
       summary: e.data.title,
-      description: `Organised by ${g?.data.name}. ${e.data.rsvpNote ?? ''}`,
+      description: `${e.data.paid ? 'Paid' : 'Free'} ${e.data.eventType === 'meetup' ? 'meetup' : 'conference'} organised by ${g?.data.name}. ${e.data.rsvpNote ?? ''}`,
       location: v ? `${v.data.name}, ${v.data.address}, ${v.data.suburb}` : 'Online',
       url: e.data.url,
       sequence: e.data.revision,

@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: help setup precommit format format-check lint test dev build
+.PHONY: help setup precommit format format-check lint test dev build new
 help: ## Show available commands
 	@awk 'BEGIN {FS = ":.*## "} /^[a-zA-Z_-]+:.*## / {printf "%-15s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 setup: ## Install dependencies and the pre-commit hook
@@ -18,3 +18,5 @@ dev: ## Start the development server
 	bun run dev
 build: ## Build and validate static output
 	bun run build
+new: ## Create a content record with the interactive guide
+	bun run new-content

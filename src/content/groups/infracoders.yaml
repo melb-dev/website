@@ -1,0 +1,13 @@
+uid: 019f65f1-367e-720e-9118-18778bd49d7c
+name: 'Infracoders'
+summary: 'A Melbourne meetup for infrastructure and operations practitioners.'
+description: 'Infracoders hosts technical talks and community discussion about infrastructure, cloud, platform engineering, DevOps, and SRE.'
+topics:
+  - 'infrastructure'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'sre'
+websiteUrl: 'https://www.meetup.com/en-au/infrastructure-coders/'
+eventsUrl: 'https://www.meetup.com/en-au/infrastructure-coders/events/'
+location: 'Melbourne'

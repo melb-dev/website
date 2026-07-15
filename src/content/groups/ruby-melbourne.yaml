@@ -1,0 +1,12 @@
+uid: 019f65f1-367e-784c-ba8b-b4b9c824e072
+name: 'Ruby Melbourne'
+summary: 'Melbourne’s community for Ruby developers and learners.'
+description: 'Ruby Melbourne brings Rubyists and Rails developers together for talks, knowledge sharing, and community connection.'
+topics:
+  - 'ruby'
+  - 'web-development'
+  - 'open-source'
+  - 'software-engineering'
+websiteUrl: 'https://www.meetup.com/en-au/ruby-melbourne/'
+eventsUrl: 'https://www.meetup.com/en-au/ruby-melbourne/events/'
+location: 'Melbourne'

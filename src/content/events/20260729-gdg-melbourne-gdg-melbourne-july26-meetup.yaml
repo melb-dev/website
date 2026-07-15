@@ -1,0 +1,16 @@
+uid: 019f65f1-3680-7580-9173-81027b9e1774
+title: "GDG Melbourne July'26 Meetup!"
+start: '2026-07-29T18:00:00+10:00'
+end: '2026-07-29T20:30:00+10:00'
+group: 'gdg-melbourne'
+topics:
+  - 'kotlin'
+  - 'java'
+  - 'flutter'
+  - 'mobile'
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'mantel-group-flinders-street'
+url: 'https://www.meetup.com/en-au/gdg-melbourne/events/314857853/'
+rsvpNote: 'Registration is completed on the linked GDG Community event page.'

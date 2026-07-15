@@ -85,7 +85,9 @@ select:focus-visible {
   align-items: center;
   gap: 0.5rem;
 }
-.past-badge {
+.past-badge,
+.event-type-badge,
+.cost-badge {
   border: 1px solid #7a838c;
   border-radius: 999px;
   background: #eef0f2;
@@ -94,6 +96,16 @@ select:focus-visible {
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
+}
+.event-type-badge {
+  border-color: #075ea8;
+  background: #eaf2f9;
+  color: #07518f;
+}
+.cost-badge {
+  border-color: #3f4852;
+  background: #eef0f2;
+  color: #3f4852;
 }
 .group-title {
   display: flex;

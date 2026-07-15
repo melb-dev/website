@@ -1,0 +1,18 @@
+uid: 019f65f1-3680-7c38-9901-6f5bd35956d1
+title: 'KSUG.AI Australia #65 - Melbourne Meetup @AWS - 4 Aug 2026'
+start: '2026-08-04T17:30:00+10:00'
+end: '2026-08-04T19:30:00+10:00'
+group: 'ksug-ai-melbourne'
+topics:
+  - 'kubernetes'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'sre'
+  - 'ai'
+eventType: 'meetup'
+paid: false
+format: 'hybrid'
+venue: 'amazon-mel12-collins-street'
+url: 'https://www.meetup.com/en-au/ksug-au/events/315112513/'
+rsvpNote: 'External registration is requested; verify the current registration link with the organiser.'

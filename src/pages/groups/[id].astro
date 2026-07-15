@@ -29,6 +29,7 @@ const past = sortEvents(
   false,
 );
 const groupTopics = group.data.topics.map((r) => topics.find((t) => t.id === r.id)).filter(Boolean);
+const contactIsExternal = group.data.contact && !group.data.contact.includes('@');
 ---
 
 <Layout title={group.data.name} description={group.data.summary}>
@@ -43,7 +44,13 @@ const groupTopics = group.data.topics.map((r) => topics.find((t) => t.id === r.i
     {groupTopics.map((t) => <span class="pill">{t?.data.name}</span>)}
   </div>
   <p class="mt-3">
-    {group.data.location} · <a href={group.data.url}>Community website</a>{
+    {group.data.location} · <a
+      href={group.data.websiteUrl}
+      rel="nofollow noopener noreferrer"
+      target="_blank">Community website</a
+    > · <a href={group.data.eventsUrl} rel="nofollow noopener noreferrer" target="_blank"
+      >Events listing</a
+    >{
       group.data.contact && (
         <>
           {' '}
@@ -52,6 +59,8 @@ const groupTopics = group.data.topics.map((r) => topics.find((t) => t.id === r.i
             href={
               group.data.contact.includes('@') ? `mailto:${group.data.contact}` : group.data.contact
             }
+            rel={contactIsExternal ? 'nofollow noopener noreferrer' : undefined}
+            target={contactIsExternal ? '_blank' : undefined}
           >
             Public contact
           </a>

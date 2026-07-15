@@ -1,0 +1,12 @@
+uid: 019f65f1-367e-7e76-a81e-f0caae3a8f12
+name: 'Rust Melbourne'
+summary: 'Melbourne’s community for Rust users and learners.'
+description: 'Rust Melbourne welcomes people interested in Rust and hosts talks about the language, systems programming, and open-source development.'
+topics:
+  - 'rust'
+  - 'systems-programming'
+  - 'open-source'
+  - 'software-engineering'
+websiteUrl: 'https://www.meetup.com/rust-melbourne/'
+eventsUrl: 'https://www.meetup.com/rust-melbourne/events/'
+location: 'Melbourne'

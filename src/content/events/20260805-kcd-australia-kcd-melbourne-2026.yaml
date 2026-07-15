@@ -1,0 +1,17 @@
+uid: 019f6607-949e-73d8-bdfb-39560ed8d03e
+title: 'KCD Melbourne 2026'
+start: '2026-08-05T08:30:00+10:00'
+end: '2026-08-05T20:30:00+10:00'
+group: 'kcd-australia'
+topics:
+  - 'kubernetes'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'open-source'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'collins-square-events-centre-docklands'
+url: 'https://community2.cncf.io/events/details/cncf-kcd-australia-presents-kcd-melbourne-2026/'
+rsvpNote: 'Paid event; log in to the CNCF community site to get tickets. Standard tickets are listed at A$95, subject to availability.'

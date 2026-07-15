@@ -21,6 +21,8 @@ if (root) {
   const readForm = () => ({
     q: form.elements.q.value.trim(),
     period: kind === 'events' ? form.elements.period.value : '',
+    eventType: kind === 'events' ? form.elements.eventType.value : 'all',
+    cost: kind === 'events' ? form.elements.cost.value : 'all',
     range: kind === 'events' ? form.elements.range.value : '',
     format: kind === 'events' ? form.elements.format.value : '',
     recommended: kind === 'groups' ? form.elements.recommended.value : 'all',
@@ -31,10 +33,15 @@ if (root) {
     const params = new URLSearchParams(location.search);
     form.reset();
     if (params.has('q')) form.elements.q.value = params.get('q');
-    for (const name of ['period', 'range', 'format']) {
+    for (const name of ['period', 'cost', 'range', 'format']) {
       if (kind !== 'events' || !params.has(name)) continue;
       const value = params.get(name);
       const option = form.querySelector(`[name="${name}"][value="${CSS.escape(value)}"]`);
+      if (option) option.checked = true;
+    }
+    if (kind === 'events' && params.has('type')) {
+      const value = params.get('type');
+      const option = form.querySelector(`[name="eventType"][value="${CSS.escape(value)}"]`);
       if (option) option.checked = true;
     }
     if (kind === 'groups' && params.get('recommended') === 'true')
@@ -51,6 +58,8 @@ if (root) {
     url.search = '';
     if (state.q) url.searchParams.set('q', state.q);
     if (state.period && state.period !== 'future') url.searchParams.set('period', state.period);
+    if (state.eventType !== 'all') url.searchParams.set('type', state.eventType);
+    if (state.cost !== 'all') url.searchParams.set('cost', state.cost);
     if (state.range) url.searchParams.set('range', state.range);
     for (const value of state.topic) url.searchParams.append('topic', value);
     for (const value of state.location) url.searchParams.append('location', value);
@@ -99,6 +108,18 @@ if (root) {
     )
       return false;
     if (kind === 'events' && card.dataset.period !== state.period) return false;
+    if (
+      kind === 'events' &&
+      state.eventType !== 'all' &&
+      card.dataset.eventType !== state.eventType
+    )
+      return false;
+    if (
+      kind === 'events' &&
+      state.cost !== 'all' &&
+      card.dataset.paid !== String(state.cost === 'paid')
+    )
+      return false;
     if (kind === 'events' && state.format !== 'any') {
       const formats = state.format === 'in-person' ? ['in-person', 'hybrid'] : ['online', 'hybrid'];
       if (!formats.includes(card.dataset.format)) return false;
@@ -169,8 +190,15 @@ if (root) {
       }
     }
     if (kind === 'events') {
+      const cost = state.cost === 'free' ? 'free ' : state.cost === 'paid' ? 'paid ' : '';
       const format =
         state.format === 'in-person' ? 'in person ' : state.format === 'online' ? 'online ' : '';
+      const noun =
+        state.eventType === 'meetup'
+          ? `meetup${visible.length === 1 ? '' : 's'}`
+          : state.eventType === 'conference'
+            ? `conference${visible.length === 1 ? '' : 's'}`
+            : `event${visible.length === 1 ? '' : 's'}`;
       const range =
         { today: ' today', week: ' this week', 'next-week': ' next week', month: ' this month' }[
           state.range
@@ -178,7 +206,7 @@ if (root) {
       const locations = labels('location');
       const topics = labels('topic');
       root.querySelector('#count').textContent =
-        `${visible.length} ${format}event${visible.length === 1 ? '' : 's'} ${state.period === 'future' ? 'upcoming' : 'in the past'}${range}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
+        `${visible.length} ${cost}${format}${noun} ${state.period === 'future' ? 'upcoming' : 'in the past'}${range}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
     } else {
       const locations = labels('location');
       const topics = labels('topic');
@@ -190,6 +218,8 @@ if (root) {
       kind === 'events'
         ? !state.q &&
           state.period === 'future' &&
+          state.eventType === 'all' &&
+          state.cost === 'all' &&
           !state.range &&
           state.format === 'in-person' &&
           !state.topic.length &&

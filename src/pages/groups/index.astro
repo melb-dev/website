@@ -15,10 +15,7 @@ const active = groups
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
 const usedTopics = topics
   .filter((topic) => active.some((group) => group.data.topics.some((ref) => ref.id === topic.id)))
-  .sort(
-    (a, b) =>
-      (a.data.order ?? 999) - (b.data.order ?? 999) || a.data.name.localeCompare(b.data.name),
-  );
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
 const locations = [
   ...new Map(active.map((group) => [slug(group.data.location), group.data.location])).entries(),
 ].sort((a, b) => a[1].localeCompare(b[1]));

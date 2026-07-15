@@ -1,0 +1,13 @@
+uid: 019f6607-949e-70c2-ab12-aace5cabc6a8
+name: 'KCD Australia'
+summary: 'The Australian community behind Kubernetes Community Days conferences.'
+description: 'KCD Australia organises community-led Kubernetes and cloud-native conferences supported by the Cloud Native Computing Foundation.'
+topics:
+  - 'kubernetes'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'open-source'
+websiteUrl: 'https://community2.cncf.io/kcd-australia/'
+eventsUrl: 'https://community2.cncf.io/kcd-australia/'
+location: 'Australia'

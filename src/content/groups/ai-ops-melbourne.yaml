@@ -1,0 +1,11 @@
+uid: 019f65f1-367e-7d64-ab83-d269a6429c1a
+name: 'AI Ops Melbourne'
+summary: 'A Melbourne community exploring practical AI tools and automation.'
+description: 'AI Ops Melbourne runs events about AI, agents, automation, and developer tools, with an emphasis on practical demonstrations and discussion.'
+topics:
+  - 'ai'
+  - 'ai-agents'
+  - 'developer-tools'
+websiteUrl: 'https://aiops.lol/'
+eventsUrl: 'https://luma.com/aiops?period=past'
+location: 'Melbourne'

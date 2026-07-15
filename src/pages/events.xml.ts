@@ -1,6 +1,14 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { sortEvents } from '../lib/events';
+
+const formatNames = {
+  'in-person': 'In person',
+  online: 'Online',
+  hybrid: 'Hybrid',
+} as const;
+const eventTypeNames = { meetup: 'Meetup', conference: 'Conference' } as const;
+
 export async function GET(context: any) {
   const now = Date.now();
   const [events, groups, venues, topics] = await Promise.all([
@@ -19,17 +27,22 @@ export async function GET(context: any) {
     description: 'Tech community events in Melbourne',
     site: context.site,
     items: included.map((e) => {
-      const g = groups.find((x) => x.id === e.data.group.id),
-        v = venues.find((x) => x.id === e.data.venue?.id);
+      const group = groups.find((item) => item.id === e.data.group.id);
+      const venue = venues.find((item) => item.id === e.data.venue?.id);
       return {
         title: e.data.title,
         link: e.data.url,
         customData: `<guid isPermaLink="false">event-${e.data.uid}@melb.dev</guid>`,
         pubDate: e.data.start,
         description: [
-          g?.data.name,
-          v?.data.name ?? e.data.format,
-          e.data.topics.map((r) => topics.find((t) => t.id === r.id)?.data.name).join(', '),
+          group?.data.name,
+          eventTypeNames[e.data.eventType],
+          e.data.paid ? 'Paid' : 'Free',
+          formatNames[e.data.format],
+          venue?.data.name,
+          e.data.topics
+            .map((reference) => topics.find((topic) => topic.id === reference.id)?.data.name)
+            .join(', '),
           e.data.rsvpNote,
           e.data.status,
         ]

@@ -1,0 +1,14 @@
+uid: 019f65f1-367e-70db-acf4-bf240c0edf17
+name: 'MelbJS'
+summary: 'Melbourne’s community meetup for JavaScript and TypeScript developers.'
+description: 'MelbJS brings local developers together for talks and discussion about JavaScript, TypeScript, frontend, and full-stack development.'
+topics:
+  - 'typescript'
+  - 'javascript'
+  - 'frontend'
+  - 'fullstack'
+  - 'software-engineering'
+  - 'open-source'
+websiteUrl: 'https://melbjs.com/'
+eventsUrl: 'https://melbjs.com/'
+location: 'Melbourne'

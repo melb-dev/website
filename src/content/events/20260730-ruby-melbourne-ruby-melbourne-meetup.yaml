@@ -1,0 +1,15 @@
+uid: 019f65f1-3680-7bb1-9f5b-eab2b951b05b
+title: 'Ruby Melbourne Meetup'
+start: '2026-07-30T17:30:00+10:00'
+end: '2026-07-30T20:30:00+10:00'
+group: 'ruby-melbourne'
+topics:
+  - 'ruby'
+  - 'web-development'
+  - 'open-source'
+eventType: 'meetup'
+paid: false
+format: 'hybrid'
+venue: 'ferocia-collins-street'
+url: 'https://www.meetup.com/en-au/ruby-melbourne/events/313408456/'
+rsvpNote: 'Online participation begins at 6:30 pm; RSVP is managed by Meetup.'

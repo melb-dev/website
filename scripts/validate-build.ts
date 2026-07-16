@@ -170,10 +170,16 @@ export function validateIcs(ics: string, expected: ExpectedFeeds): string[] {
     errors.push('ICS version must be 2.0');
   if (text(calendar.getFirstPropertyValue('x-wr-timezone')) !== MELBOURNE_TZ)
     errors.push(`ICS timezone must be ${MELBOURNE_TZ}`);
+  const timezones = calendar.getAllSubcomponents('vtimezone');
+  if (timezones.length !== 1 || text(timezones[0]?.getFirstPropertyValue('tzid')) !== MELBOURNE_TZ)
+    errors.push(`ICS must contain one ${MELBOURNE_TZ} VTIMEZONE component`);
   const timezoneLine = lines.indexOf(`X-WR-TIMEZONE:${MELBOURNE_TZ}`);
   const firstEvent = lines.indexOf('BEGIN:VEVENT');
   if (firstEvent !== -1 && timezoneLine > firstEvent)
     errors.push('ICS timezone must appear before VEVENT components');
+  const timezoneComponent = lines.indexOf('BEGIN:VTIMEZONE');
+  if (firstEvent !== -1 && (timezoneComponent === -1 || timezoneComponent > firstEvent))
+    errors.push('ICS VTIMEZONE must appear before VEVENT components');
   const components = calendar.getAllSubcomponents('vevent');
   const uids = components.map((component: any) => text(component.getFirstPropertyValue('uid')));
   assertUniqueExact(
@@ -222,14 +228,19 @@ export function validateIcs(ics: string, expected: ExpectedFeeds): string[] {
     ] as const) {
       const property = component.getFirstProperty(name);
       if (property && date) {
-        if (event.allDay && name === 'dtstart') {
+        if (event.allDay && name !== 'dtstamp') {
           if (property.type !== 'date' || value(name) !== localDate(date))
-            errors.push(`VEVENT ${uid} DTSTART does not match source date`);
+            errors.push(`VEVENT ${uid} ${name.toUpperCase()} does not match source date`);
         } else {
           if (iso(property) !== date.toISOString())
             errors.push(`VEVENT ${uid} ${name.toUpperCase()} does not match source`);
-          if (property.getFirstValue()?.zone !== ICAL.Timezone.utcTimezone)
-            errors.push(`VEVENT ${uid} ${name.toUpperCase()} must be UTC`);
+          const zone = property.getFirstValue()?.zone;
+          if (name === 'dtstamp') {
+            if (zone !== ICAL.Timezone.utcTimezone)
+              errors.push(`VEVENT ${uid} DTSTAMP must be UTC`);
+          } else if (zone?.tzid !== MELBOURNE_TZ) {
+            errors.push(`VEVENT ${uid} ${name.toUpperCase()} must use ${MELBOURNE_TZ}`);
+          }
         }
       }
     }

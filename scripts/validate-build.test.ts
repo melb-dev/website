@@ -1,5 +1,8 @@
+import { getVtimezoneComponent } from '@touch4it/ical-timezones';
 import { describe, expect, it } from 'vitest';
 import { validateIcs, validateRss, type ExpectedFeeds } from './validate-build';
+
+const melbourneTimezone = getVtimezoneComponent('Australia/Melbourne')!.split(/\r?\n/);
 
 const expected: ExpectedFeeds = {
   events: [
@@ -53,10 +56,11 @@ describe('generated feed validation', () => {
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
       'X-WR-TIMEZONE:Australia/Melbourne',
+      ...melbourneTimezone,
       'BEGIN:VEVENT',
       'UID:event-1@melb.dev',
       'DTSTAMP:20260701T000000Z',
-      'DTSTART:20260715T080000Z',
+      'DTSTART;TZID=Australia/Melbourne:20260715T180000',
       'SUMMARY:Test',
       'DESCRIPTION:Organised by Group.',
       'LOCATION:Hall\\, 1 Road\\, Melbourne',
@@ -85,11 +89,12 @@ describe('generated feed validation', () => {
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
       'X-WR-TIMEZONE:Australia/Melbourne',
+      ...melbourneTimezone,
       'BEGIN:VEVENT',
       'UID:event-1@melb.dev',
       'DTSTAMP:20260701T000000Z',
-      'DTSTART:20260715T080000Z',
-      'DTEND:20260715T090000Z',
+      'DTSTART;TZID=Australia/Melbourne:20260715T180000',
+      'DTEND;TZID=Australia/Melbourne:20260715T190000',
       'SUMMARY:Test',
       'DESCRIPTION:Organised by Group.',
       'LOCATION:Hall\\, 1 Road\\, Melbourne',

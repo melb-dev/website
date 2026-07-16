@@ -1,0 +1,11 @@
+uid: 019f6930-48f1-7aa4-86a2-590e394b1b90
+name: 'MelbCSS'
+summary: 'Melbourne’s community meetup for people interested in CSS.'
+description: 'MelbCSS welcomes everyone from complete beginners to seasoned experts to share CSS knowledge over talks, pizza, and drinks. Meetups typically take place on the first Tuesday of every second month.'
+topics:
+  - 'css'
+  - 'frontend'
+  - 'web-development'
+websiteUrl: 'https://melbcss.com/'
+eventsUrl: 'https://melbcss.com/'
+location: 'Melbourne'

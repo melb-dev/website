@@ -1,0 +1,22 @@
+<h2 id="subscribe" class="text-xl font-bold">Subscribe to events</h2>
+<p class="mt-2">In your calendar app, choose “Add calendar by URL” and use:</p>
+<p class="copy-row">
+  <code id="calendar-url">https://melb.dev/events.ics</code>
+  <button class="btn btn-sm" type="button" data-copy="#calendar-url">Copy</button>
+</p>
+<p class="text-sm mt-2">
+  You can also <a href="/events.ics">download the calendar</a> or use the <a href="/events.xml"
+    >RSS feed</a
+  >.
+</p>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]'))
+    button.addEventListener('click', async () => {
+      const selector = button.dataset.copy;
+      const text = selector ? document.querySelector(selector)?.textContent : undefined;
+      if (!text) return;
+      await navigator.clipboard.writeText(text);
+      button.textContent = 'Copied';
+    });
+</script>

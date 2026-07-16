@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import EventSubscription from '../components/EventSubscription.astro';
 import Layout from '../layouts/Layout.astro';
 import EventCard from '../components/EventCard.astro';
 import { isFuture, localDate, sortEvents, slug } from '../lib/events';
@@ -86,12 +87,12 @@ const choices = {
     <p class="event-intro mt-3">
       Melb.dev is the best place to find, attend, speak at, and organise meetups, conferences, and
       events, and communities for developers and people working in tech in Melbourne. It's a free
-      service, aiming to strengthen Melbourne's tech community and technical excellence.
+      service, aiming to strengthen Melbourne's tech community and advance technical excellence.
     </p>
   </header>
   <section id="directory" data-kind="events" class="directory-layout">
     <aside class="filter-sidebar">
-      <details class="filter-disclosure" open>
+      <details class="filter-disclosure">
         <summary>Filters</summary>
         <form id="filters" class="cardx filter-form" aria-labelledby="filter-heading">
           <div class="filter-heading-row">
@@ -186,17 +187,7 @@ const choices = {
     </div>
   </section>
   <section class="cardx mt-8" aria-labelledby="subscribe">
-    <h2 id="subscribe" class="text-xl font-bold">Subscribe to events</h2>
-    <p class="mt-2">In your calendar app, choose “Add calendar by URL” and use:</p>
-    <p class="copy-row">
-      <code id="calendar-url">https://melb.dev/events.ics</code>
-      <button class="btn btn-sm" type="button" data-copy="#calendar-url">Copy</button>
-    </p>
-    <p class="text-sm mt-2">
-      You can also <a href="/events.ics">download the calendar</a> or use the <a href="/events.xml"
-        >RSS feed</a
-      >.
-    </p>
+    <EventSubscription />
   </section>
   <script src="../scripts/search.js"></script>
 </Layout>

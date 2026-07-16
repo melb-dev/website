@@ -249,19 +249,90 @@ legend {
   border-radius: 0.35rem;
   padding: 0.4rem 0.6rem;
 }
+.primary-nav,
+.nav-disclosure {
+  position: relative;
+}
+.desktop-primary-links {
+  display: none;
+}
+.nav-toggle {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  cursor: pointer;
+  place-items: center;
+  border: 1px solid #aac8e3;
+  border-radius: 0.5rem;
+  color: #075ea8;
+  list-style: none;
+}
+.nav-toggle::-webkit-details-marker {
+  display: none;
+}
+.nav-toggle:hover {
+  background: #eaf2f9;
+}
+.nav-toggle:focus-visible {
+  outline: 3px solid #075ea8;
+  outline-offset: 2px;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after,
+.hamburger span {
+  display: block;
+  width: 1.35rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+.hamburger {
+  position: relative;
+}
+.hamburger::before,
+.hamburger::after {
+  position: absolute;
+  left: 0;
+  content: '';
+}
+.hamburger::before {
+  top: -0.42rem;
+}
+.hamburger::after {
+  top: 0.42rem;
+}
+.primary-links {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  display: grid;
+  width: min(18rem, calc(100vw - 2rem));
+  gap: 0.2rem;
+  padding: 0.6rem;
+  border: 1px solid #d9dee5;
+  border-radius: 0.75rem;
+  background: #fff;
+}
 .nav-link {
   display: block;
   border-bottom: 2px solid transparent;
-  padding: 0.45rem 0.35rem 0.35rem;
+  padding: 0.7rem 0.75rem 0.6rem;
   font-weight: 650;
   text-decoration: none;
 }
 .nav-link:hover {
-  border-bottom-color: #aac8e3;
+  border-bottom-color: transparent;
+  background: #eaf2f9;
   text-decoration: none;
 }
 .nav-link[aria-current='page'] {
-  border-bottom-color: #075ea8;
+  border-bottom-color: transparent;
+  border-left: 0.25rem solid #075ea8;
+  border-radius: 0.4rem;
+  background: #eaf2f9;
+  padding-left: 0.5rem;
 }
 .site-footer a {
   color: #b9dcfa;
@@ -345,10 +416,34 @@ legend {
   z-index: 99;
 }
 @media (min-width: 768px) {
+  .nav-disclosure {
+    display: none;
+  }
+  .desktop-primary-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+  }
+  .nav-link {
+    padding: 0.45rem 0.35rem 0.35rem;
+  }
+  .nav-link:hover {
+    border-bottom-color: #aac8e3;
+    background: transparent;
+  }
+  .nav-link[aria-current='page'] {
+    border-bottom-color: #075ea8;
+    border-left: 0;
+    border-radius: 0;
+    background: transparent;
+    padding-left: 0.35rem;
+  }
   .about-layout {
     grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
     align-items: start;
   }
+}
+@media (min-width: 1024px) {
   .directory-layout {
     grid-template-columns: 17rem minmax(0, 1fr);
     align-items: start;

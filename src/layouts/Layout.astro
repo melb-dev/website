@@ -12,10 +12,11 @@ const organisation = {
   '@type': 'Organization',
   name: 'melb.dev',
   url: 'https://melb.dev',
-  description: "Strengthening Melbourne's tech community and technical excellence.",
+  description: "Strengthening Melbourne's tech community and advancing technical excellence.",
 };
 const navigation = [
   ['Tech Events', '/'],
+  ['Calendar', '/calendar/'],
   ['Groups', '/groups/'],
   ['Community Standards', '/standards/'],
   ['For Organisers', '/organisers/'],
@@ -50,8 +51,29 @@ const current = (href: string) =>
         <a href="/" class="text-xl font-black no-underline" aria-label="melb.dev home">
           melb.dev
         </a>
-        <nav class="ml-auto" aria-label="Primary">
-          <ul class="primary-links flex flex-wrap gap-x-2 gap-y-1 text-sm">
+        <nav class="primary-nav ml-auto" aria-label="Primary">
+          <details class="nav-disclosure">
+            <summary class="nav-toggle">
+              <span class="hamburger" aria-hidden="true"><span></span></span>
+              <span class="sr-only">Menu</span>
+            </summary>
+            <ul class="primary-links text-sm">
+              {
+                navigation.map(([label, href]) => (
+                  <li>
+                    <a
+                      class="nav-link"
+                      href={href}
+                      aria-current={current(href) ? 'page' : undefined}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+          <ul class="desktop-primary-links text-sm">
             {
               navigation.map(([label, href]) => (
                 <li>
@@ -72,7 +94,9 @@ const current = (href: string) =>
       <div class="shell py-10 grid gap-8 md:grid-cols-2">
         <div>
           <strong>melb.dev</strong>
-          <p class="mt-2">Strengthening Melbourne's tech community and technical excellence.</p>
+          <p class="mt-2">
+            Strengthening Melbourne's tech community and advancing technical excellence.
+          </p>
           <p class="mt-3">
             <a
               href="https://github.com/melb-dev/website/issues"
@@ -90,7 +114,7 @@ const current = (href: string) =>
             <a href="/standards/">Community Standards</a>
           </div>
           <div>
-            <a href="/events.ics">Events Calendar</a>
+            <a href="/calendar/">Events Calendar</a>
             <a href="/events.xml">Events RSS Feed</a>
             <a href="/about/">About</a>
           </div>

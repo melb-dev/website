@@ -3,7 +3,15 @@ if (root) {
   const form = root.querySelector('#filters');
   const resetButton = form.querySelector('[type="reset"]');
   const disclosure = root.querySelector('.filter-disclosure');
-  disclosure.open = matchMedia('(min-width: 768px)').matches || Boolean(location.search);
+  const desktopFilters = matchMedia('(min-width: 1024px)');
+  let mobileFiltersOpen = Boolean(location.search);
+  disclosure.open = desktopFilters.matches || mobileFiltersOpen;
+  disclosure.addEventListener('toggle', () => {
+    if (!desktopFilters.matches) mobileFiltersOpen = disclosure.open;
+  });
+  desktopFilters.addEventListener('change', () => {
+    disclosure.open = desktopFilters.matches || mobileFiltersOpen;
+  });
   const cards = [...root.querySelectorAll('.directory-card')];
   const kind = root.dataset.kind;
   let searchDbPromise;
@@ -252,9 +260,3 @@ if (root) {
   applyUrl();
   run(false);
 }
-for (const button of document.querySelectorAll('[data-copy]'))
-  button.addEventListener('click', async () => {
-    const text = document.querySelector(button.dataset.copy).textContent;
-    await navigator.clipboard.writeText(text);
-    button.textContent = 'Copied';
-  });

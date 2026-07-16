@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-710b-bff2-20e905739b37
+name: 'Machine Learning & AI Meetup'
+summary: 'A Melbourne group learning and discussing machine learning, AI, and applied AI agents.'
+description: 'Machine Learning & AI Meetup brings Melbourne practitioners together to learn about and discuss machine learning, AI, and applied AI agents.'
+topics: ['ai', 'machine-learning', 'ai-agents', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/machine-learning-ai-meetup/'
+eventsUrl: 'https://www.meetup.com/machine-learning-ai-meetup/events/'
+location: 'Melbourne'
+communityFirst: false

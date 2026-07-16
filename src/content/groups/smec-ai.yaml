@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7335-bf51-596fd91b91ba
+name: 'SMEC AI'
+summary: 'A practical AI adoption community and support program for Australian small and medium businesses.'
+description: 'SMEC AI is a practical AI adoption community and support program for small and medium businesses across Australia.'
+topics: ['ai', 'developer-tools', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://smecai.au/'
+eventsUrl: 'https://smecai.au/events'
+location: 'Australia'
+communityFirst: true

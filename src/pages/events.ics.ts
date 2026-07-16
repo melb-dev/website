@@ -1,6 +1,6 @@
 import ical, { ICalCalendarMethod, ICalEventStatus } from 'ical-generator';
 import { getCollection } from 'astro:content';
-import { localDate, sortEvents } from '../lib/events';
+import { localDate, MELBOURNE_TZ, sortEvents } from '../lib/events';
 export async function GET() {
   const now = Date.now();
   const [events, groups, venues] = await Promise.all([
@@ -33,7 +33,10 @@ export async function GET() {
       status: e.data.status === 'cancelled' ? ICalEventStatus.CANCELLED : ICalEventStatus.CONFIRMED,
     });
   }
-  return new Response(cal.toString(), {
+  const calendar = cal.toString();
+  const component = calendar.includes('BEGIN:VEVENT') ? 'BEGIN:VEVENT' : 'END:VCALENDAR';
+  const body = calendar.replace(component, `X-WR-TIMEZONE:${MELBOURNE_TZ}\r\n${component}`);
+  return new Response(body, {
     headers: {
       'Content-Type': 'text/calendar; charset=utf-8',
       'Content-Disposition': 'inline; filename="events.ics"',

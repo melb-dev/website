@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-761f-ad8e-c639bcfb0e66
+name: 'Melbourne Compose'
+summary: 'A monthly in-person meetup for typed functional programming practitioners, including Haskell and Scala.'
+description: 'Melbourne Compose is a monthly in-person meetup for typed functional programming practitioners working with languages including Haskell and Scala.'
+topics: ['haskell', 'scala', 'software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://luma.com/melbourne-compose'
+eventsUrl: 'https://luma.com/melbourne-compose'
+location: 'Melbourne'
+communityFirst: false

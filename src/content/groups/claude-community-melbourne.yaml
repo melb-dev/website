@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7708-805f-0b46e3b5e82c
+name: 'Claude Community Melbourne'
+summary: 'Local Claude builders sharing talks, demos, discussions, and projects through the global Claude Community program.'
+description: 'Claude Community Melbourne brings local Claude builders together to share talks, demos, discussions, and projects under the global Claude Community program.'
+topics: ['ai', 'ai-agents', 'developer-tools']
+eventTypes: ['meetup']
+websiteUrl: 'https://claude.com/community'
+eventsUrl: 'https://luma.com/claudecommunity'
+location: 'Melbourne'
+communityFirst: false

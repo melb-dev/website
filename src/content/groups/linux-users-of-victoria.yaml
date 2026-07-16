@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-79df-a431-f71fc398ed04
+name: 'Linux Users of Victoria'
+summary: 'A Victorian Linux and open-source community running talks, town halls, and practical learning events.'
+description: 'Linux Users of Victoria brings the Linux and open-source community together through talks, town halls, and practical learning events.'
+topics: ['linux', 'systems-programming', 'open-source', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/linux-users-of-victoria/'
+eventsUrl: 'https://www.meetup.com/linux-users-of-victoria/events/'
+location: 'Victoria'
+communityFirst: true

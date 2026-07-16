@@ -52,6 +52,7 @@ describe('generated feed validation', () => {
     const ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
+      'X-WR-TIMEZONE:Australia/Melbourne',
       'BEGIN:VEVENT',
       'UID:event-1@melb.dev',
       'DTSTAMP:20260701T000000Z',
@@ -83,6 +84,7 @@ describe('generated feed validation', () => {
     const ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
+      'X-WR-TIMEZONE:Australia/Melbourne',
       'BEGIN:VEVENT',
       'UID:event-1@melb.dev',
       'DTSTAMP:20260701T000000Z',

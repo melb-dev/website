@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7252-a133-d11919832963
+name: 'Data Engineering Melbourne'
+summary: 'A community for data engineers sharing practical experience with data platforms, pipelines, and streaming systems.'
+description: 'Data Engineering Melbourne brings data engineers together to share practical experience with data platforms, pipelines, and streaming systems.'
+topics: ['backend', 'cloud', 'infrastructure', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/data-engineering-melbourne/'
+eventsUrl: 'https://www.meetup.com/data-engineering-melbourne/events/'
+location: 'Melbourne'
+communityFirst: false

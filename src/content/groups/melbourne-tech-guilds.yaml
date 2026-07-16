@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7d16-a870-b0d5388e3579
+name: 'Melbourne Tech Guilds'
+summary: 'A collaborative maker community spanning robotics, electronics, mechanics, IoT, coding, and deep tech.'
+description: 'Melbourne Tech Guilds is a collaborative maker community spanning robotics, electronics, mechanics, IoT, coding, and deep tech.'
+topics: ['systems-programming', 'ai', 'open-source', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://techguilds.au/'
+eventsUrl: 'https://luma.com/calendar/cal-ySHl4TwxUrVHZzC'
+location: 'Melbourne'
+communityFirst: true

@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7daa-ac73-2cd4213a7760
+name: 'Melbourne Linux User Group'
+summary: 'A monthly community for Linux enthusiasts to learn, share knowledge, and join open-source workshops.'
+description: 'Melbourne Linux User Group is a monthly community where Linux enthusiasts learn, share knowledge, and participate in open-source workshops.'
+topics: ['linux', 'systems-programming', 'open-source', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://mlug-au.org/'
+eventsUrl: 'https://mlug-au.org/doku.php?id=start'
+location: 'Melbourne'
+communityFirst: true

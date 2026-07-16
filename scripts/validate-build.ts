@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import ICAL from 'ical.js';
 import { XMLParser } from 'fast-xml-parser';
 import { SyntaxValidator } from 'fast-xml-validator';
-import { localDate } from '../src/lib/events';
+import { localDate, MELBOURNE_TZ } from '../src/lib/events';
 import { load } from './validate-content';
 
 type ExpectedEvent = {
@@ -168,6 +168,12 @@ export function validateIcs(ics: string, expected: ExpectedFeeds): string[] {
     errors.push('ICS is missing VCALENDAR/version');
   else if (text(calendar.getFirstPropertyValue('version')) !== '2.0')
     errors.push('ICS version must be 2.0');
+  if (text(calendar.getFirstPropertyValue('x-wr-timezone')) !== MELBOURNE_TZ)
+    errors.push(`ICS timezone must be ${MELBOURNE_TZ}`);
+  const timezoneLine = lines.indexOf(`X-WR-TIMEZONE:${MELBOURNE_TZ}`);
+  const firstEvent = lines.indexOf('BEGIN:VEVENT');
+  if (firstEvent !== -1 && timezoneLine > firstEvent)
+    errors.push('ICS timezone must appear before VEVENT components');
   const components = calendar.getAllSubcomponents('vevent');
   const uids = components.map((component: any) => text(component.getFirstPropertyValue('uid')));
   assertUniqueExact(

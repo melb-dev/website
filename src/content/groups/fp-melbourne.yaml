@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-78ef-b1c6-0b438b0c6ad1
+name: 'FP Melbourne'
+summary: 'A functional programming community sharing techniques, languages, and practical experience.'
+description: 'FP Melbourne brings functional programmers together to share techniques, languages, and practical experience.'
+topics: ['software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/fp-melbourne/'
+eventsUrl: 'https://www.meetup.com/fp-melbourne/events/'
+location: 'Melbourne'
+communityFirst: true

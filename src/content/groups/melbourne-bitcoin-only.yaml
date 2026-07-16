@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7139-98d4-d8e0af35797b
+name: 'Melbourne Bitcoin Only / Melbourne BitDevs'
+summary: 'A technical Bitcoin community discussing software, tools, research, protocol upgrades, and mining.'
+description: 'Melbourne Bitcoin Only / Melbourne BitDevs is a technical community discussing Bitcoin software, tools, research, protocol upgrades, and mining.'
+topics: ['systems-programming', 'open-source', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://bitdevs.com.au/'
+eventsUrl: 'https://www.meetup.com/melbourne-bitcoin-only/events/'
+location: 'Melbourne'
+communityFirst: false

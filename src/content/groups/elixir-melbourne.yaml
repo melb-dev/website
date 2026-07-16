@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-74ba-a57d-737990bce741
+name: 'Elixir Melbourne'
+summary: 'A Melbourne community for Elixir and Erlang ecosystem developers and learners.'
+description: 'Elixir Melbourne connects developers and learners interested in Elixir, Erlang, and their wider ecosystem.'
+topics: ['elixir', 'backend', 'software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/elixir-melbourne/'
+eventsUrl: 'https://www.meetup.com/elixir-melbourne/events/'
+location: 'Melbourne'
+communityFirst: true

@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7ba5-8ff9-99411f568a48
+name: 'AI/ML/Robots'
+summary: 'A hands-on community building and learning through AI, machine learning, and robotics projects.'
+description: 'AI/ML/Robots is a hands-on community for people building projects and learning about AI, machine learning, and robotics.'
+topics: ['ai', 'machine-learning', 'ai-agents', 'software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://ai-ml-robots.github.io/'
+eventsUrl: 'https://www.meetup.com/ai-ml-robots/events/'
+location: 'Melbourne'
+communityFirst: true

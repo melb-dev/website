@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7570-b509-18c09d6f6a78
+name: 'AppSec Australia'
+summary: 'An Australian application-security community running practitioner-led events and knowledge sharing.'
+description: 'AppSec Australia is an application-security community running practitioner-led events and knowledge sharing across Australia.'
+topics: ['infrastructure', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/appsec-australia/'
+eventsUrl: 'https://www.meetup.com/appsec-australia/events/'
+location: 'Australia'
+communityFirst: false

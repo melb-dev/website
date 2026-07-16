@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7550-829f-fa03d1b5eeeb
+name: 'ISACA Melbourne Chapter'
+summary: 'A local digital-trust professional community offering development, training, resource sharing, and networking.'
+description: 'ISACA Melbourne Chapter is a digital-trust professional community offering development, training, resource sharing, and networking.'
+topics: ['infrastructure', 'software-engineering', 'ai']
+eventTypes: ['meetup']
+websiteUrl: 'https://engage.isaca.org/melbournechapter/home'
+eventsUrl: 'https://engage.isaca.org/melbournechapter/RecentCommunityEventsDashboard'
+location: 'Melbourne'
+communityFirst: true

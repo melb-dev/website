@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7d3b-815f-2d4c60ea1466
+name: 'BeerOps'
+summary: 'An inclusive Australian technology-networking community connecting practitioners from engineers to technology leaders.'
+description: 'BeerOps is an inclusive Australian technology-networking community connecting a broad range of practitioners, from engineers to technology leaders.'
+topics: ['software-engineering', 'cloud', 'infrastructure']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.beerops.io/'
+eventsUrl: 'https://www.eventbrite.com.au/e/beerops-melbourne-2026-australias-largest-tech-networking-event-tickets-1987373924908'
+location: 'Australia'
+communityFirst: false

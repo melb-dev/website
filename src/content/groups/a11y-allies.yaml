@@ -1,0 +1,10 @@
+uid: 019f6987-0d55-79a0-9e38-c60e25c6384e
+name: 'A11y Allies'
+summary: 'An accessibility community running practical roundtables about inclusive digital products, standards, and testing.'
+description: 'A11y Allies brings people together for practical roundtables about inclusive digital products, accessibility standards, and testing.'
+topics: ['frontend', 'web-development', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/a11y-allies/'
+eventsUrl: 'https://www.meetup.com/a11y-allies/events/'
+location: 'Melbourne'
+communityFirst: false

@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7980-aad9-ec597d04ff8a
+name: 'Flutter Melbourne'
+summary: 'A community for Flutter and Dart developers featuring talks, coding nights, and project collaboration.'
+description: 'Flutter Melbourne brings Flutter and Dart developers together for talks, coding nights, and collaborative projects.'
+topics: ['flutter', 'mobile', 'software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/flutter-melbourne/'
+eventsUrl: 'https://www.meetup.com/flutter-melbourne/events/'
+location: 'Melbourne'
+communityFirst: true

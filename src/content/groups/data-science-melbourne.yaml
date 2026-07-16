@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-70dd-b565-62e3c28d0897
+name: 'Data Science Melbourne'
+summary: 'A community for data science practitioners discussing analytics, machine learning, and AI.'
+description: 'Data Science Melbourne brings data science practitioners together to discuss analytics, machine learning, and AI.'
+topics: ['ai', 'machine-learning', 'backend', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/data-science-melbourne/'
+eventsUrl: 'https://www.meetup.com/data-science-melbourne/events/'
+location: 'Melbourne'
+communityFirst: false

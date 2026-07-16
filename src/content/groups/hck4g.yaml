@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-70a7-8482-c32fcbea9a2c
+name: 'Hck4G'
+summary: 'An Australian not-for-profit cybersecurity community focused on education, victim support, and ethical technology pathways.'
+description: 'Hck4G is an Australian not-for-profit cybersecurity community focused on education, victim support, and ethical pathways into technology.'
+topics: ['infrastructure', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://hck4g.org/'
+eventsUrl: 'https://events.humanitix.com/host/hck4g'
+location: 'Australia'
+communityFirst: true

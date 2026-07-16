@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-76e2-82eb-91c2ff3f27e0
+name: 'Melbourne SEO Collective'
+summary: 'An independent, sales-pitch-free SEO community sharing search knowledge, industry changes, and practical experience.'
+description: 'Melbourne SEO Collective is an independent, sales-pitch-free community sharing search knowledge, industry changes, and practical experience.'
+topics: ['web-development', 'frontend']
+eventTypes: ['meetup']
+websiteUrl: 'https://seocollective.org/'
+eventsUrl: 'https://seocollective.org/events/'
+location: 'Melbourne'
+communityFirst: true

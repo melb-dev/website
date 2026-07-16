@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7659-b666-c05e8749c2a9
+name: 'AICamp Melbourne'
+summary: 'Practical AI developer meetups featuring deep-dive talks, code labs, workshops, and networking.'
+description: 'AICamp Melbourne runs practical AI developer meetups with deep-dive talks, code labs, workshops, and networking.'
+topics: ['ai', 'ai-agents', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.aicamp.ai/'
+eventsUrl: 'https://www.aicamp.ai/event/eventsquery?city=Australia-Melbourne'
+location: 'Melbourne'
+communityFirst: false

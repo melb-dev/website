@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-74d1-a5db-d4855e5637e0
+name: 'VCMC'
+summary: 'A micro community for active founders, developers, and operators sharing practical work built with AI tools.'
+description: 'VCMC, the Vibe Coding Micro Community, connects active founders, developers, and operators to share practical work built with AI tools.'
+topics: ['ai', 'developer-tools', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://vcmc.ai/'
+eventsUrl: 'https://luma.com/vcmc'
+location: 'Melbourne'
+communityFirst: false

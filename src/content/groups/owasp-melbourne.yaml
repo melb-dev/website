@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-77fb-931c-65628420ee84
+name: 'OWASP Melbourne'
+summary: 'The Melbourne OWASP chapter community for open application-security education and practitioner discussion.'
+description: 'OWASP Melbourne is the local chapter community for open application-security education, knowledge sharing, and practitioner discussion.'
+topics: ['infrastructure', 'software-engineering', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/application-security-owasp-melbourne/'
+eventsUrl: 'https://www.meetup.com/application-security-owasp-melbourne/events/'
+location: 'Melbourne'
+communityFirst: true

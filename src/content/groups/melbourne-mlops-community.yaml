@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-7328-acf5-ccb37784b5bc
+name: 'Melbourne MLOps Community'
+summary: 'A community sharing practices for deploying, operating, and governing machine-learning systems.'
+description: 'Melbourne MLOps Community shares practical approaches to deploying, operating, and governing machine-learning systems.'
+topics: ['ai', 'machine-learning', 'cloud', 'devops', 'infrastructure', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/melbourne-mlops-community1/'
+eventsUrl: 'https://www.meetup.com/melbourne-mlops-community1/events/'
+location: 'Melbourne'
+communityFirst: false

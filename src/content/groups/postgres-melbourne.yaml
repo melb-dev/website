@@ -1,0 +1,10 @@
+uid: 019f6987-0d57-75c5-b50a-8ff5d756a0d3
+name: 'Postgres Melbourne'
+summary: 'The Melbourne PostgreSQL community for talks, practical experience, and open discussion.'
+description: 'Postgres Melbourne brings the local PostgreSQL community together for talks, practical experience, and open discussion.'
+topics: ['backend', 'infrastructure', 'open-source']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.meetup.com/melpug/'
+eventsUrl: 'https://www.meetup.com/melpug/events/'
+location: 'Melbourne'
+communityFirst: true

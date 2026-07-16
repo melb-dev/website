@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { slug } from '../src/lib/events';
 type Row = { kind: string; id: string; path: string; data: any };
 const root = join(process.cwd(), 'src/content');
+const deletionOverridesPath = join(process.cwd(), 'scripts/content-deletion-overrides.txt');
 export function load(dir = root): Row[] {
   return ['events', 'groups', 'venues', 'topics'].flatMap((kind) =>
     readdirSync(join(dir, kind), { recursive: true, encoding: 'utf8' })
@@ -17,7 +18,7 @@ export function load(dir = root): Row[] {
       })),
   );
 }
-export function validate(rows: Row[], base: Row[] = []) {
+export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new Set<string>()) {
   const errors: string[] = [];
   const uids = new Map<string, Row>();
   const byKind = new Map(rows.map((r) => [`${r.kind}:${r.id}`, r]));
@@ -88,6 +89,7 @@ export function validate(rows: Row[], base: Row[] = []) {
     if (sameId && sameId.data.uid !== old.data.uid)
       errors.push(`${sameId.path}: existing entry UUID cannot change`);
     const now = headByUid.get(old.data.uid);
+    if (!now && deletionOverrides.has(old.data.uid)) continue;
     if (old.kind === 'events' && !now) {
       errors.push(`${old.path}: event deletion forbidden`);
       continue;
@@ -154,7 +156,13 @@ if (process.argv[1]?.endsWith('validate-content.ts')) {
   } catch (error) {
     if (process.env.GITHUB_BASE_REF) throw error;
   }
-  const errors = validate(load(), base);
+  const deletionOverrides = new Set(
+    readFileSync(deletionOverridesPath, 'utf8')
+      .split(/\r?\n/)
+      .map((line) => line.replace(/#.*$/, '').trim())
+      .filter(Boolean),
+  );
+  const errors = validate(load(), base, deletionOverrides);
   if (errors.length) {
     console.error(errors.join('\n'));
     process.exit(1);

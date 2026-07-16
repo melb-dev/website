@@ -1,0 +1,3 @@
+# Add a published content UUID here to explicitly allow its deletion.
+# Keep entries committed so intentional removals remain auditable in git history.
+019f6987-0d57-7b06-8b34-a73ea37e8594 # Cybersecurity for Business & IT Professionals

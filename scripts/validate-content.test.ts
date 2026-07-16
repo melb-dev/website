@@ -41,15 +41,19 @@ describe('content integrity', () => {
     expect(validate([], [row('events', 'old', u(7), {})]).join()).toMatch(
       /event deletion forbidden/,
     ));
+  it('allows a deletion with an explicit UUID override', () => {
+    const old = row('groups', 'added-by-mistake', u(8), { topics: ['topic'] });
+    expect(validate([], [old], new Set([u(8)]))).toEqual([]);
+  });
   it('rejects changed UUIDs at a stable path', () => {
-    const old = row('groups', 'group', u(8), { topics: ['topic'] });
-    const now = row('groups', 'group', u(9), { topics: ['topic'] });
-    const topic = row('topics', 'topic', u(10), { name: 'Topic' });
+    const old = row('groups', 'group', u(9), { topics: ['topic'] });
+    const now = row('groups', 'group', u(10), { topics: ['topic'] });
+    const topic = row('topics', 'topic', u(11), { name: 'Topic' });
     expect(validate([now, topic], [old]).join()).toMatch(/UUID cannot change/);
   });
   it('rejects changing an identity to another content type', () => {
-    const old = row('groups', 'group', u(11), { topics: ['topic'] });
-    const now = row('venues', 'venue', u(11), { name: 'Venue' });
+    const old = row('groups', 'group', u(12), { topics: ['topic'] });
+    const now = row('venues', 'venue', u(12), { name: 'Venue' });
     expect(validate([now], [old]).join()).toMatch(/uid changed type/);
   });
   it('requires offset datetimes and non-empty topics', () => {

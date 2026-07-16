@@ -1,0 +1,11 @@
+uid: '019f69b0-6ee0-705e-b8c8-28735bef7210'
+title: 'Postgres Melbourne April 2026 Meetup'
+start: '2026-04-29T17:00:00+10:00'
+end: '2026-04-29T18:30:00+10:00'
+group: 'postgres-melbourne'
+topics: ['postgresql', 'databases-storage', 'open-source']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'fujitsu-docklands'
+url: 'https://www.meetup.com/melpug/events/314084349/'

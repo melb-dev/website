@@ -1,7 +1,7 @@
 uid: 019f6987-0d57-7b0c-919c-da21fa0c3585
 name: 'Women in Cloud'
 summary: 'A community supporting women working with cloud technology through technical events and professional connection.'
-description: 'Women in Cloud supports women working with cloud technology through technical events, knowledge sharing, and professional connection.'
+description: 'Women in Cloud supports women working with cloud technology through technical events, knowledge sharing, and professional connection. Per the Meetup page: "This group is dedicated to empowering and supporting women in the field of cloud computing."'
 topics: ['cloud', 'devops', 'software-engineering']
 eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/women-in-cloud-meetup-group/'

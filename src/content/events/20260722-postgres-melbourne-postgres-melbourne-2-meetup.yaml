@@ -1,0 +1,11 @@
+uid: '019f69b0-6ee0-7fe2-97ba-96f707219eff'
+title: 'Postgres Melbourne #2 Meetup'
+start: '2026-07-22T17:30:00+10:00'
+end: '2026-07-22T19:30:00+10:00'
+group: 'postgres-melbourne'
+topics: ['postgresql', 'databases-storage', 'backend', 'infrastructure', 'open-source']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'vivanti-collins-square-docklands'
+url: 'https://www.meetup.com/melpug/events/315422341/'

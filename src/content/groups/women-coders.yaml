@@ -1,10 +1,10 @@
 uid: 019f6987-0d57-798f-b341-3ec4a4d8fe80
 name: 'Women Coders'
 summary: 'An inclusive community supporting women who code through technical learning, workshops, and networking.'
-description: 'Women Coders is an inclusive community supporting women who code through technical learning, practical workshops, and networking.'
+description: 'Women Coders is an inclusive community supporting women who code through technical learning, practical workshops, and networking. Per the official website: "Our community is open to all."'
 topics: ['software-engineering', 'developer-tools']
 eventTypes: ['meetup']
-websiteUrl: 'https://www.meetup.com/women-coders/'
+websiteUrl: 'https://womencoders.com.au/'
 eventsUrl: 'https://www.meetup.com/women-coders/events/'
 location: 'Melbourne'
 communityFirst: true

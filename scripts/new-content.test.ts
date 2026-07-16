@@ -38,6 +38,12 @@ describe('new content helpers', () => {
   it('labels new events as meetups by default', () => {
     expect(template('event', 'Example event')).toMatchObject({ eventType: 'meetup', paid: false });
   });
+  it('classifies new topics as general by default', () => {
+    expect(template('topic', 'Example topic')).toMatchObject({ category: 'general' });
+    expect(
+      template('topic', 'Example language', { category: 'programming-language' }),
+    ).toMatchObject({ category: 'programming-language' });
+  });
   it('generates UUIDv7 values', () =>
     expect(uuidv7()).toMatch(
       /^0[0-9a-f]{7}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,

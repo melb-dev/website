@@ -24,11 +24,36 @@ const sorted = [...future, ...past];
 const usedTopics = topics
   .filter((topic) => events.some((event) => event.data.topics.some((ref) => ref.id === topic.id)))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const topicSections = [
+  { category: 'general', label: 'General Topics' },
+  { category: 'programming-language', label: 'Programming Languages' },
+] as const;
 const locationMap = new Map<string, string>();
 for (const venue of venues)
   if (events.some((event) => event.data.venue?.id === venue.id))
     locationMap.set(slug(venue.data.suburb), venue.data.suburb);
 if (events.some((event) => event.data.format === 'online')) locationMap.set('online', 'Online');
+const locationOptions: { value: string; values: string[]; label: string }[] = [];
+let addedRichmondCremorne = false;
+for (const [value, label] of locationMap) {
+  if (value === 'online') continue;
+  if (value === 'richmond' || value === 'cremorne') {
+    if (!addedRichmondCremorne) {
+      locationOptions.push({
+        value: 'cremorne',
+        values: ['cremorne', 'richmond'],
+        label: 'Richmond & Cremorne',
+      });
+      addedRichmondCremorne = true;
+    }
+  } else {
+    locationOptions.push({
+      value,
+      values: [value],
+      label: value === 'melbourne' ? 'Melbourne CBD' : label,
+    });
+  }
+}
 const jsonLd = events
   .filter((event) => isFuture(event, now))
   .map((event) => {
@@ -54,6 +79,7 @@ const choices = {
   period: [
     ['future', 'Upcoming'],
     ['past', 'Past'],
+    ['all', 'All'],
   ],
   eventType: [
     ['all', 'All'],
@@ -128,38 +154,66 @@ const choices = {
             ))
           }
           <fieldset data-facet-group="location">
-            <legend>Locations</legend>{
-              [...locationMap].map(([id, name]) => (
-                <label class="check-option">
-                  <>
-                    <input type="checkbox" name="location" value={id} data-label={name} />
-                    <span>
-                      {name} <span class="facet-count" data-count-for={id} />
-                    </span>
-                  </>
-                </label>
-              ))
-            }
+            <legend class="sr-only">Locations</legend>
+            <details class="facet-disclosure" data-facet-disclosure open>
+              <summary>
+                Locations <span class="facet-selection" data-selected-count hidden></span>
+              </summary>
+              <div class="facet-options">
+                {
+                  locationOptions.map(({ value, values, label }) => (
+                    <label class="check-option">
+                      <>
+                        <input
+                          type="checkbox"
+                          name="location"
+                          value={value}
+                          data-values={values.join(',')}
+                          data-label={label}
+                          data-labels={values.length > 1 ? 'Richmond,Cremorne' : undefined}
+                        />
+                        <span>
+                          {label} <span class="facet-count" data-count-for={value} />
+                        </span>
+                      </>
+                    </label>
+                  ))
+                }
+              </div>
+            </details>
           </fieldset>
-          <fieldset data-facet-group="topic">
-            <legend>Topics</legend>{
-              usedTopics.map((topic) => (
-                <label class="check-option">
-                  <>
-                    <input
-                      type="checkbox"
-                      name="topic"
-                      value={topic.id}
-                      data-label={topic.data.name}
-                    />
-                    <span>
-                      {topic.data.name} <span class="facet-count" data-count-for={topic.id} />
-                    </span>
-                  </>
-                </label>
-              ))
-            }
-          </fieldset>
+          {
+            topicSections.map(({ category, label }) => (
+              <fieldset data-facet-group="topic">
+                <legend class="sr-only">{label}</legend>
+                <details class="facet-disclosure" data-facet-disclosure open>
+                  <summary>
+                    {label} <span class="facet-selection" data-selected-count hidden />
+                  </summary>
+                  <div class="facet-options">
+                    {usedTopics
+                      .filter((topic) => topic.data.category === category)
+                      .map((topic) => (
+                        <label class="check-option">
+                          <>
+                            <input
+                              type="checkbox"
+                              name="topic"
+                              value={topic.id}
+                              data-label={topic.data.name}
+                            />
+                            <span>
+                              {topic.data.name}{' '}
+                              <span class="facet-count" data-count-for={topic.id} />
+                            </span>
+                          </>
+                        </label>
+                      ))}
+                  </div>
+                </details>
+              </fieldset>
+            ))
+          }
         </form>
       </details>
     </aside>

@@ -2,11 +2,11 @@
 import '../styles/global.css';
 
 const {
-  title = "Find Melbourne's best tech community events",
+  title = 'Melbourne tech community events',
   description = 'Melb.dev is the best place to find, attend, speak at, and organise meetups, conferences, events, and communities for developers and people working in tech in Melbourne.',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const social = new URL('/social.svg', Astro.site);
+const social = new URL('/social.png', Astro.site);
 const organisation = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -39,17 +39,24 @@ const current = (href: string) =>
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={social} />
-    <meta property="og:image:alt" content="melb.dev — Melbourne's community technology calendar" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="The melb.dev logo" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title="melb.dev events" href="/events.xml" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organisation)} />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="bg-white border-b border-base-300">
+    <header class="site-header bg-white border-b border-base-300">
       <div class="shell navbar px-0">
-        <a href="/" class="text-xl font-black no-underline" aria-label="melb.dev home">
-          melb.dev
+        <a href="/" class="site-brand text-xl font-black no-underline" aria-label="melb.dev home">
+          <img src="/nav-logo.svg" width="44" height="32" alt="" aria-hidden="true" />
+          <span>melb.dev</span>
         </a>
         <nav class="primary-nav ml-auto" aria-label="Primary">
           <details class="nav-disclosure">

@@ -16,6 +16,10 @@ const active = groups
 const usedTopics = topics
   .filter((topic) => active.some((group) => group.data.topics.some((ref) => ref.id === topic.id)))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const topicSections = [
+  { category: 'general', label: 'General Topics' },
+  { category: 'programming-language', label: 'Programming Languages' },
+] as const;
 const locations = [
   ...new Map(active.map((group) => [slug(group.data.location), group.data.location])).entries(),
 ].sort((a, b) => a[1].localeCompare(b[1]));
@@ -62,38 +66,59 @@ const locations = [
             </p>
           </fieldset>
           <fieldset data-facet-group="location">
-            <legend>Locations</legend>{
-              locations.map(([id, name]) => (
-                <label class="check-option">
-                  <>
-                    <input type="checkbox" name="location" value={id} data-label={name} />
-                    <span>
-                      {name} <span class="facet-count" data-count-for={id} />
-                    </span>
-                  </>
-                </label>
-              ))
-            }
+            <legend class="sr-only">Locations</legend>
+            <details class="facet-disclosure" data-facet-disclosure open>
+              <summary>
+                Locations <span class="facet-selection" data-selected-count hidden></span>
+              </summary>
+              <div class="facet-options">
+                {
+                  locations.map(([id, name]) => (
+                    <label class="check-option">
+                      <>
+                        <input type="checkbox" name="location" value={id} data-label={name} />
+                        <span>
+                          {name} <span class="facet-count" data-count-for={id} />
+                        </span>
+                      </>
+                    </label>
+                  ))
+                }
+              </div>
+            </details>
           </fieldset>
-          <fieldset data-facet-group="topic">
-            <legend>Topics</legend>{
-              usedTopics.map((topic) => (
-                <label class="check-option">
-                  <>
-                    <input
-                      type="checkbox"
-                      name="topic"
-                      value={topic.id}
-                      data-label={topic.data.name}
-                    />
-                    <span>
-                      {topic.data.name} <span class="facet-count" data-count-for={topic.id} />
-                    </span>
-                  </>
-                </label>
-              ))
-            }
-          </fieldset>
+          {
+            topicSections.map(({ category, label }) => (
+              <fieldset data-facet-group="topic">
+                <legend class="sr-only">{label}</legend>
+                <details class="facet-disclosure" data-facet-disclosure open>
+                  <summary>
+                    {label} <span class="facet-selection" data-selected-count hidden />
+                  </summary>
+                  <div class="facet-options">
+                    {usedTopics
+                      .filter((topic) => topic.data.category === category)
+                      .map((topic) => (
+                        <label class="check-option">
+                          <>
+                            <input
+                              type="checkbox"
+                              name="topic"
+                              value={topic.id}
+                              data-label={topic.data.name}
+                            />
+                            <span>
+                              {topic.data.name}{' '}
+                              <span class="facet-count" data-count-for={topic.id} />
+                            </span>
+                          </>
+                        </label>
+                      ))}
+                  </div>
+                </details>
+              </fieldset>
+            ))
+          }
         </form>
       </details>
     </aside>

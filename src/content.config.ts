@@ -27,6 +27,7 @@ const topics = defineCollection({
     .object({
       uid,
       name: z.string().min(1),
+      category: z.enum(['general', 'programming-language']),
       description: z.string().optional(),
     })
     .strict(),

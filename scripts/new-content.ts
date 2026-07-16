@@ -106,7 +106,12 @@ function entries(kind: Exclude<ContentKind, 'event'>) {
 export function template(kind: ContentKind, label: string, details: Record<string, string> = {}) {
   const uid = uuidv7();
   if (kind === 'topic')
-    return { uid, name: label, ...(details.description && { description: details.description }) };
+    return {
+      uid,
+      name: label,
+      category: details.category ?? 'general',
+      ...(details.description && { description: details.description }),
+    };
   if (kind === 'venue')
     return {
       uid,
@@ -237,8 +242,13 @@ async function interactive(initialKind?: ContentKind) {
       details.suburb = await ask('Suburb');
       details.postcode = await ask('Postcode', (v) => /^\d{4}$/.test(v));
       details.url = await askOptional('Public HTTPS URL', (v) => /^https:\/\/.+/.test(v));
-    } else if (kind === 'topic') details.description = await askOptional('Description');
-    else {
+    } else if (kind === 'topic') {
+      details.category = await choose('Category', [
+        { name: 'General Topic', value: 'general' },
+        { name: 'Programming Language', value: 'programming-language' },
+      ]);
+      details.description = await askOptional('Description');
+    } else {
       const groups = entries('group');
       details.group = await choose(
         'Group',

@@ -18,10 +18,14 @@ if (root) {
   let searchTimer;
   let runVersion = 0;
 
-  const values = (name) =>
-    [...form.querySelectorAll(`[name="${name}"]:checked`)].map((el) => el.value);
+  const optionValues = (input) => (input.dataset.values ?? input.value).split(',');
+  const values = (name) => [
+    ...new Set([...form.querySelectorAll(`[name="${name}"]:checked`)].flatMap(optionValues)),
+  ];
   const labels = (name) =>
-    [...form.querySelectorAll(`[name="${name}"]:checked`)].map((el) => el.dataset.label);
+    [...form.querySelectorAll(`[name="${name}"]:checked`)].flatMap((el) =>
+      (el.dataset.labels ?? el.dataset.label).split(','),
+    );
   const list = (items) =>
     items.length < 2
       ? (items[0] ?? '')
@@ -55,10 +59,9 @@ if (root) {
     if (kind === 'groups' && params.get('recommended') === 'true')
       form.querySelector('[name="recommended"][value="recommended"]').checked = true;
     for (const name of ['topic', 'location']) {
-      const valid = new Set([...form.querySelectorAll(`[name="${name}"]`)].map((el) => el.value));
-      for (const value of params.getAll(name))
-        if (valid.has(value))
-          form.querySelector(`[name="${name}"][value="${CSS.escape(value)}"]`).checked = true;
+      const selected = params.getAll(name);
+      for (const input of form.querySelectorAll(`[name="${name}"]`))
+        input.checked = optionValues(input).some((value) => selected.includes(value));
     }
   };
   const writeUrl = (state, replace = false) => {
@@ -115,7 +118,8 @@ if (root) {
       card.dataset.recommended !== 'true'
     )
       return false;
-    if (kind === 'events' && card.dataset.period !== state.period) return false;
+    if (kind === 'events' && state.period !== 'all' && card.dataset.period !== state.period)
+      return false;
     if (
       kind === 'events' &&
       state.eventType !== 'all' &&
@@ -184,18 +188,25 @@ if (root) {
     for (const fieldset of form.querySelectorAll('[data-facet-group]')) {
       const facet = fieldset.dataset.facetGroup;
       for (const input of fieldset.querySelectorAll('input')) {
+        const values = optionValues(input);
         const count = cards.filter(
           (card) =>
             (!scores || scores.has(card.dataset.id)) &&
             matches(card, state, facet) &&
-            (card.dataset[`${facet}s`] ?? card.dataset[facet] ?? '')
-              .split(',')
-              .includes(input.value),
+            values.some((value) =>
+              (card.dataset[`${facet}s`] ?? card.dataset[facet] ?? '').split(',').includes(value),
+            ),
         ).length;
         fieldset.querySelector(`[data-count-for="${CSS.escape(input.value)}"]`).textContent =
           `(${count})`;
         input.disabled = count === 0 && !input.checked;
       }
+    }
+    for (const disclosure of form.querySelectorAll('[data-facet-disclosure]')) {
+      const count = disclosure.querySelectorAll('input:checked').length;
+      const status = disclosure.querySelector('[data-selected-count]');
+      status.textContent = `${count} selected`;
+      status.hidden = count === 0;
     }
     if (kind === 'events') {
       const cost = state.cost === 'free' ? 'free ' : state.cost === 'paid' ? 'paid ' : '';
@@ -211,10 +222,12 @@ if (root) {
         { today: ' today', week: ' this week', 'next-week': ' next week', month: ' this month' }[
           state.range
         ] ?? '';
+      const period =
+        state.period === 'future' ? ' upcoming' : state.period === 'past' ? ' in the past' : '';
       const locations = labels('location');
       const topics = labels('topic');
       root.querySelector('#count').textContent =
-        `${visible.length} ${cost}${format}${noun} ${state.period === 'future' ? 'upcoming' : 'in the past'}${range}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
+        `${visible.length} ${cost}${format}${noun}${period}${range}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
     } else {
       const locations = labels('location');
       const topics = labels('topic');

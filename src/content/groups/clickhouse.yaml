@@ -1,0 +1,18 @@
+uid: 019f6979-8bc7-72f0-9705-7acc4b48bd8d
+name: 'ClickHouse'
+summary: 'The open-source database community behind ClickHouse meetups and user conferences.'
+description: 'ClickHouse runs technical events about its open-source column-oriented database, real-time analytics, observability, data infrastructure, and AI workloads.'
+topics:
+  - 'backend'
+  - 'cloud'
+  - 'ai'
+  - 'infrastructure'
+  - 'developer-tools'
+  - 'open-source'
+eventTypes:
+  - 'meetup'
+  - 'conference'
+websiteUrl: 'https://clickhouse.com/'
+eventsUrl: 'https://clickhouse.com/company/events'
+location: 'International'
+communityFirst: false

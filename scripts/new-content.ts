@@ -131,6 +131,7 @@ export function template(kind: ContentKind, label: string, details: Record<strin
       summary: details.summary ?? 'A one-sentence summary.',
       description: details.description ?? 'A plain text description.',
       topics: [details.topic ?? entries('topic')[0]?.slug ?? 'software-engineering'],
+      eventTypes: (details.eventTypes ?? 'meetup').split(','),
       websiteUrl: details.websiteUrl ?? 'https://example.org/',
       eventsUrl: details.eventsUrl ?? details.websiteUrl ?? 'https://example.org/events/',
       ...(details.location && { location: details.location }),
@@ -230,6 +231,11 @@ async function interactive(initialKind?: ContentKind) {
         'Primary topic',
         topics.map((x) => ({ name: x.name, value: x.slug })),
       );
+      details.eventTypes = await choose('Event Types', [
+        { name: 'Meetups', value: 'meetup' },
+        { name: 'Conferences', value: 'conference' },
+        { name: 'Meetups and Conferences', value: 'meetup,conference' },
+      ]);
       details.websiteUrl = await ask('Community website HTTPS URL', (v) => /^https:\/\/.+/.test(v));
       details.eventsUrl = await ask(
         'Events listing HTTPS URL',

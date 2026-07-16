@@ -1,0 +1,19 @@
+uid: 019f6969-5a4c-724e-a6ed-f357871f95d2
+title: 'Cloud Native AI Summit 2026'
+start: '2026-10-28T09:00:00+11:00'
+end: '2026-10-29T17:00:00+11:00'
+group: 'cloud-native-ai-summit'
+topics:
+  - 'cloud'
+  - 'platform-engineering'
+  - 'ai'
+  - 'infrastructure'
+  - 'devops'
+  - 'developer-experience'
+  - 'kubernetes'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-convention-and-exhibition-centre'
+url: 'https://www.cloudnative.ai/'
+rsvpNote: 'Conference registration and tickets are required.'

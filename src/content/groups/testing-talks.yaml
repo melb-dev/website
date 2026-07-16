@@ -1,0 +1,14 @@
+uid: 019f6969-5a4c-7ff1-9ae9-274c8b5f5ea6
+name: 'Testing Talks'
+summary: 'An Australian conference for software testing, test automation, and quality engineering.'
+description: 'Testing Talks organises conferences for software testing, test automation, and quality engineering practitioners.'
+topics:
+  - 'software-engineering'
+  - 'developer-tools'
+  - 'ai'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.testingtalks.com.au/'
+eventsUrl: 'https://www.testingtalks.com.au/upcoming-events/'
+location: 'Australia'
+communityFirst: false

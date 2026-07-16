@@ -1,0 +1,15 @@
+uid: 019f6969-5a4c-713c-bcc0-32f3e7449fb2
+title: 'CyberCon Melbourne | Australian Cyber Conference'
+start: '2026-10-14T09:00:00+11:00'
+end: '2026-10-16T17:00:00+11:00'
+group: 'aisa'
+topics:
+  - 'infrastructure'
+  - 'software-engineering'
+  - 'ai'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-convention-and-exhibition-centre'
+url: 'https://melbourne2026.cyberconference.com.au/'
+rsvpNote: 'Conference tickets and registration are required.'

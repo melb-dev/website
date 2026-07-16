@@ -1,0 +1,16 @@
+uid: 019f6969-5a4c-79f3-a8f5-07899a3bf287
+title: 'apidays Australia 2026'
+start: '2026-10-28T09:00:00+11:00'
+end: '2026-10-29T17:30:00+11:00'
+group: 'apidays'
+topics:
+  - 'backend'
+  - 'software-engineering'
+  - 'ai'
+  - 'cloud'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-convention-and-exhibition-centre'
+url: 'https://www.apidays.global/events/australia'
+rsvpNote: 'Conference registration and tickets are required.'

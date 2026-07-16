@@ -1,0 +1,14 @@
+uid: 019f6969-5a4c-7d48-820c-39eb208c4e44
+title: 'YOW! Melbourne 2026'
+start: '2026-12-03T09:00:00+11:00'
+end: '2026-12-04T17:30:00+11:00'
+group: 'yow-conferences'
+topics:
+  - 'software-engineering'
+  - 'developer-tools'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'pullman-melbourne-albert-park'
+url: 'https://yowcon.com/melbourne-2026'
+rsvpNote: 'Conference tickets start at A$1,100; the 2 December masterclass is separate.'

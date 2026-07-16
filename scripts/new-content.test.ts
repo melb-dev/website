@@ -31,8 +31,14 @@ describe('new content helpers', () => {
       topic: 'software-engineering',
     });
     expect(group).toMatchObject({
+      eventTypes: ['meetup'],
       websiteUrl: 'https://example.org/',
       eventsUrl: 'https://events.example.org/',
+    });
+  });
+  it('supports groups that run meetups and conferences', () => {
+    expect(template('group', 'Example Group', { eventTypes: 'meetup,conference' })).toMatchObject({
+      eventTypes: ['meetup', 'conference'],
     });
   });
   it('labels new events as meetups by default', () => {

@@ -6,6 +6,9 @@ topics:
   - 'ai'
   - 'ai-agents'
   - 'developer-tools'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://aiops.lol/'
-eventsUrl: 'https://luma.com/aiops?period=past'
+eventsUrl: 'https://luma.com/aiops'
 location: 'Melbourne'
+communityFirst: true

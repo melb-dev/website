@@ -1,0 +1,13 @@
+uid: 019f6969-5a4c-740d-8e93-21ef82237e90
+name: 'YOW! Conferences'
+summary: 'Software development conferences focused on emerging technologies and best practices without commercial hype.'
+description: 'YOW! Conferences runs software development conferences focused on emerging technologies and best practices without commercial hype.'
+topics:
+  - 'software-engineering'
+  - 'developer-tools'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://yowcon.com/'
+eventsUrl: 'https://yowcon.com/melbourne-2026'
+location: 'Australia'
+communityFirst: false

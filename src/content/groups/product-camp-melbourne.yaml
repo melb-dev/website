@@ -1,0 +1,12 @@
+uid: 019f6969-5a4c-73ef-bfde-30d0e317bef2
+name: 'Product Camp Melbourne'
+summary: 'A volunteer-organised, participant-led unconference for people involved in making products.'
+description: 'Product Camp Melbourne is a community-driven, participant-led unconference for people involved in making products, organised by volunteers.'
+topics:
+  - 'software-engineering'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://productcampmelbourne.com/'
+eventsUrl: 'https://www.meetup.com/product-anonymous-meetup-melbourne/events/314605295/'
+location: 'Melbourne'
+communityFirst: true

@@ -8,6 +8,9 @@ topics:
   - 'platform-engineering'
   - 'devops'
   - 'sre'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/en-au/infrastructure-coders/'
 eventsUrl: 'https://www.meetup.com/en-au/infrastructure-coders/events/'
 location: 'Melbourne'
+communityFirst: true

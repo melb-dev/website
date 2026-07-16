@@ -7,6 +7,9 @@ topics:
   - 'backend'
   - 'software-engineering'
   - 'open-source'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/golang-mel/'
 eventsUrl: 'https://www.meetup.com/golang-mel/events/'
 location: 'Melbourne'
+communityFirst: true

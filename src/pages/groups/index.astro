@@ -23,6 +23,11 @@ const topicSections = [
 const locations = [
   ...new Map(active.map((group) => [slug(group.data.location), group.data.location])).entries(),
 ].sort((a, b) => a[1].localeCompare(b[1]));
+const eventTypeChoices = [
+  ['all', 'All'],
+  ['meetup', 'Meetups'],
+  ['conference', 'Conferences'],
+] as const;
 ---
 
 <Layout
@@ -64,6 +69,19 @@ const locations = [
                 href="/standards/">Community Standards</a
               >.
             </p>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>Event Type</legend>
+            <div class="choice-list">
+              {
+                eventTypeChoices.map(([value, label], index) => (
+                  <label class="filter-choice">
+                    <input type="radio" name="eventType" value={value} checked={index === 0} />
+                    <span>{label}</span>
+                  </label>
+                ))
+              }
+            </div>
           </fieldset>
           <fieldset data-facet-group="location">
             <legend class="sr-only">Locations</legend>

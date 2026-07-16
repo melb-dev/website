@@ -8,6 +8,10 @@ topics:
   - 'flutter'
   - 'mobile'
   - 'software-engineering'
+eventTypes:
+  - 'meetup'
+  - 'conference'
 websiteUrl: 'https://www.meetup.com/en-au/gdg-melbourne/'
 eventsUrl: 'https://www.meetup.com/en-au/gdg-melbourne/events/'
 location: 'Melbourne'
+communityFirst: false

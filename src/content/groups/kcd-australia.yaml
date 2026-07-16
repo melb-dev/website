@@ -8,6 +8,9 @@ topics:
   - 'platform-engineering'
   - 'devops'
   - 'open-source'
+eventTypes:
+  - 'conference'
 websiteUrl: 'https://community2.cncf.io/kcd-australia/'
 eventsUrl: 'https://community2.cncf.io/kcd-australia/'
 location: 'Australia'
+communityFirst: true

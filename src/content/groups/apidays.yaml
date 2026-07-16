@@ -1,0 +1,15 @@
+uid: 019f6969-5a4c-72af-95d0-e9b19c9f53bf
+name: 'apidays'
+summary: 'An international conference community covering API design, security, management, platforms, AI, and digital engineering.'
+description: 'apidays is an international conference community covering API design, security, management, platforms, AI, and digital engineering.'
+topics:
+  - 'backend'
+  - 'software-engineering'
+  - 'ai'
+  - 'cloud'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.apidays.global/'
+eventsUrl: 'https://www.apidays.global/events/australia'
+location: 'International'
+communityFirst: false

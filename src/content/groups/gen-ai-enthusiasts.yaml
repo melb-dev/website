@@ -6,6 +6,9 @@ topics:
   - 'ai'
   - 'ai-agents'
   - 'prompt-engineering'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/en-au/genai_enthusiasts_aiusers-online/'
 eventsUrl: 'https://www.meetup.com/en-au/genai_enthusiasts_aiusers-online/events/'
 location: 'Online'
+communityFirst: false

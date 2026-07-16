@@ -1,0 +1,14 @@
+uid: 019f6969-5a4c-723e-a1bd-db96f443fcfc
+name: 'Institute of Instrumentation, Control and Automation'
+summary: 'A not-for-profit professional community for instrumentation, process control, automation, and robotics.'
+description: 'The Institute of Instrumentation, Control and Automation is a not-for-profit professional community for instrumentation, process control, automation, and robotics.'
+topics:
+  - 'systems-programming'
+  - 'developer-tools'
+  - 'software-engineering'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://iica.org.au/'
+eventsUrl: 'https://iica.org.au/Web/Web/Events/Event_Display.aspx?EventKey=IICAMELB26'
+location: 'Australia'
+communityFirst: true

@@ -1,0 +1,15 @@
+uid: 019f6969-5a4c-7d75-8456-1b0274f7409f
+title: 'Testing Talks Conference 2026 | Melbourne'
+start: '2026-10-08T08:00:00+11:00'
+end: '2026-10-08T18:00:00+11:00'
+group: 'testing-talks'
+topics:
+  - 'software-engineering'
+  - 'developer-tools'
+  - 'ai'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-convention-and-exhibition-centre'
+url: 'https://www.testingtalks.com.au/upcoming-events/testing-talks-conference-2026-melbourne'
+rsvpNote: 'Conference tickets are A$400; workshops cost extra.'

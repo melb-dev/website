@@ -7,6 +7,9 @@ topics:
   - 'systems-programming'
   - 'open-source'
   - 'software-engineering'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/rust-melbourne/'
 eventsUrl: 'https://www.meetup.com/rust-melbourne/events/'
 location: 'Melbourne'
+communityFirst: true

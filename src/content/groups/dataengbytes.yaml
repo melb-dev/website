@@ -1,0 +1,15 @@
+uid: 019f6969-5a4a-74b3-9c84-f5c6687636be
+name: 'DataEngBytes'
+summary: 'An independent, vendor-neutral community conference for data engineering, machine learning, and AI.'
+description: 'DataEngBytes organises an independent, vendor-neutral community conference for data engineering, machine learning, and AI.'
+topics:
+  - 'backend'
+  - 'cloud'
+  - 'ai'
+  - 'software-engineering'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://dataengbytes.com/'
+eventsUrl: 'https://www.tickettailor.com/events/'
+location: 'Australia'
+communityFirst: true

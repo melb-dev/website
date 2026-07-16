@@ -1,0 +1,18 @@
+uid: 019f6969-5a4c-74cb-aadf-703d6823b432
+name: 'Cloud Native AI Summit'
+summary: 'An independent, vendor-neutral conference covering cloud native, platform engineering, AI infrastructure, and developer experience.'
+description: 'Cloud Native AI Summit is an independent, vendor-neutral conference covering cloud native, platform engineering, AI infrastructure, and developer experience.'
+topics:
+  - 'cloud'
+  - 'platform-engineering'
+  - 'ai'
+  - 'infrastructure'
+  - 'devops'
+  - 'developer-experience'
+  - 'kubernetes'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.cloudnative.ai/'
+eventsUrl: 'https://www.cloudnative.ai/'
+location: 'International'
+communityFirst: true

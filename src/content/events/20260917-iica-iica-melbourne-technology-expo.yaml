@@ -1,0 +1,15 @@
+uid: 019f6969-5a4c-79de-8651-94fcef876b90
+title: 'IICA Melbourne Technology Expo'
+start: '2026-09-17T12:00:00+10:00'
+end: '2026-09-17T18:00:00+10:00'
+group: 'iica'
+topics:
+  - 'systems-programming'
+  - 'developer-tools'
+  - 'software-engineering'
+eventType: 'conference'
+paid: false
+format: 'in-person'
+venue: 'marvel-stadium'
+url: 'https://iica.org.au/Web/Web/Events/Event_Display.aspx?EventKey=IICAMELB26'
+rsvpNote: 'Entry is free; registration is required.'

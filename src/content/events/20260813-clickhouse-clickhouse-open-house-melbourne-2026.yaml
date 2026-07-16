@@ -1,0 +1,18 @@
+uid: 019f6979-8bc9-76d4-894e-167c1f6fcd88
+title: 'ClickHouse Open House Melbourne 2026'
+start: '2026-08-13T08:00:00+10:00'
+end: '2026-08-13T18:00:00+10:00'
+group: 'clickhouse'
+topics:
+  - 'backend'
+  - 'cloud'
+  - 'ai'
+  - 'infrastructure'
+  - 'developer-tools'
+  - 'open-source'
+eventType: 'conference'
+paid: false
+format: 'in-person'
+venue: 'collins-square-events-centre-docklands'
+url: 'https://clickhouse.com/openhouse/melbourne-2026'
+rsvpNote: 'Free event; separate registration is required for the optional hands-on workshop.'

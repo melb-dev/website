@@ -9,6 +9,9 @@ topics:
   - 'devops'
   - 'sre'
   - 'ai'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/en-au/ksug-au/'
 eventsUrl: 'https://www.meetup.com/en-au/ksug-au/events/'
 location: 'Melbourne'
+communityFirst: false

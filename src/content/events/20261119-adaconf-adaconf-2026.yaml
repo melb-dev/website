@@ -1,0 +1,13 @@
+uid: 019f6969-5a4c-7b3a-9595-02b3818138c7
+title: 'ADAConf 2026'
+start: '2026-11-19T08:30:00+11:00'
+end: '2026-11-19T17:30:00+11:00'
+group: 'adaconf'
+topics:
+  - 'software-engineering'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'rydges-exhibition-street'
+url: 'https://adaconf.org/'
+rsvpNote: 'Conference tickets are required.'

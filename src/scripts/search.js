@@ -33,7 +33,7 @@ if (root) {
   const readForm = () => ({
     q: form.elements.q.value.trim(),
     period: kind === 'events' ? form.elements.period.value : '',
-    eventType: kind === 'events' ? form.elements.eventType.value : 'all',
+    eventType: form.elements.eventType.value,
     cost: kind === 'events' ? form.elements.cost.value : 'all',
     range: kind === 'events' ? form.elements.range.value : '',
     format: kind === 'events' ? form.elements.format.value : '',
@@ -51,7 +51,7 @@ if (root) {
       const option = form.querySelector(`[name="${name}"][value="${CSS.escape(value)}"]`);
       if (option) option.checked = true;
     }
-    if (kind === 'events' && params.has('type')) {
+    if (params.has('type')) {
       const value = params.get('type');
       const option = form.querySelector(`[name="eventType"][value="${CSS.escape(value)}"]`);
       if (option) option.checked = true;
@@ -120,12 +120,10 @@ if (root) {
       return false;
     if (kind === 'events' && state.period !== 'all' && card.dataset.period !== state.period)
       return false;
-    if (
-      kind === 'events' &&
-      state.eventType !== 'all' &&
-      card.dataset.eventType !== state.eventType
-    )
-      return false;
+    if (state.eventType !== 'all') {
+      const eventTypes = (card.dataset.eventTypes ?? card.dataset.eventType ?? '').split(',');
+      if (!eventTypes.includes(state.eventType)) return false;
+    }
     if (
       kind === 'events' &&
       state.cost !== 'all' &&
@@ -231,8 +229,14 @@ if (root) {
     } else {
       const locations = labels('location');
       const topics = labels('topic');
+      const eventType =
+        state.eventType === 'meetup'
+          ? 'meetup '
+          : state.eventType === 'conference'
+            ? 'conference '
+            : '';
       root.querySelector('#count').textContent =
-        `${visible.length} ${state.recommended === 'recommended' ? 'recommended ' : ''}group${visible.length === 1 ? '' : 's'}${state.q.length >= 3 ? ` matching “${state.q}”` : ''}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
+        `${visible.length} ${state.recommended === 'recommended' ? 'recommended ' : ''}${eventType}group${visible.length === 1 ? '' : 's'}${state.q.length >= 3 ? ` matching “${state.q}”` : ''}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
     }
     root.querySelector('#empty').classList.toggle('hidden', visible.length > 0);
     resetButton.hidden =
@@ -245,7 +249,11 @@ if (root) {
           state.format === 'in-person' &&
           !state.topic.length &&
           !state.location.length
-        : !state.q && state.recommended === 'all' && !state.topic.length && !state.location.length;
+        : !state.q &&
+          state.eventType === 'all' &&
+          state.recommended === 'all' &&
+          !state.topic.length &&
+          !state.location.length;
     if (write) writeUrl(state, replace);
   };
   form.addEventListener('input', (event) => {

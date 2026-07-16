@@ -6,6 +6,9 @@ topics:
   - 'dotnet'
   - 'csharp'
   - 'software-engineering'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/melbourne-net-user-group/'
 eventsUrl: 'https://www.meetup.com/melbourne-net-user-group/events/'
 location: 'Melbourne'
+communityFirst: true

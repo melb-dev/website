@@ -25,6 +25,7 @@ const location = d.location
   data-name={d.name}
   data-topics={d.topics.map((ref: any) => ref.id).join(',')}
   data-location={location}
+  data-event-types={d.eventTypes.join(',')}
   data-recommended={String(d.communityFirst)}
 >
   <h2 class="group-title text-xl font-bold">

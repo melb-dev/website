@@ -7,6 +7,9 @@ topics:
   - 'web-development'
   - 'open-source'
   - 'software-engineering'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/en-au/ruby-melbourne/'
 eventsUrl: 'https://www.meetup.com/en-au/ruby-melbourne/events/'
 location: 'Melbourne'
+communityFirst: true

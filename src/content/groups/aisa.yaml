@@ -1,0 +1,14 @@
+uid: 019f6969-5a4c-7172-9cd9-70e8748e7243
+name: 'Australian Information Security Association'
+summary: 'A not-for-profit association and organiser of CyberCon for cyber security professionals.'
+description: 'The Australian Information Security Association is a not-for-profit association and the organiser of CyberCon for cyber security professionals.'
+topics:
+  - 'infrastructure'
+  - 'software-engineering'
+  - 'ai'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.aisa.org.au/'
+eventsUrl: 'https://melbourne2026.cyberconference.com.au/'
+location: 'Australia'
+communityFirst: true

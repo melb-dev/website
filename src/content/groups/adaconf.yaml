@@ -1,0 +1,12 @@
+uid: 019f6969-5a4c-7113-a948-276e6a4a5e48
+name: 'ADAConf'
+summary: 'A community conference for software analysis, design, architecture, socio-technical systems, modelling, and collaboration.'
+description: 'ADAConf is a community conference for software analysis, design, architecture, socio-technical systems, modelling, and collaboration, and is an offshoot of DDD Australia.'
+topics:
+  - 'software-engineering'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://adaconf.org/'
+eventsUrl: 'https://adaconf.org/'
+location: 'Australia'
+communityFirst: false

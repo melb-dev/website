@@ -9,6 +9,9 @@ topics:
   - 'objective-c'
   - 'mobile'
   - 'software-engineering'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://melbournecocoaheads.com/'
 eventsUrl: 'https://www.meetup.com/en-au/melbourne-cocoaheads/events/'
 location: 'Melbourne'
+communityFirst: true

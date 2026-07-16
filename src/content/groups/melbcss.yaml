@@ -6,6 +6,9 @@ topics:
   - 'css'
   - 'frontend'
   - 'web-development'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://melbcss.com/'
 eventsUrl: 'https://melbcss.com/'
 location: 'Melbourne'
+communityFirst: true

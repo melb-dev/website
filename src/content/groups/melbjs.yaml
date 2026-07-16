@@ -9,6 +9,9 @@ topics:
   - 'fullstack'
   - 'software-engineering'
   - 'open-source'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://melbjs.com/'
 eventsUrl: 'https://melbjs.com/'
 location: 'Melbourne'
+communityFirst: true

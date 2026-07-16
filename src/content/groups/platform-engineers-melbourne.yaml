@@ -7,6 +7,9 @@ topics:
   - 'cloud'
   - 'software-engineering'
   - 'developer-experience'
+eventTypes:
+  - 'meetup'
 websiteUrl: 'https://www.meetup.com/melbourne-pe/'
 eventsUrl: 'https://www.meetup.com/melbourne-pe/events/'
 location: 'Melbourne'
+communityFirst: true

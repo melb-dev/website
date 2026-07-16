@@ -57,6 +57,7 @@ const groups = defineCollection({
       summary: z.string().max(180),
       description: z.string(),
       topics: unique(reference('topics')),
+      eventTypes: unique(z.enum(['meetup', 'conference'])),
       websiteUrl: https,
       eventsUrl: https,
       location: z.string().default('Melbourne'),

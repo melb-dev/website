@@ -10,6 +10,31 @@ function formatUtc(date: Date) {
     .replace(/\.\d{3}Z$/, 'Z');
 }
 
+function melbourneWallTime(date: Date) {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone: MELBOURNE_TZ,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23',
+    })
+      .formatToParts(date)
+      .map(({ type, value }) => [type, value]),
+  );
+  return new Date(
+    Number(parts.year),
+    Number(parts.month) - 1,
+    Number(parts.day),
+    Number(parts.hour),
+    Number(parts.minute),
+    Number(parts.second),
+  );
+}
+
 export async function GET() {
   const now = Date.now();
   const [events, groups, venues] = await Promise.all([
@@ -42,8 +67,10 @@ export async function GET() {
     cal.createEvent({
       id: `event-${e.data.uid}@melb.dev`,
       stamp: e.data.updated ?? e.data.start,
-      start: e.data.allDay ? new Date(`${localDate(e.data.start)}T00:00:00Z`) : e.data.start,
-      end: e.data.end,
+      start: e.data.allDay
+        ? new Date(`${localDate(e.data.start)}T00:00:00Z`)
+        : melbourneWallTime(e.data.start),
+      end: e.data.end ? melbourneWallTime(e.data.end) : undefined,
       allDay: e.data.allDay,
       timezone: e.data.allDay ? undefined : MELBOURNE_TZ,
       summary: e.data.title,

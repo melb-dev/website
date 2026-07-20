@@ -1,0 +1,10 @@
+uid: '019f7e29-028a-74d0-8bf6-ff6b74e93df5'
+name: 'AWS User Group Melbourne'
+summary: "Australia's oldest AWS user group, meeting monthly to share cloud knowledge and practical experience."
+description: 'AWS User Group Melbourne is an independent community for people interested in Amazon Web Services and its ecosystem. Founded in 2011, the group hosts free monthly hybrid meetups where members share knowledge, practical experience, and the latest AWS developments.'
+topics: ['cloud', 'infrastructure', 'devops']
+eventTypes: ['meetup']
+websiteUrl: 'https://melb.awsug.org.au/'
+eventsUrl: 'https://www.meetup.com/aws-aus/events/'
+location: 'Melbourne'
+communityFirst: false

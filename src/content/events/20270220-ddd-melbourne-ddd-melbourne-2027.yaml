@@ -1,0 +1,14 @@
+uid: 019f8705-d014-7054-8790-f97e1f1cfe9f
+title: 'DDD Melbourne 2027'
+start: '2027-02-20T09:00:00+11:00'
+group: 'ddd-melbourne'
+topics:
+  - 'software-engineering'
+  - 'web-development'
+  - 'mobile'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-town-hall'
+url: 'https://www.dddmelbourne.com/'
+rsvpNote: 'Ticket sales open at 11:00 AM on 14 August 2026; pricing is yet to be announced.'

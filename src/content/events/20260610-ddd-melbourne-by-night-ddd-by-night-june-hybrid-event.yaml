@@ -1,0 +1,15 @@
+uid: 019f8705-d013-72ca-a409-e796451fc044
+title: 'DDD by Night June - Hybrid event'
+start: '2026-06-10T18:00:00+10:00'
+end: '2026-06-10T21:00:00+10:00'
+group: 'ddd-melbourne-by-night'
+topics:
+  - 'software-engineering'
+  - 'web-development'
+  - 'mobile'
+eventType: 'meetup'
+paid: false
+format: 'hybrid'
+venue: 'fabric-group-collins-street'
+url: 'https://www.meetup.com/ddd-melbourne-by-night/events/314750134/'
+rsvpNote: 'The event offered limited in-person capacity and an online YouTube stream.'

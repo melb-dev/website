@@ -1,0 +1,14 @@
+uid: 019f8705-d010-7f9d-ac33-e52917292313
+name: 'DDD Melbourne By Night'
+summary: 'Evening software development lightning talks for Melbourne’s development community.'
+description: 'DDD Melbourne By Night brings the development community together for short, sharp talks on software-related subjects, run by the crew behind the DDD Melbourne conference.'
+topics:
+  - 'software-engineering'
+  - 'web-development'
+  - 'mobile'
+eventTypes:
+  - 'meetup'
+websiteUrl: 'https://www.meetup.com/ddd-melbourne-by-night/'
+eventsUrl: 'https://www.meetup.com/ddd-melbourne-by-night/events/'
+location: 'Melbourne'
+communityFirst: true

@@ -1,0 +1,15 @@
+uid: 019f8705-d00d-75d1-b33b-1883f20ce57a
+name: 'DDD Melbourne'
+summary: 'An inclusive, non-profit conference for Melbourne’s software community.'
+description: 'DDD Melbourne is an approachable, volunteer-run conference for professionals across the software industry, with an open submissions process and a democratically chosen agenda.'
+topics:
+  - 'software-engineering'
+  - 'web-development'
+  - 'mobile'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.dddmelbourne.com/'
+eventsUrl: 'https://www.dddmelbourne.com/'
+location: 'Melbourne'
+contact: 'info@dddmelbourne.com'
+communityFirst: true

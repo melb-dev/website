@@ -1,0 +1,14 @@
+uid: 019f87cd-3a2e-7a85-882d-640b328fb0ba
+name: 'Melb.NET Meetup'
+summary: 'A free monthly Melbourne meetup for .NET developers and the wider technology community.'
+description: 'Melb.NET Meetup brings together the former VIC.NET and ALT.NET groups to discuss .NET and a broad range of technical topics.'
+topics:
+  - 'dotnet'
+  - 'csharp'
+  - 'software-engineering'
+eventTypes:
+  - 'meetup'
+websiteUrl: 'https://www.meetup.com/melb-net-meetup/'
+eventsUrl: 'https://www.meetup.com/melb-net-meetup/events/'
+location: 'Melbourne'
+communityFirst: true

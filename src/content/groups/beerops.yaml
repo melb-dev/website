@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.beerops.io/'
 eventsUrl: 'https://www.eventbrite.com.au/e/beerops-melbourne-2026-australias-largest-tech-networking-event-tickets-1987373924908'
 location: 'Australia'
-eventsFetchedAt: '2026-07-16T06:42:28.991Z'
+eventsFetchedAt: '2026-07-24T12:34:35.000Z'
 communityFirst: false

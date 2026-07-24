@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://melb.awsug.org.au/'
 eventsUrl: 'https://www.meetup.com/aws-aus/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-07-20T06:14:04.684Z'
+eventsFetchedAt: '2026-07-24T12:34:35.000Z'
 communityFirst: false

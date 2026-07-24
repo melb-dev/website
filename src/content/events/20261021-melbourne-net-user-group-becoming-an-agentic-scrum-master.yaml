@@ -1,14 +1,13 @@
 uid: 019f65f1-3680-7c58-af92-a222ee285abd
 title: 'Becoming an Agentic Scrum Master'
-start: '2026-09-16T18:00:00+10:00'
-end: '2026-09-16T20:00:00+10:00'
+start: '2026-10-21T18:00:00+11:00'
+end: '2026-10-21T20:00:00+11:00'
 group: 'melbourne-net-user-group'
-topics:
-  - 'dotnet'
-  - 'csharp'
-  - 'software-engineering'
+topics: ['ai', 'ai-agents', 'software-engineering', 'developer-tools']
 eventType: 'meetup'
 paid: false
 format: 'in-person'
 venue: 'ssw-melbourne-little-bourke-street'
 url: 'https://www.meetup.com/melbourne-net-user-group/events/315677548/'
+revision: 1
+updated: '2026-07-24'

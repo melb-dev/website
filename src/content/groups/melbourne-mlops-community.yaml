@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/melbourne-mlops-community1/'
 eventsUrl: 'https://www.meetup.com/melbourne-mlops-community1/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-07-16T06:49:58.240Z'
+eventsFetchedAt: '2026-07-24T12:34:35.000Z'
 communityFirst: false

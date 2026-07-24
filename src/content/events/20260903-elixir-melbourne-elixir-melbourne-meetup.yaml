@@ -1,0 +1,11 @@
+uid: '019f9427-1f33-7b87-bf30-6a34871ccb76'
+title: 'Elixir Melbourne meetup'
+start: '2026-09-03T18:00:00+10:00'
+end: '2026-09-03T20:00:00+10:00'
+group: 'elixir-melbourne'
+topics: ['elixir', 'backend', 'software-engineering', 'open-source']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'superapi-little-collins-street'
+url: 'https://www.meetup.com/elixir-melbourne/events/315484114/'

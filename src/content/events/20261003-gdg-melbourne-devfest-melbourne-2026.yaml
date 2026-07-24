@@ -1,7 +1,6 @@
 uid: 019f6607-949e-71d7-bbf4-78b44a4d2ae9
 title: 'Devfest Melbourne 2026'
-start: '2026-10-03T00:00:00+10:00'
-allDay: true
+start: '2026-10-03T08:30:00+10:00'
 group: 'gdg-melbourne'
 topics:
   - 'software-engineering'
@@ -14,3 +13,5 @@ format: 'in-person'
 venue: 'william-angliss-institute-la-trobe-street'
 url: 'https://gdgmelbourne.com/devfest/'
 rsvpNote: 'Tickets are not yet on sale; follow GDG Melbourne for updates.'
+revision: 1
+updated: '2026-07-24'

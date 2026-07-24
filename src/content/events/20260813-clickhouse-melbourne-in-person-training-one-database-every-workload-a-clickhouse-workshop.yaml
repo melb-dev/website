@@ -1,0 +1,12 @@
+uid: '019f9427-1f33-7e84-82ad-c794329e1304'
+title: 'Melbourne In-person training - One Database, Every Workload: A ClickHouse Workshop'
+start: '2026-08-13T14:30:00+10:00'
+end: '2026-08-13T17:00:00+10:00'
+group: 'clickhouse'
+topics: ['backend', 'cloud', 'ai', 'infrastructure', 'open-source']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'collins-square-events-centre-docklands'
+url: 'https://clickhouse.com/company/events/202608-APJ-Melbourne-One-Database-Every-Workload'
+rsvpNote: 'Free; limited seats and separate registration from the Open House conference are required.'

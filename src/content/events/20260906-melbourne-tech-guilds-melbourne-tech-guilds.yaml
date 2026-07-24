@@ -1,0 +1,13 @@
+uid: '019f9427-1f33-779d-86bd-c0137e994f61'
+title: 'Melbourne Tech Guilds'
+start: '2026-09-06T12:30:00+10:00'
+end: '2026-09-06T15:30:00+10:00'
+group: 'melbourne-tech-guilds'
+topics:
+  ['systems-programming', 'ai', 'machine-learning', 'python', 'open-source', 'software-engineering']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'library-at-the-dock-docklands'
+url: 'https://luma.com/7ny3dpf6'
+rsvpNote: 'Members only; registration approval is required.'

@@ -34,6 +34,7 @@ describe('new content helpers', () => {
       eventTypes: ['meetup'],
       websiteUrl: 'https://example.org/',
       eventsUrl: 'https://events.example.org/',
+      eventsFetchedAt: expect.stringMatching(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/),
     });
   });
   it('supports groups that run meetups and conferences', () => {

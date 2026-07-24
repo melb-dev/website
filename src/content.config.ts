@@ -60,6 +60,7 @@ const groups = defineCollection({
       eventTypes: unique(z.enum(['meetup', 'conference'])),
       websiteUrl: https,
       eventsUrl: https,
+      eventsFetchedAt: datetime,
       location: z.string().default('Melbourne'),
       logo: z.string().optional(),
       contact: z.union([z.email(), https]).optional(),

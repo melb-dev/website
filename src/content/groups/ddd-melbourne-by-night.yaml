@@ -11,4 +11,5 @@ eventTypes:
 websiteUrl: 'https://www.meetup.com/ddd-melbourne-by-night/'
 eventsUrl: 'https://www.meetup.com/ddd-melbourne-by-night/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-21T23:32:12.947Z'
 communityFirst: true

@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://australi.ai/'
 eventsUrl: 'https://events.humanitix.com/host/australi-ai-victorian-chapter'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:42:28.991Z'
 communityFirst: true

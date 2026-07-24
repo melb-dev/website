@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://luma.com/aaif-melbourne'
 eventsUrl: 'https://luma.com/aaif-melbourne'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-21T04:02:34.419Z'
 communityFirst: true

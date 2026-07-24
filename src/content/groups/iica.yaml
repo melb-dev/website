@@ -11,4 +11,5 @@ eventTypes:
 websiteUrl: 'https://iica.org.au/'
 eventsUrl: 'https://iica.org.au/Web/Web/Events/Event_Display.aspx?EventKey=IICAMELB26'
 location: 'Australia'
+eventsFetchedAt: '2026-07-16T05:32:19.916Z'
 communityFirst: true

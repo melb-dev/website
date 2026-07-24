@@ -12,4 +12,5 @@ eventTypes:
 websiteUrl: 'https://www.meetup.com/melbourne-pe/'
 eventsUrl: 'https://www.meetup.com/melbourne-pe/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-15T13:22:14.784Z'
 communityFirst: true

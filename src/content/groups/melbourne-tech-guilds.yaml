@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://techguilds.au/'
 eventsUrl: 'https://luma.com/calendar/cal-ySHl4TwxUrVHZzC'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:49:58.240Z'
 communityFirst: true

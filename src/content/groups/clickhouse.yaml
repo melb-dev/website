@@ -15,4 +15,5 @@ eventTypes:
 websiteUrl: 'https://clickhouse.com/'
 eventsUrl: 'https://clickhouse.com/company/events'
 location: 'International'
+eventsFetchedAt: '2026-07-16T05:50:01.161Z'
 communityFirst: false

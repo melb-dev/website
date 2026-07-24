@@ -11,5 +11,6 @@ eventTypes:
 websiteUrl: 'https://www.dddmelbourne.com/'
 eventsUrl: 'https://www.dddmelbourne.com/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-21T23:32:12.948Z'
 contact: 'info@dddmelbourne.com'
 communityFirst: true

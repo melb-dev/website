@@ -11,4 +11,5 @@ eventTypes:
 websiteUrl: 'https://www.testingtalks.com.au/'
 eventsUrl: 'https://www.testingtalks.com.au/upcoming-events/'
 location: 'Australia'
+eventsFetchedAt: '2026-07-16T05:32:19.916Z'
 communityFirst: false

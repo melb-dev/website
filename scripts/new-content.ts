@@ -134,6 +134,7 @@ export function template(kind: ContentKind, label: string, details: Record<strin
       eventTypes: (details.eventTypes ?? 'meetup').split(','),
       websiteUrl: details.websiteUrl ?? 'https://example.org/',
       eventsUrl: details.eventsUrl ?? details.websiteUrl ?? 'https://example.org/events/',
+      eventsFetchedAt: new Date().toISOString(),
       ...(details.location && { location: details.location }),
     };
   return {

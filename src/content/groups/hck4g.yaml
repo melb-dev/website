@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://hck4g.org/'
 eventsUrl: 'https://events.humanitix.com/host/hck4g'
 location: 'Australia'
+eventsFetchedAt: '2026-07-16T06:46:36.038Z'
 communityFirst: true

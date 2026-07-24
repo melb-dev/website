@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://claude.com/community'
 eventsUrl: 'https://luma.com/claudecommunity'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:42:28.991Z'
 communityFirst: false

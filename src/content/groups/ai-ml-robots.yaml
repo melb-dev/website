@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://ai-ml-robots.github.io/'
 eventsUrl: 'https://www.meetup.com/ai-ml-robots/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:42:28.991Z'
 communityFirst: true

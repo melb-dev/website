@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.aicamp.ai/'
 eventsUrl: 'https://www.aicamp.ai/event/eventsquery?city=Australia-Melbourne'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:42:28.991Z'
 communityFirst: false

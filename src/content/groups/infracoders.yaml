@@ -13,4 +13,5 @@ eventTypes:
 websiteUrl: 'https://www.meetup.com/en-au/infrastructure-coders/'
 eventsUrl: 'https://www.meetup.com/en-au/infrastructure-coders/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-15T13:22:14.783Z'
 communityFirst: true

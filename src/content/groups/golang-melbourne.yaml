@@ -12,4 +12,5 @@ eventTypes:
 websiteUrl: 'https://www.meetup.com/golang-mel/'
 eventsUrl: 'https://www.meetup.com/golang-mel/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-15T13:22:14.783Z'
 communityFirst: true

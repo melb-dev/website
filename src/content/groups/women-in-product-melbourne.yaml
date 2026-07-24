@@ -7,4 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/women-in-product-melbourne/'
 eventsUrl: 'https://www.meetup.com/women-in-product-melbourne/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-16T06:52:55.918Z'
 communityFirst: true

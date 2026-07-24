@@ -11,4 +11,5 @@ eventTypes:
 websiteUrl: 'https://www.meetup.com/melbourne-net-user-group/'
 eventsUrl: 'https://www.meetup.com/melbourne-net-user-group/events/'
 location: 'Melbourne'
+eventsFetchedAt: '2026-07-15T13:22:14.784Z'
 communityFirst: false

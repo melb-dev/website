@@ -1,0 +1,11 @@
+uid: '019fc615-59cf-7f77-adec-4fe6d89f7308'
+name: 'Tech with Purpose'
+summary: 'A Melbourne community connecting people who use technology to create meaningful, positive real-world impact.'
+description: 'Tech with Purpose brings together engineers, product leaders, data professionals, founders, non-profits, and organisations building or exploring technology for positive impact across climate, sustainability, health, education, social inclusion, and accessibility.'
+topics: ['software-engineering', 'ai', 'data-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://www.linkedin.com/company/tech-with-purpose-melbourne'
+eventsUrl: 'https://events.humanitix.com/host/tech-with-purpose'
+eventsFetchedAt: '2026-08-03T05:24:20.408Z'
+location: 'Melbourne'
+communityFirst: false

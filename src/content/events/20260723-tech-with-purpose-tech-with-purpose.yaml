@@ -1,0 +1,12 @@
+uid: '019fc615-59d1-7b23-ab2a-d317313cdbe7'
+title: 'Tech with Purpose'
+start: '2026-07-23T17:30:00+10:00'
+end: '2026-07-23T19:30:00+10:00'
+group: 'tech-with-purpose'
+topics: ['ai', 'data-engineering', 'software-engineering']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'stroke-foundation-bourke-street'
+url: 'https://events.humanitix.com/tech-with-purpose'
+rsvpNote: 'Free registration is required and spaces are limited.'

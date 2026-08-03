@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/product-anonymous-meetup-melbourne/'
 eventsUrl: 'https://www.meetup.com/product-anonymous-meetup-melbourne/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-07-24T12:34:35.000Z'
+eventsFetchedAt: '2026-08-03T05:36:17.129Z'
 communityFirst: true

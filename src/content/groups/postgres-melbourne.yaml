@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/melpug/'
 eventsUrl: 'https://www.meetup.com/melpug/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-03T05:36:13.021Z'
+eventsFetchedAt: '2026-08-03T07:28:18.591Z'
 communityFirst: true

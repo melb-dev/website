@@ -1,0 +1,16 @@
+uid: '019fc687-b7a5-7f5e-98bc-0594e09cc81b'
+title: 'Infracoders Melbourne September Meetup'
+start: '2026-09-08T18:00:00+10:00'
+end: '2026-09-08T20:00:00+10:00'
+group: 'infracoders'
+topics:
+  - 'infrastructure'
+  - 'cloud'
+  - 'platform-engineering'
+  - 'devops'
+  - 'sre'
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'mantel-group-flinders-street'
+url: 'https://www.meetup.com/infrastructure-coders/events/315945269/'

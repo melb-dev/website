@@ -8,5 +8,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/data-engineering-melbourne/'
 eventsUrl: 'https://www.meetup.com/data-engineering-melbourne/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-03T05:36:17.657Z'
+eventsFetchedAt: '2026-08-03T07:28:16.340Z'
 communityFirst: false

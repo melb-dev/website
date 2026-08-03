@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/flutter-melbourne/'
 eventsUrl: 'https://www.meetup.com/flutter-melbourne/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-03T05:36:10.363Z'
+eventsFetchedAt: '2026-08-03T07:28:16.560Z'
 communityFirst: true

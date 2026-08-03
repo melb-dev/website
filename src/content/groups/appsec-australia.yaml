@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/appsec-australia/'
 eventsUrl: 'https://www.meetup.com/appsec-australia/events/'
 location: 'Australia'
-eventsFetchedAt: '2026-08-03T05:36:17.647Z'
+eventsFetchedAt: '2026-08-03T07:28:15.896Z'
 communityFirst: false

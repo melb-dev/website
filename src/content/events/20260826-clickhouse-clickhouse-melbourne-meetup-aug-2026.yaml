@@ -1,0 +1,14 @@
+uid: '019fc687-b7a5-7012-9601-ec923e77a2af'
+title: 'ClickHouse Melbourne Meetup - Aug 2026'
+start: '2026-08-26T17:30:00+10:00'
+end: '2026-08-26T19:30:00+10:00'
+group: 'clickhouse'
+topics:
+  - 'backend'
+  - 'infrastructure'
+  - 'ai'
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'natural-velocity-ai-learning-centre-docklands'
+url: 'https://clickhouse.com/company/events/ch-mel-meetup-26aug26'

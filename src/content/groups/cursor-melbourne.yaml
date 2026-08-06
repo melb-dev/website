@@ -1,0 +1,15 @@
+uid: '019fd522-0770-7fd4-8b87-28d7dd2b6864'
+name: 'Cursor Melbourne'
+summary: 'The Melbourne community for developers and builders using Cursor.'
+description: 'Cursor Melbourne hosts community events for people building software with Cursor to share technical knowledge, demonstrations, and experience.'
+topics:
+  - 'ai'
+  - 'developer-tools'
+  - 'software-engineering'
+eventTypes:
+  - 'meetup'
+websiteUrl: 'https://luma.com/cursor-melbourne'
+eventsUrl: 'https://luma.com/cursor-melbourne'
+eventsFetchedAt: '2026-08-06T03:33:12.000Z'
+location: 'Melbourne'
+communityFirst: true

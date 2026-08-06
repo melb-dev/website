@@ -1,0 +1,14 @@
+uid: '019fd522-076e-7571-9504-58da7f95c37a'
+name: 'AI Engibeers'
+summary: 'A casual Melbourne meetup for people interested in AI engineering and conversation over drinks.'
+description: 'AI Engibeers brings people together for informal conversation about AI engineering, without scheduled talks, laptops, or sponsorship.'
+topics:
+  - 'ai'
+  - 'software-engineering'
+eventTypes:
+  - 'meetup'
+websiteUrl: 'https://luma.com/8xdm8svt'
+eventsUrl: 'https://luma.com/8xdm8svt'
+eventsFetchedAt: '2026-08-06T03:33:11.000Z'
+location: 'Melbourne'
+communityFirst: true

@@ -23,6 +23,9 @@ describe('new content helpers', () => {
     expect(contentPath('event', 'Web Night!', '2026-07-16', 'Melb Web')).toBe(
       'src/content/events/20260716-melb-web-web-night.yaml',
     );
+    expect(
+      contentPath('event', 'Cursor Melbourne - August', '2026-08-12', 'cursor-melbourne'),
+    ).toBe('src/content/events/20260812-cursor-melbourne-august.yaml');
   });
   it('creates separate website and event-listing URLs for groups', () => {
     const group = template('group', 'Example Group', {

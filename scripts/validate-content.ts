@@ -54,8 +54,12 @@ export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new 
         .format(new Date(r.data.start))
         .replaceAll('-', '')
         .replaceAll('/', '');
-      const expected = `${date}-${r.data.group}-${slug(r.data.title)}`;
-      if (r.id !== expected) errors.push(`${r.path}: filename must be ${expected}.yaml`);
+      const fullTitleSlug = slug(r.data.title);
+      const titleSlug = fullTitleSlug.replace(new RegExp(`^${r.data.group}-`), '');
+      const expected = `${date}-${r.data.group}-${titleSlug}`;
+      const legacy = `${date}-${r.data.group}-${fullTitleSlug}`;
+      if (r.id !== expected && r.id !== legacy)
+        errors.push(`${r.path}: filename must be ${expected}.yaml`);
       for (const field of ['start', 'end'])
         if (
           r.data[field] &&

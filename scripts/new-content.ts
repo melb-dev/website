@@ -78,9 +78,11 @@ export function contentPath(
   date?: string,
   group?: string,
 ): string {
+  const groupSlug = slug(group ?? 'group');
+  const titleSlug = slug(label).replace(new RegExp(`^${groupSlug}-`), '');
   const file =
     kind === 'event'
-      ? `${(date ?? tomorrowMelbourne()).replaceAll('-', '')}-${slug(group ?? 'group')}-${slug(label)}.yaml`
+      ? `${(date ?? tomorrowMelbourne()).replaceAll('-', '')}-${groupSlug}-${titleSlug}.yaml`
       : `${slug(label)}.yaml`;
   return `src/content/${kind}s/${file}`;
 }

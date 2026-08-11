@@ -75,6 +75,32 @@ describe('generated feed validation', () => {
     expect(validateIcs(ics, expected).join()).toMatch(/missing DTEND/);
   });
 
+  it('allows an in-person event with an unconfirmed location', () => {
+    const locationTbc: ExpectedFeeds = {
+      events: [{ ...expected.events[0], venue: undefined, location: undefined }],
+    };
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'X-WR-TIMEZONE:Australia/Melbourne',
+      ...melbourneTimezone,
+      'BEGIN:VEVENT',
+      'UID:event-1@melb.dev',
+      'DTSTAMP:20260701T000000Z',
+      'DTSTART;TZID=Australia/Melbourne:20260715T180000',
+      'DTEND;TZID=Australia/Melbourne:20260715T190000',
+      'SUMMARY:Test',
+      'DESCRIPTION:Organised by Group.',
+      'URL:https://example.org/event',
+      'SEQUENCE:0',
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR',
+      '',
+    ].join('\r\n');
+    expect(validateIcs(ics, locationTbc)).toEqual([]);
+  });
+
   it('requires cancelled events to remain marked as cancelled in both feeds', () => {
     const cancelled: ExpectedFeeds = {
       events: [{ ...expected.events[0], status: 'cancelled' }],

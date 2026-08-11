@@ -17,7 +17,7 @@ type ExpectedEvent = {
   paid: boolean;
   format: 'in-person' | 'online' | 'hybrid';
   venue?: string;
-  location: string;
+  location?: string;
   url: string;
   note?: string;
   status: 'scheduled' | 'postponed' | 'cancelled';
@@ -60,7 +60,11 @@ export function expectedFeeds(contentRoot?: string, now = new Date()): ExpectedF
         paid: data.paid,
         format: data.format,
         venue: venue?.name,
-        location: venue ? `${venue.name}, ${venue.address}, ${venue.suburb}` : 'Online',
+        location: venue
+          ? `${venue.name}, ${venue.address}, ${venue.suburb}`
+          : data.format === 'online'
+            ? 'Online'
+            : undefined,
         url: data.url,
         note: data.rsvpNote,
         status: data.status ?? 'scheduled',
@@ -198,11 +202,11 @@ export function validateIcs(ics: string, expected: ExpectedFeeds): string[] {
       'description',
       'dtstart',
       'dtstamp',
-      'location',
       'url',
       'sequence',
       'status',
     ];
+    if (event?.location) required.push('location');
     for (const name of required)
       if (!component.getFirstProperty(name))
         errors.push(`VEVENT ${uid || '(unknown)'} is missing ${name.toUpperCase()}`);
@@ -213,8 +217,10 @@ export function validateIcs(ics: string, expected: ExpectedFeeds): string[] {
       errors.push(`VEVENT ${uid} has an unexpected DTEND`);
     const value = (name: string) => text(component.getFirstPropertyValue(name));
     if (value('summary') !== event.title) errors.push(`VEVENT ${uid} title does not match source`);
-    if (value('location') !== event.location)
+    if (event.location && value('location') !== event.location)
       errors.push(`VEVENT ${uid} location does not match source`);
+    if (!event.location && component.getFirstProperty('location'))
+      errors.push(`VEVENT ${uid} has an unexpected LOCATION`);
     if (value('url') !== event.url) errors.push(`VEVENT ${uid} URL does not match source`);
     if (Number(component.getFirstPropertyValue('sequence')) !== event.revision)
       errors.push(`VEVENT ${uid} sequence does not match source`);

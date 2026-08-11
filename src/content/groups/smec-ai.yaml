@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://smecai.au/'
 eventsUrl: 'https://smecai.au/events'
 location: 'Australia'
-eventsFetchedAt: '2026-08-03T07:28:19.059Z'
+eventsFetchedAt: '2026-08-10T11:16:00.000Z'
 communityFirst: true

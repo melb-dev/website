@@ -70,7 +70,9 @@ const jsonLd = events
       isAccessibleForFree: !event.data.paid,
       location: venue
         ? { '@type': 'Place', name: venue.data.name, address: venue.data.address }
-        : { '@type': 'VirtualLocation', url: event.data.url },
+        : event.data.format === 'online'
+          ? { '@type': 'VirtualLocation', url: event.data.url }
+          : undefined,
       url: event.data.url,
       organizer: { '@type': 'Organization', name: group?.data.name, url: group?.data.websiteUrl },
     };

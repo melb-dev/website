@@ -75,7 +75,11 @@ export async function GET() {
       timezone: e.data.allDay ? undefined : MELBOURNE_TZ,
       summary: e.data.title,
       description: `${e.data.paid ? 'Paid' : 'Free'} ${e.data.eventType === 'meetup' ? 'meetup' : 'conference'} organised by ${g?.data.name}. ${e.data.rsvpNote ?? ''}`,
-      location: v ? `${v.data.name}, ${v.data.address}, ${v.data.suburb}` : 'Online',
+      location: v
+        ? `${v.data.name}, ${v.data.address}, ${v.data.suburb}`
+        : e.data.format === 'online'
+          ? 'Online'
+          : undefined,
       url: e.data.url,
       sequence: e.data.revision,
       status: e.data.status === 'cancelled' ? ICalEventStatus.CANCELLED : ICalEventStatus.CONFIRMED,

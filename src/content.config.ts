@@ -98,8 +98,6 @@ const events = defineCollection({
         ctx.addIssue({ code: 'custom', message: 'all-day events cannot have an end time' });
       if (e.format === 'online' && e.venue)
         ctx.addIssue({ code: 'custom', message: 'online events cannot have a venue' });
-      if (e.format !== 'online' && !e.venue)
-        ctx.addIssue({ code: 'custom', message: 'venue required' });
       if (e.revision > 0 && !e.updated)
         ctx.addIssue({ code: 'custom', message: 'updated required after revision' });
     }),

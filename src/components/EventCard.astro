@@ -8,7 +8,7 @@ const venue = venues.find((item: any) => item.id === d.venue?.id);
 const topicNames = d.topics
   .map((ref: any) => topics.find((item: any) => item.id === ref.id))
   .filter(Boolean);
-const locationId = d.format === 'online' ? 'online' : slug(venue.data.suburb);
+const locationId = d.format === 'online' ? 'online' : venue ? slug(venue.data.suburb) : 'unknown';
 const searchText = [
   d.title,
   group.data.name,
@@ -49,7 +49,11 @@ const isPast = period === 'past';
   </p>
   <p>
     By <a href={`/groups/${group.id}/`}>{group.data.name}</a> · {
-      d.format === 'online' ? 'Online' : `${venue.data.name}, ${venue.data.suburb}`
+      d.format === 'online'
+        ? 'Online'
+        : venue
+          ? `${venue.data.name}, ${venue.data.suburb}`
+          : 'Location TBC'
     } · <span class="capitalize">{d.format}</span>
   </p>
   <div class="my-2">

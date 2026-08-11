@@ -77,10 +77,7 @@ export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new 
         errors.push(`${r.path}: all-day events cannot have an end time`);
       if (r.data.updated && !/^\d{4}-\d{2}-\d{2}$/.test(r.data.updated))
         errors.push(`${r.path}: updated must be an ISO date`);
-      if (
-        (r.data.format === 'online' && r.data.venue) ||
-        (r.data.format !== 'online' && !r.data.venue)
-      )
+      if (r.data.format === 'online' && r.data.venue)
         errors.push(`${r.path}: invalid format/venue`);
     }
     if (r.data.logo && !existsSync(join(process.cwd(), 'public', r.data.logo.replace(/^\//, ''))))

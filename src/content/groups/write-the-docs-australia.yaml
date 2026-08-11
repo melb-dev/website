@@ -2,10 +2,10 @@ uid: 019f6987-0d57-7c97-8cd4-351e997f4652
 name: 'Write the Docs Australia'
 summary: 'An Australian community for technical writers, documentation practitioners, and people interested in better developer documentation.'
 description: 'Write the Docs Australia connects technical writers, documentation practitioners, and people interested in improving developer documentation.'
-topics: ['developer-tools', 'software-engineering', 'open-source']
-eventTypes: ['meetup']
+topics: ['documentation', 'developer-tools', 'software-engineering', 'open-source']
+eventTypes: ['meetup', 'conference']
 websiteUrl: 'https://www.meetup.com/write-the-docs-australia/'
 eventsUrl: 'https://www.meetup.com/write-the-docs-australia/events/'
 location: 'Australia'
-eventsFetchedAt: '2026-08-03T07:28:19.481Z'
+eventsFetchedAt: '2026-08-10T11:17:58.321Z'
 communityFirst: false

@@ -1,0 +1,14 @@
+uid: '019feb65-4927-7e88-a836-833508e9ecd5'
+title: 'MelbJS'
+start: '2026-08-12T18:00:00+10:00'
+group: 'melbjs'
+topics:
+  - 'typescript'
+  - 'javascript'
+  - 'frontend'
+  - 'fullstack'
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'culture-amp-richmond'
+url: 'https://melbjs.com/'

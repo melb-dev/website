@@ -1,0 +1,11 @@
+uid: '019ff3ba-ecdc-7962-b904-e73397a2d8be'
+name: 'ACES Melbourne'
+summary: 'The Melbourne community of the Australian Creative Electronics Society, connecting people who build hardware and electronics.'
+description: 'ACES Melbourne is the Melbourne community of the Australian Creative Electronics Society. It runs free meetups, workshops, and community events for engineers, founders, students, and anyone interested in building hardware and electronics.'
+topics: ['hardware', 'systems-programming', 'open-source', 'software-engineering']
+eventTypes: ['meetup']
+websiteUrl: 'https://acesoc.org/'
+eventsUrl: 'https://acesoc.org/events/'
+eventsFetchedAt: '2026-08-12T02:08:09.089Z'
+location: 'Melbourne'
+communityFirst: true

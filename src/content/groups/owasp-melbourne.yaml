@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/application-security-owasp-melbourne/'
 eventsUrl: 'https://www.meetup.com/application-security-owasp-melbourne/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-10T11:18:31.791Z'
+eventsFetchedAt: '2026-08-14T10:57:35.322Z'
 communityFirst: true

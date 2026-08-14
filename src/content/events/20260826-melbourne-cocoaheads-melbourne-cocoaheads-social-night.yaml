@@ -1,7 +1,7 @@
 uid: '019f9427-1f33-7f68-a1d1-d7bf5ea3a760'
 title: 'Melbourne Cocoaheads Social Night'
-start: '2026-08-25T17:30:00+10:00'
-end: '2026-08-25T19:30:00+10:00'
+start: '2026-08-26T17:30:00+10:00'
+end: '2026-08-26T19:30:00+10:00'
 group: 'melbourne-cocoaheads'
 topics: ['ios', 'macos', 'swift', 'objective-c', 'mobile']
 eventType: 'meetup'
@@ -9,5 +9,5 @@ paid: false
 format: 'in-person'
 venue: 'brick-lane-queen-street'
 url: 'https://www.meetup.com/en-AU/melbourne-cocoaheads/events/315985184/'
-revision: 1
-updated: '2026-08-06'
+revision: 2
+updated: '2026-08-14'

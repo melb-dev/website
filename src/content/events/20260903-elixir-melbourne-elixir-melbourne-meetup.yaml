@@ -7,5 +7,7 @@ topics: ['elixir', 'backend', 'software-engineering', 'open-source']
 eventType: 'meetup'
 paid: false
 format: 'in-person'
-venue: 'superapi-little-collins-street'
+venue: 'superapi-rialto'
 url: 'https://www.meetup.com/elixir-melbourne/events/315484114/'
+revision: 1
+updated: '2026-08-24'

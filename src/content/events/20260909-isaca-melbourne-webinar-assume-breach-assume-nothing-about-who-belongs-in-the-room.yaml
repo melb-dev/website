@@ -1,7 +1,7 @@
 uid: '019fffed-0307-78ca-b32a-ffe5487bac51'
 title: 'Webinar: Assume Breach. Assume Nothing About Who Belongs in the Room'
-start: '2026-08-18T12:00:00+10:00'
-end: '2026-08-18T13:00:00+10:00'
+start: '2026-09-09T12:00:00+10:00'
+end: '2026-09-09T13:00:00+10:00'
 group: 'isaca-melbourne'
 topics: ['infrastructure', 'software-engineering']
 eventType: 'meetup'
@@ -9,3 +9,5 @@ paid: false
 format: 'online'
 url: 'https://engage.isaca.org/melbournechapter/events/eventdescription?CalendarEventKey=1ac277a8-3c80-4642-b71a-019ff5139de0'
 rsvpNote: 'Registration is required for the Microsoft Teams webinar.'
+revision: 1
+updated: '2026-08-24'

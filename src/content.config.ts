@@ -7,7 +7,7 @@ const uid = z
     /^0[0-9a-f]{7}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
     'UUIDv7 required',
   );
-const https = z.string().url().startsWith('https://');
+const https = z.url().startsWith('https://');
 const datetime = z.preprocess(
   (value) => (value instanceof Date ? value : new Date(value as string)),
   z.date(),

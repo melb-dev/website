@@ -1,5 +1,5 @@
 uid: '019fc61d-6201-798d-885d-a361b8126b36'
-title: 'Save the date! topic soon'
+title: Our teams have the best AI tools but nothing changed
 start: '2026-09-22T18:00:00+10:00'
 end: '2026-09-22T20:00:00+10:00'
 group: 'product-anonymous-melbourne'
@@ -9,4 +9,5 @@ paid: false
 format: 'in-person'
 venue: 'netwealth-flinders-street'
 url: 'https://www.meetup.com/product-anonymous-meetup-melbourne/events/315870006/'
-rsvpNote: 'Reservations open at 3:57 pm on 28 July 2026.'
+revision: 1
+updated: '2026-08-31'

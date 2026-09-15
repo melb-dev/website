@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/data-science-melbourne/'
 eventsUrl: 'https://www.meetup.com/data-science-melbourne/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-31T03:17:46.638Z'
+eventsFetchedAt: '2026-09-15T05:31:15.291Z'
 communityFirst: false

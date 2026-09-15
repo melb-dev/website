@@ -1,14 +1,18 @@
 uid: '01a055d3-52e9-7dd4-83b3-fec4ccec800b'
 title: 'Build Better LLM Apps'
-start: '2026-09-17T09:00:00+10:00'
-end: '2026-09-17T12:00:00+10:00'
+start: '2026-10-15T09:00:00+11:00'
+end: '2026-10-15T12:00:00+11:00'
 group: 'clickhouse'
 topics:
   - 'ai'
   - 'ai-agents'
   - 'developer-tools'
+  - 'typescript'
 eventType: 'meetup'
 paid: false
 format: 'in-person'
 venue: 'cremorne-digital-hub'
 url: 'https://clickhouse.com/company/events/build-better-llm-apps-with-langfuse-melbourne'
+rsvpNote: 'Bring a laptop with Node.js 18+, a Langfuse account, and a funded OpenAI API key.'
+revision: 1
+updated: '2026-09-15'

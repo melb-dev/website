@@ -9,3 +9,6 @@ paid: false
 format: 'in-person'
 venue: 'stone-and-chalk-king-street'
 url: 'https://www.meetup.com/rust-melbourne/events/315039490/'
+status: 'cancelled'
+revision: 1
+updated: '2026-09-15'

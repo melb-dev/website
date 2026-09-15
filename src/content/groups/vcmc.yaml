@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://vcmc.ai/'
 eventsUrl: 'https://luma.com/vcmc'
 location: 'Melbourne'
-eventsFetchedAt: '2026-08-31T03:18:20.930Z'
+eventsFetchedAt: '2026-09-15T05:27:03.000Z'
 communityFirst: false

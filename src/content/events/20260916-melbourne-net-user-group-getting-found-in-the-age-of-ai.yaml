@@ -1,10 +1,14 @@
 uid: '019fc61d-6201-70b1-98d6-fdf063af1107'
 title: 'Getting Found in the Age of AI'
-start: '2026-09-16T18:30:00+10:00'
-end: '2026-09-16T20:30:00+10:00'
+start: '2026-09-16T18:00:00+10:00'
+end: '2026-09-16T20:00:00+10:00'
 group: 'melbourne-net-user-group'
 topics: ['ai', 'web-development', 'software-engineering']
 eventType: 'meetup'
 paid: false
-format: 'online'
+format: 'in-person'
+venue: 'ssw-melbourne-little-bourke-street'
 url: 'https://www.meetup.com/melbourne-net-user-group/events/315899849/'
+rsvpNote: 'A livestream is also available from the event page.'
+revision: 1
+updated: '2026-09-15'

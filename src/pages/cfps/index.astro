@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import CfpCard from '../../components/CfpCard.astro';
 import Layout from '../../layouts/Layout.astro';
-import { slug, sortCfps } from '../../lib/events';
+import { isUpcomingCfp, slug, sortCfps } from '../../lib/events';
 
 const now = new Date();
 const [events, groups, venues, topics] = await Promise.all([
@@ -15,15 +15,11 @@ const cfps = events.filter(
   (event) => (event.data.cfpDeadline || event.data.cfpUrl) && event.data.status !== 'cancelled',
 );
 const upcoming = sortCfps(
-  cfps.filter(
-    (event) => !event.data.cfpDeadline || event.data.cfpDeadline.getTime() >= now.getTime(),
-  ),
+  cfps.filter((event) => isUpcomingCfp(event, now)),
   true,
 );
 const past = sortCfps(
-  cfps.filter(
-    (event) => event.data.cfpDeadline && event.data.cfpDeadline.getTime() < now.getTime(),
-  ),
+  cfps.filter((event) => !isUpcomingCfp(event, now)),
   false,
 );
 const usedTopics = topics
@@ -224,11 +220,7 @@ const choices = {
               groups={groups}
               venues={venues}
               topics={topics}
-              period={
-                !event.data.cfpDeadline || event.data.cfpDeadline.getTime() >= now.getTime()
-                  ? 'future'
-                  : 'past'
-              }
+              period={isUpcomingCfp(event, now) ? 'future' : 'past'}
             />
           ))
         }

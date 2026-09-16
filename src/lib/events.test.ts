@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { formatMelbourneDateTime, isFuture, localDate, slug, sortCfps, sortEvents } from './events';
+import {
+  formatMelbourneDateTime,
+  isFuture,
+  isUpcomingCfp,
+  localDate,
+  slug,
+  sortCfps,
+  sortEvents,
+} from './events';
 const e = (title: string, start: string, end?: string) => ({
   data: { title, start: new Date(start), end: end ? new Date(end) : undefined },
 });
@@ -31,5 +39,26 @@ describe('Melbourne event dates', () => {
     expect(
       sortCfps([laterEvent, earlierEvent, rolling], true).map((item) => item.data.title),
     ).toEqual(['Rolling', 'Earlier event', 'Later event']);
+  });
+  it('treats rolling CFPs as past once their event has passed', () => {
+    const now = new Date('2026-09-16T05:00:00Z');
+    expect(isUpcomingCfp(e('Past rolling', '2026-09-02T08:00:00Z'), now)).toBe(false);
+    expect(isUpcomingCfp(e('Upcoming rolling', '2026-10-06T08:00:00Z'), now)).toBe(true);
+  });
+  it('uses the exact deadline for fixed-deadline CFPs', () => {
+    const now = new Date('2026-09-16T05:00:00Z');
+    const event = e('Fixed', '2026-10-01T08:00:00Z');
+    expect(
+      isUpcomingCfp(
+        { ...event, data: { ...event.data, cfpDeadline: new Date('2026-09-16T04:59:59Z') } },
+        now,
+      ),
+    ).toBe(false);
+    expect(
+      isUpcomingCfp(
+        { ...event, data: { ...event.data, cfpDeadline: new Date('2026-09-16T05:00:00Z') } },
+        now,
+      ),
+    ).toBe(true);
   });
 });

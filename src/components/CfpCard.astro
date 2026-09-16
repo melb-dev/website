@@ -18,12 +18,14 @@ const searchText = [
 ]
   .filter(Boolean)
   .join(' ');
-const isClosed = Boolean(d.cfpDeadline) && period === 'past';
+const isPast = period === 'past';
+const isClosed = Boolean(d.cfpDeadline) && isPast;
+const hasEnded = !d.cfpDeadline && isPast;
 ---
 
 <article
   class="cardx directory-card"
-  hidden={isClosed}
+  hidden={isPast}
   data-id={d.uid}
   data-search={searchText}
   data-name={d.title}
@@ -39,22 +41,25 @@ const isClosed = Boolean(d.cfpDeadline) && period === 'past';
     <a href={d.url} rel="nofollow noopener noreferrer" target="_blank">{d.title}</a>
     {d.paid && <span class="cost-badge">Paid</span>}
     {isClosed && <span class="past-badge">CFP closed</span>}
+    {hasEnded && <span class="past-badge">Event ended</span>}
     {!d.cfpDeadline && <span class="event-type-badge">Rolling CFP</span>}
   </h2>
-  <p class="mt-2 font-bold">
-    {
-      d.cfpDeadline ? (
-        <>
-          CFP {isClosed ? 'closed' : 'closes'}{' '}
-          <time datetime={d.cfpDeadline.toISOString()}>
-            {formatMelbourneDateTime(d.cfpDeadline)}
-          </time>
-        </>
-      ) : (
-        'Submissions are accepted on a rolling basis with no fixed deadline.'
-      )
-    }
-  </p>
+  {
+    (d.cfpDeadline || !hasEnded) && (
+      <p class="mt-2 font-bold">
+        {d.cfpDeadline ? (
+          <>
+            CFP {isClosed ? 'closed' : 'closes'}{' '}
+            <time datetime={d.cfpDeadline.toISOString()}>
+              {formatMelbourneDateTime(d.cfpDeadline)}
+            </time>
+          </>
+        ) : (
+          'Submissions are accepted on a rolling basis with no fixed deadline.'
+        )}
+      </p>
+    )
+  }
   <p class="mt-2">
     Event: <time datetime={d.allDay ? localDate(d.start) : d.start.toISOString()}>
       {formatEventDate(d.start, d.end, d.allDay)}
@@ -78,9 +83,9 @@ const isClosed = Boolean(d.cfpDeadline) && period === 'past';
       <span class="sr-only">details for {d.title}</span>
     </a>
     {
-      isClosed ? (
+      isPast ? (
         <span class="btn btn-sm btn-past" aria-disabled="true">
-          Submissions closed
+          {isClosed ? 'Submissions closed' : 'Event ended'}
         </span>
       ) : d.cfpUrl ? (
         <a

@@ -23,6 +23,11 @@ export function sortEvents<T extends EventLike>(items: T[], future: boolean) {
 }
 export type CfpLike = EventLike & { data: EventLike['data'] & { cfpDeadline?: Date } };
 const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
+export function isUpcomingCfp(cfp: CfpLike, now = new Date()) {
+  return cfp.data.cfpDeadline
+    ? cfp.data.cfpDeadline.getTime() >= now.getTime()
+    : isFuture(cfp, now);
+}
 export function sortCfps<T extends CfpLike>(items: T[], future: boolean) {
   return [...items].sort((a, b) => {
     const direction = future ? 1 : -1;

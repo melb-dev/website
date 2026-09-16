@@ -7,4 +7,7 @@ eventType: 'meetup'
 paid: false
 format: 'in-person'
 url: 'https://melbcss.com/'
+cfpUrl: 'https://forms.gle/kXoSZ6RrkELmjgJy6'
 rsvpNote: 'Venue is to be announced.'
+revision: 1
+updated: '2026-09-16'

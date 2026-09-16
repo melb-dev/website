@@ -68,6 +68,29 @@ describe('content integrity', () => {
     });
     expect(validate([event]).join()).toMatch(/UTC offset|at least one topic/);
   });
+  it('requires CFP deadlines to have an offset and precede the event', () => {
+    const data = {
+      title: 'Test',
+      start: '2026-01-01T10:00:00+11:00',
+      group: 'group',
+      topics: ['topic'],
+      eventType: 'conference',
+      paid: false,
+      format: 'online',
+    };
+    const late = row('events', '20260101-group-test', u(15), {
+      ...data,
+      cfpDeadline: '2026-01-02T00:00:00+11:00',
+      cfpUrl: 'https://example.org/cfp',
+    });
+    const missingOffset = row('events', '20260101-group-test', u(16), {
+      ...data,
+      cfpDeadline: '2025-12-01T23:59:00',
+      cfpUrl: 'https://example.org/cfp',
+    });
+    expect(validate([late]).join()).toMatch(/must precede event start/);
+    expect(validate([missingOffset]).join()).toMatch(/UTC offset/);
+  });
   it('requires a new revision and updated date for material changes', () => {
     const data = {
       title: 'Test',

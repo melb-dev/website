@@ -48,6 +48,17 @@ describe('new content helpers', () => {
   it('labels new events as meetups by default', () => {
     expect(template('event', 'Example event')).toMatchObject({ eventType: 'meetup', paid: false });
   });
+  it('includes CFP details when provided', () => {
+    expect(
+      template('event', 'Example conference', {
+        cfpDeadline: '2026-07-01T23:59:00+10:00',
+        cfpUrl: 'https://example.org/cfp',
+      }),
+    ).toMatchObject({
+      cfpDeadline: '2026-07-01T23:59:00+10:00',
+      cfpUrl: 'https://example.org/cfp',
+    });
+  });
   it('classifies new topics as general by default', () => {
     expect(template('topic', 'Example topic')).toMatchObject({ category: 'general' });
     expect(

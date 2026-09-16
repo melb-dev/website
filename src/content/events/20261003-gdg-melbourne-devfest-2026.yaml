@@ -13,6 +13,8 @@ paid: true
 format: 'in-person'
 venue: 'william-angliss-institute-la-trobe-street'
 url: 'https://gdgmelbourne.com/devfest/'
+cfpDeadline: '2026-08-30T23:59:00+10:00'
+cfpUrl: 'https://sessionize.com/gdg-melbourne-devfest-2026'
 rsvpNote: 'Tickets are on sale, with a limited-time two-for-one offer at $50.'
-revision: 3
-updated: '2026-08-31'
+revision: 4
+updated: '2026-09-16'

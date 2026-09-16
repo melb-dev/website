@@ -1,0 +1,102 @@
+---
+import { formatEventDate, formatMelbourneDateTime, localDate, slug } from '../lib/events';
+
+const { event, groups, venues, topics, period } = Astro.props;
+const d = event.data;
+const group = groups.find((item: any) => item.id === d.group.id);
+const venue = venues.find((item: any) => item.id === d.venue?.id);
+const topicNames = d.topics
+  .map((ref: any) => topics.find((item: any) => item.id === ref.id))
+  .filter(Boolean);
+const locationId = d.format === 'online' ? 'online' : venue ? slug(venue.data.suburb) : 'unknown';
+const searchText = [
+  d.title,
+  group.data.name,
+  venue?.data.name,
+  venue?.data.suburb,
+  ...topicNames.map((topic: any) => topic.data.name),
+]
+  .filter(Boolean)
+  .join(' ');
+const isClosed = Boolean(d.cfpDeadline) && period === 'past';
+---
+
+<article
+  class="cardx directory-card"
+  hidden={isClosed}
+  data-id={d.uid}
+  data-search={searchText}
+  data-name={d.title}
+  data-period={period}
+  data-cfp-type={d.cfpDeadline ? 'fixed' : 'rolling'}
+  data-date={d.cfpDeadline ? localDate(d.cfpDeadline) : undefined}
+  data-topics={d.topics.map((ref: any) => ref.id).join(',')}
+  data-location={locationId}
+  data-format={d.format}
+  data-paid={String(d.paid)}
+>
+  <h2 class="event-title text-xl font-bold">
+    <a href={d.url} rel="nofollow noopener noreferrer" target="_blank">{d.title}</a>
+    {d.paid && <span class="cost-badge">Paid</span>}
+    {isClosed && <span class="past-badge">CFP closed</span>}
+    {!d.cfpDeadline && <span class="event-type-badge">Rolling CFP</span>}
+  </h2>
+  <p class="mt-2 font-bold">
+    {
+      d.cfpDeadline ? (
+        <>
+          CFP {isClosed ? 'closed' : 'closes'}{' '}
+          <time datetime={d.cfpDeadline.toISOString()}>
+            {formatMelbourneDateTime(d.cfpDeadline)}
+          </time>
+        </>
+      ) : (
+        'Submissions are accepted on a rolling basis with no fixed deadline.'
+      )
+    }
+  </p>
+  <p class="mt-2">
+    Event: <time datetime={d.allDay ? localDate(d.start) : d.start.toISOString()}>
+      {formatEventDate(d.start, d.end, d.allDay)}
+    </time>
+  </p>
+  <p>
+    By <a href={`/groups/${group.id}/`}>{group.data.name}</a> · {
+      d.format === 'online'
+        ? 'Online'
+        : venue
+          ? `${venue.data.name}, ${venue.data.suburb}`
+          : 'Location TBC'
+    } · <span class="capitalize">{d.format}</span>
+  </p>
+  <div class="my-2">
+    {topicNames.map((topic: any) => <span class="pill">{topic.data.name}</span>)}
+  </div>
+  <div class="cfp-actions">
+    <a class="btn btn-sm" href={d.url} rel="nofollow noopener noreferrer" target="_blank">
+      View event
+      <span class="sr-only">details for {d.title}</span>
+    </a>
+    {
+      isClosed ? (
+        <span class="btn btn-sm btn-past" aria-disabled="true">
+          Submissions closed
+        </span>
+      ) : d.cfpUrl ? (
+        <a
+          class="btn btn-sm btn-primary"
+          href={d.cfpUrl}
+          rel="nofollow noopener noreferrer"
+          target="_blank"
+        >
+          Submit a proposal
+          <span class="sr-only">for {d.title}</span>
+        </a>
+      ) : (
+        <span class="btn btn-sm" aria-disabled="true">
+          Submission link unavailable
+        </span>
+      )
+    }
+  </div>
+</article>

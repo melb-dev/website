@@ -14,4 +14,8 @@ paid: true
 format: 'in-person'
 venue: 'collins-square-events-centre-docklands'
 url: 'https://community2.cncf.io/events/details/cncf-kcd-australia-presents-kcd-melbourne-2026/'
+cfpDeadline: '2026-06-01T23:59:00+10:00'
+cfpUrl: 'https://sessionize.com/kcd-melbourne-2026'
 rsvpNote: 'Paid event; log in to the CNCF community site to get tickets. Standard tickets are listed at A$95, subject to availability.'
+revision: 1
+updated: '2026-09-16'

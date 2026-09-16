@@ -9,3 +9,6 @@ paid: false
 format: 'hybrid'
 venue: 'amazon-mel12-collins-street'
 url: 'https://www.meetup.com/en-au/ksug-au/events/315494963/'
+cfpUrl: 'https://sessionize.com/ksug-au'
+revision: 1
+updated: '2026-09-16'

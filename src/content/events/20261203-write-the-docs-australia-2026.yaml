@@ -9,4 +9,8 @@ paid: true
 format: 'hybrid'
 venue: 'treasury-theatre-east-melbourne'
 url: 'https://www.writethedocs.org/conf/australia/2026/'
+cfpDeadline: '2026-09-18T23:59:00+10:00'
+cfpUrl: 'https://pretalx.com/wtd-australia-2026/cfp'
 rsvpNote: 'Runs 3–4 December. Tickets are on sale; opportunity grants for tickets and attendance costs are open until 2 October 2026.'
+revision: 1
+updated: '2026-09-16'

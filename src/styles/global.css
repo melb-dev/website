@@ -107,6 +107,15 @@ select:focus-visible {
   background: #eef0f2;
   color: #3f4852;
 }
+.cfp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.cfp-actions [aria-disabled='true'] {
+  cursor: not-allowed;
+}
 .group-title {
   display: flex;
   flex-wrap: wrap;
@@ -526,7 +535,8 @@ legend {
     grid-template-columns: 17rem minmax(0, 1fr);
     align-items: start;
   }
-  .directory-layout[data-kind='events'] {
+  .directory-layout[data-kind='events'],
+  .directory-layout[data-kind='cfps'] {
     grid-template-columns: 19.25rem minmax(0, 1fr);
   }
   .filter-sidebar {

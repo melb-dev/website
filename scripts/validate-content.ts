@@ -60,7 +60,7 @@ export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new 
       const legacy = `${date}-${r.data.group}-${fullTitleSlug}`;
       if (r.id !== expected && r.id !== legacy)
         errors.push(`${r.path}: filename must be ${expected}.yaml`);
-      for (const field of ['start', 'end'])
+      for (const field of ['start', 'end', 'cfpDeadline'])
         if (
           r.data[field] &&
           !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/.test(
@@ -75,6 +75,8 @@ export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new 
         errors.push(`${r.path}: end must follow start`);
       if (r.data.allDay && r.data.end)
         errors.push(`${r.path}: all-day events cannot have an end time`);
+      if (r.data.cfpDeadline && new Date(r.data.cfpDeadline) >= new Date(r.data.start))
+        errors.push(`${r.path}: cfpDeadline must precede event start`);
       if (r.data.updated && !/^\d{4}-\d{2}-\d{2}$/.test(r.data.updated))
         errors.push(`${r.path}: updated must be an ISO date`);
       if (r.data.format === 'online' && r.data.venue)
@@ -114,6 +116,8 @@ export function validate(rows: Row[], base: Row[] = [], deletionOverrides = new 
         'format',
         'venue',
         'url',
+        'cfpDeadline',
+        'cfpUrl',
         'rsvpNote',
         'status',
       ].some((k) => JSON.stringify(old.data[k]) !== JSON.stringify(now.data[k]));

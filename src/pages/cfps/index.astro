@@ -1,0 +1,240 @@
+---
+import { getCollection } from 'astro:content';
+import CfpCard from '../../components/CfpCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import { slug, sortCfps } from '../../lib/events';
+
+const now = new Date();
+const [events, groups, venues, topics] = await Promise.all([
+  getCollection('events'),
+  getCollection('groups'),
+  getCollection('venues'),
+  getCollection('topics'),
+]);
+const cfps = events.filter(
+  (event) => (event.data.cfpDeadline || event.data.cfpUrl) && event.data.status !== 'cancelled',
+);
+const upcoming = sortCfps(
+  cfps.filter(
+    (event) => !event.data.cfpDeadline || event.data.cfpDeadline.getTime() >= now.getTime(),
+  ),
+  true,
+);
+const past = sortCfps(
+  cfps.filter(
+    (event) => event.data.cfpDeadline && event.data.cfpDeadline.getTime() < now.getTime(),
+  ),
+  false,
+);
+const usedTopics = topics
+  .filter((topic) => cfps.some((event) => event.data.topics.some((ref) => ref.id === topic.id)))
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const topicSections = [
+  { category: 'general', label: 'General Topics' },
+  { category: 'programming-language', label: 'Programming Languages' },
+] as const;
+const locationMap = new Map<string, string>();
+for (const venue of venues)
+  if (cfps.some((event) => event.data.venue?.id === venue.id))
+    locationMap.set(slug(venue.data.suburb), venue.data.suburb);
+if (cfps.some((event) => event.data.format === 'online')) locationMap.set('online', 'Online');
+const locationOptions: { value: string; values: string[]; label: string }[] = [];
+let addedRichmondCremorne = false;
+for (const [value, label] of locationMap) {
+  if (value === 'online') continue;
+  if (value === 'richmond' || value === 'cremorne') {
+    if (!addedRichmondCremorne) {
+      locationOptions.push({
+        value: 'cremorne',
+        values: ['cremorne', 'richmond'],
+        label: 'Richmond & Cremorne',
+      });
+      addedRichmondCremorne = true;
+    }
+  } else {
+    locationOptions.push({
+      value,
+      values: [value],
+      label: value === 'melbourne' ? 'Melbourne CBD' : label,
+    });
+  }
+}
+const choices = {
+  period: [
+    ['future', 'Upcoming'],
+    ['past', 'Past'],
+    ['all', 'All'],
+  ],
+  cost: [
+    ['all', 'Free & Paid'],
+    ['free', 'Free Only'],
+    ['paid', 'Paid Only'],
+  ],
+  range: [
+    ['', 'Any date'],
+    ['today', 'Today'],
+    ['week', 'This week'],
+    ['next-week', 'Next week'],
+    ['month', 'This month'],
+  ],
+  format: [
+    ['in-person', 'In person'],
+    ['online', 'Online'],
+    ['any', 'Any type'],
+  ],
+};
+---
+
+<Layout
+  title="Calls for proposals"
+  description="Find open and past calls for proposals for Melbourne technology events."
+>
+  <header class="mb-6">
+    <h1 class="text-4xl font-black">Calls for proposals</h1>
+    <p class="event-intro mt-2">
+      Find opportunities to speak at Melbourne technology events, including rolling calls and calls
+      with submission deadlines.
+    </p>
+  </header>
+  <section id="directory" data-kind="cfps" class="directory-layout">
+    <aside class="filter-sidebar">
+      <details class="filter-disclosure">
+        <summary>Filters</summary>
+        <form id="filters" class="cardx filter-form" aria-labelledby="filter-heading">
+          <div class="filter-heading-row">
+            <h2 id="filter-heading" class="text-lg font-bold">Find a CFP</h2>
+            <button type="reset" class="reset-button" hidden>Reset</button>
+          </div>
+          <label class="block mt-3">
+            Keyword Search
+            <input name="q" class="input input-bordered w-full" type="search" autocomplete="off" />
+          </label>
+          <p class="filter-note">Enter at least 3 characters.</p>
+          <fieldset class="choice-group">
+            <legend>CFP Type</legend>
+            <div class="choice-list">
+              <label class="filter-choice">
+                <input type="radio" name="cfpType" value="all" checked />
+                <span>All</span>
+              </label>
+              <label class="filter-choice">
+                <input type="radio" name="cfpType" value="rolling" />
+                <span>Rolling</span>
+              </label>
+              <label class="filter-choice">
+                <input type="radio" name="cfpType" value="fixed" />
+                <span>Fixed deadline</span>
+              </label>
+            </div>
+          </fieldset>
+          {
+            Object.entries(choices).map(([name, options]) => (
+              <fieldset class="choice-group">
+                <legend>
+                  {name === 'period'
+                    ? 'CFP Period'
+                    : name === 'range'
+                      ? 'CFP Date Range'
+                      : name[0].toUpperCase() + name.slice(1)}
+                </legend>
+                <div class="choice-list">
+                  {options.map(([value, label], index) => (
+                    <label class="filter-choice">
+                      <input type="radio" name={name} value={value} checked={index === 0} />
+                      <span>{label}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            ))
+          }
+          <fieldset data-facet-group="location">
+            <legend class="sr-only">Locations</legend>
+            <details class="facet-disclosure" data-facet-disclosure open>
+              <summary>
+                Locations <span class="facet-selection" data-selected-count hidden></span>
+              </summary>
+              <div class="facet-options">
+                {
+                  locationOptions.map(({ value, values, label }) => (
+                    <label class="check-option">
+                      <>
+                        <input
+                          type="checkbox"
+                          name="location"
+                          value={value}
+                          data-values={values.join(',')}
+                          data-label={label}
+                          data-labels={values.length > 1 ? 'Richmond,Cremorne' : undefined}
+                        />
+                        <span>
+                          {label} <span class="facet-count" data-count-for={value} />
+                        </span>
+                      </>
+                    </label>
+                  ))
+                }
+              </div>
+            </details>
+          </fieldset>
+          {
+            topicSections.map(({ category, label }) => (
+              <fieldset data-facet-group="topic">
+                <legend class="sr-only">{label}</legend>
+                <details class="facet-disclosure" data-facet-disclosure open>
+                  <summary>
+                    {label} <span class="facet-selection" data-selected-count hidden />
+                  </summary>
+                  <div class="facet-options">
+                    {usedTopics
+                      .filter((topic) => topic.data.category === category)
+                      .map((topic) => (
+                        <label class="check-option">
+                          <>
+                            <input
+                              type="checkbox"
+                              name="topic"
+                              value={topic.id}
+                              data-label={topic.data.name}
+                            />
+                            <span>
+                              {topic.data.name}{' '}
+                              <span class="facet-count" data-count-for={topic.id} />
+                            </span>
+                          </>
+                        </label>
+                      ))}
+                  </div>
+                </details>
+              </fieldset>
+            ))
+          }
+        </form>
+      </details>
+    </aside>
+    <div class="directory-results">
+      <p id="count" class="result-summary font-semibold" role="status" aria-live="polite">
+        {upcoming.length} in person event CFP{upcoming.length === 1 ? '' : 's'} upcoming
+      </p>
+      <div id="results" class="grid gap-4 md:grid-cols-2">
+        {
+          [...upcoming, ...past].map((event) => (
+            <CfpCard
+              event={event}
+              groups={groups}
+              venues={venues}
+              topics={topics}
+              period={
+                !event.data.cfpDeadline || event.data.cfpDeadline.getTime() >= now.getTime()
+                  ? 'future'
+                  : 'past'
+              }
+            />
+          ))
+        }
+      </div>
+      <p id="empty" class="cardx hidden">No CFPs match these filters. Try resetting your search.</p>
+    </div>
+  </section>
+  <script src="../../scripts/search.js"></script>
+</Layout>

@@ -14,6 +14,7 @@ if (root) {
   });
   const cards = [...root.querySelectorAll('.directory-card')];
   const kind = root.dataset.kind;
+  const datedKind = kind === 'events' || kind === 'cfps';
   let searchDbPromise;
   let searchTimer;
   let runVersion = 0;
@@ -32,11 +33,12 @@ if (root) {
       : `${items.slice(0, -1).join(', ')}${items.length > 2 ? ',' : ''} and ${items.at(-1)}`;
   const readForm = () => ({
     q: form.elements.q.value.trim(),
-    period: kind === 'events' ? form.elements.period.value : '',
-    eventType: form.elements.eventType.value,
-    cost: kind === 'events' ? form.elements.cost.value : 'all',
-    range: kind === 'events' ? form.elements.range.value : '',
-    format: kind === 'events' ? form.elements.format.value : '',
+    period: datedKind ? form.elements.period.value : '',
+    cfpType: kind === 'cfps' ? form.elements.cfpType.value : 'all',
+    eventType: form.elements.eventType?.value ?? 'all',
+    cost: datedKind ? form.elements.cost.value : 'all',
+    range: datedKind ? form.elements.range.value : '',
+    format: datedKind ? form.elements.format.value : '',
     recommended: kind === 'groups' ? form.elements.recommended.value : 'all',
     topic: values('topic'),
     location: values('location'),
@@ -46,9 +48,14 @@ if (root) {
     form.reset();
     if (params.has('q')) form.elements.q.value = params.get('q');
     for (const name of ['period', 'cost', 'range', 'format']) {
-      if (kind !== 'events' || !params.has(name)) continue;
+      if (!datedKind || !params.has(name)) continue;
       const value = params.get(name);
       const option = form.querySelector(`[name="${name}"][value="${CSS.escape(value)}"]`);
+      if (option) option.checked = true;
+    }
+    if (kind === 'cfps' && params.has('cfp-type')) {
+      const value = params.get('cfp-type');
+      const option = form.querySelector(`[name="cfpType"][value="${CSS.escape(value)}"]`);
       if (option) option.checked = true;
     }
     if (params.has('type')) {
@@ -69,6 +76,7 @@ if (root) {
     url.search = '';
     if (state.q) url.searchParams.set('q', state.q);
     if (state.period && state.period !== 'future') url.searchParams.set('period', state.period);
+    if (state.cfpType !== 'all') url.searchParams.set('cfp-type', state.cfpType);
     if (state.eventType !== 'all') url.searchParams.set('type', state.eventType);
     if (state.cost !== 'all') url.searchParams.set('cost', state.cost);
     if (state.range) url.searchParams.set('range', state.range);
@@ -118,24 +126,25 @@ if (root) {
       card.dataset.recommended !== 'true'
     )
       return false;
-    if (kind === 'events' && state.period !== 'all' && card.dataset.period !== state.period)
+    if (datedKind && state.period !== 'all' && card.dataset.period !== state.period) return false;
+    if (kind === 'cfps' && state.cfpType !== 'all' && card.dataset.cfpType !== state.cfpType)
       return false;
     if (state.eventType !== 'all') {
       const eventTypes = (card.dataset.eventTypes ?? card.dataset.eventType ?? '').split(',');
       if (!eventTypes.includes(state.eventType)) return false;
     }
-    if (
-      kind === 'events' &&
-      state.cost !== 'all' &&
-      card.dataset.paid !== String(state.cost === 'paid')
-    )
+    if (datedKind && state.cost !== 'all' && card.dataset.paid !== String(state.cost === 'paid'))
       return false;
-    if (kind === 'events' && state.format !== 'any') {
+    if (datedKind && state.format !== 'any') {
       const formats = state.format === 'in-person' ? ['in-person', 'hybrid'] : ['online', 'hybrid'];
       if (!formats.includes(card.dataset.format)) return false;
     }
     const bounds = dateBounds(state.range);
-    if (bounds && (card.dataset.date < bounds[0] || card.dataset.date > bounds[1])) return false;
+    if (
+      bounds &&
+      (!card.dataset.date || card.dataset.date < bounds[0] || card.dataset.date > bounds[1])
+    )
+      return false;
     for (const facet of ['topic', 'location']) {
       if (facet === ignoreFacet || !state[facet].length) continue;
       const cardValues = (card.dataset[`${facet}s`] ?? card.dataset[facet] ?? '').split(',');
@@ -181,7 +190,8 @@ if (root) {
     );
     cards.forEach((card) => {
       card.hidden = !visible.includes(card);
-      card.style.order = scores?.has(card.dataset.id) ? String(scores.get(card.dataset.id)) : '';
+      card.style.order =
+        kind !== 'cfps' && scores?.has(card.dataset.id) ? String(scores.get(card.dataset.id)) : '';
     });
     for (const fieldset of form.querySelectorAll('[data-facet-group]')) {
       const facet = fieldset.dataset.facetGroup;
@@ -206,16 +216,18 @@ if (root) {
       status.textContent = `${count} selected`;
       status.hidden = count === 0;
     }
-    if (kind === 'events') {
+    if (datedKind) {
       const cost = state.cost === 'free' ? 'free ' : state.cost === 'paid' ? 'paid ' : '';
       const format =
         state.format === 'in-person' ? 'in person ' : state.format === 'online' ? 'online ' : '';
       const noun =
-        state.eventType === 'meetup'
-          ? `meetup${visible.length === 1 ? '' : 's'}`
-          : state.eventType === 'conference'
-            ? `conference${visible.length === 1 ? '' : 's'}`
-            : `event${visible.length === 1 ? '' : 's'}`;
+        kind === 'cfps'
+          ? `${state.cfpType === 'rolling' ? 'rolling ' : state.cfpType === 'fixed' ? 'fixed-deadline ' : ''}event CFP${visible.length === 1 ? '' : 's'}`
+          : state.eventType === 'meetup'
+            ? `meetup${visible.length === 1 ? '' : 's'}`
+            : state.eventType === 'conference'
+              ? `conference${visible.length === 1 ? '' : 's'}`
+              : `event${visible.length === 1 ? '' : 's'}`;
       const range =
         { today: ' today', week: ' this week', 'next-week': ' next week', month: ' this month' }[
           state.range
@@ -239,21 +251,21 @@ if (root) {
         `${visible.length} ${state.recommended === 'recommended' ? 'recommended ' : ''}${eventType}group${visible.length === 1 ? '' : 's'}${state.q.length >= 3 ? ` matching “${state.q}”` : ''}${locations.length ? ` in ${list(locations)}` : ''}${topics.length ? ` for ${list(topics)}` : ''}`;
     }
     root.querySelector('#empty').classList.toggle('hidden', visible.length > 0);
-    resetButton.hidden =
-      kind === 'events'
-        ? !state.q &&
-          state.period === 'future' &&
-          state.eventType === 'all' &&
-          state.cost === 'all' &&
-          !state.range &&
-          state.format === 'in-person' &&
-          !state.topic.length &&
-          !state.location.length
-        : !state.q &&
-          state.eventType === 'all' &&
-          state.recommended === 'all' &&
-          !state.topic.length &&
-          !state.location.length;
+    resetButton.hidden = datedKind
+      ? !state.q &&
+        state.period === 'future' &&
+        state.cfpType === 'all' &&
+        state.eventType === 'all' &&
+        state.cost === 'all' &&
+        !state.range &&
+        state.format === 'in-person' &&
+        !state.topic.length &&
+        !state.location.length
+      : !state.q &&
+        state.eventType === 'all' &&
+        state.recommended === 'all' &&
+        !state.topic.length &&
+        !state.location.length;
     if (write) writeUrl(state, replace);
   };
   form.addEventListener('input', (event) => {

@@ -11,6 +11,8 @@ paid: true
 format: 'in-person'
 venue: 'melbourne-town-hall'
 url: 'https://www.dddmelbourne.com/'
+cfpDeadline: '2026-09-30T23:59:00+10:00'
+cfpUrl: 'https://sessionize.com/ddd-melbourne-2027'
 rsvpNote: 'Tickets are on sale; ticket sales close at 11:59 PM on 19 February 2027.'
-revision: 1
-updated: '2026-08-31'
+revision: 2
+updated: '2026-09-16'

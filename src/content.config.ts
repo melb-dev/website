@@ -85,6 +85,8 @@ const events = defineCollection({
       format: z.enum(['in-person', 'online', 'hybrid']),
       venue: reference('venues').optional(),
       url: https,
+      cfpDeadline: datetime.optional(),
+      cfpUrl: https.optional(),
       rsvpNote: z.string().max(160).optional(),
       status: z.enum(['scheduled', 'postponed', 'cancelled']).default('scheduled'),
       revision: z.number().int().nonnegative().default(0),
@@ -98,6 +100,8 @@ const events = defineCollection({
         ctx.addIssue({ code: 'custom', message: 'all-day events cannot have an end time' });
       if (e.format === 'online' && e.venue)
         ctx.addIssue({ code: 'custom', message: 'online events cannot have a venue' });
+      if (e.cfpDeadline && e.cfpDeadline >= e.start)
+        ctx.addIssue({ code: 'custom', message: 'cfpDeadline must precede event start' });
       if (e.revision > 0 && !e.updated)
         ctx.addIssue({ code: 'custom', message: 'updated required after revision' });
     }),

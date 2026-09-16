@@ -153,6 +153,8 @@ export function template(kind: ContentKind, label: string, details: Record<strin
     format: details.format ?? 'online',
     ...(details.venue && { venue: details.venue }),
     url: details.url ?? 'https://example.org/event',
+    ...(details.cfpDeadline && { cfpDeadline: details.cfpDeadline }),
+    ...(details.cfpUrl && { cfpUrl: details.cfpUrl }),
     ...(details.rsvpNote && { rsvpNote: details.rsvpNote }),
     ...(details.status && details.status !== 'scheduled' && { status: details.status }),
   };
@@ -320,6 +322,15 @@ async function interactive(initialKind?: ContentKind) {
         );
       }
       details.url = await ask('Canonical HTTPS URL', (v) => /^https:\/\/.+/.test(v));
+      details.cfpDeadline = await askOptional(
+        'CFP deadline (ISO datetime with UTC offset)',
+        (value) =>
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:\d{2})$/.test(value) &&
+          new Date(value) < new Date(melbourneIso(details.date, details.time)),
+      );
+      details.cfpUrl = await askOptional('CFP submission HTTPS URL', (v) =>
+        /^https:\/\/.+/.test(v),
+      );
       details.rsvpNote = await askOptional(
         'One-sentence RSVP note (maximum 160 characters)',
         (value) => value.length <= 160,

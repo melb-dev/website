@@ -1,0 +1,16 @@
+uid: 01a0adf9-ec81-74e7-b67b-b666c656926c
+name: 'Programmable'
+summary: 'The Australian software engineering conference'
+description: "The event celebrates fantastic developer content coupled with a focus on human connection; bringing people together to create serendipitous interactions. ...and that's just the beginning, there's so much more to enjoy!"
+topics:
+  - 'software-engineering'
+  - 'cloud'
+  - 'infrastructure'
+  - 'ai'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://programmable.tech/'
+eventsUrl: 'https://programmable.tech/'
+location: 'Australia'
+eventsFetchedAt: '2026-09-17T06:05:32.000Z'
+communityFirst: true

@@ -1,0 +1,18 @@
+uid: 01a0adf9-576f-7d87-b381-151273d27132
+title: 'Programmable 2027'
+start: '2027-03-16T08:15:00+11:00'
+end: '2027-03-16T17:00:00+11:00'
+group: 'programmable'
+topics:
+  - 'software-engineering'
+  - 'cloud'
+  - 'infrastructure'
+  - 'ai'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'melbourne-convention-and-exhibition-centre'
+url: 'https://programmable.tech/'
+cfpDeadline: '2026-11-27T17:00:00+11:00'
+cfpUrl: 'https://sessionize.com/programmable-2027-melbourne/'
+rsvpNote: 'Foundation Release tickets from $299; prices rise in later release stages ahead of the event.'

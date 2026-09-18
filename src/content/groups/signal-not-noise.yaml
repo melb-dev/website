@@ -1,0 +1,16 @@
+uid: '01a0b1d8-1483-7228-8dc2-ed1824c5fda1'
+name: 'Signal Not Noise'
+summary: 'A community-built conference for people shaping digital products, technology, teams, and organisations.'
+description: 'Signal Not Noise brings engineers, product managers, designers, delivery leads, data practitioners, and technology leaders together to work through practical questions about building and leading amid structural change.'
+topics:
+  - 'software-engineering'
+  - 'ai'
+  - 'data-engineering'
+eventTypes:
+  - 'conference'
+websiteUrl: 'https://www.signal-not-noise.com/'
+eventsUrl: 'https://www.signal-not-noise.com/melbourne'
+eventsFetchedAt: '2026-09-18T00:09:34.492Z'
+location: 'Australia'
+contact: 'melbourne@signal-not-noise.com'
+communityFirst: true

@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://www.meetup.com/linux-users-of-victoria/'
 eventsUrl: 'https://www.meetup.com/linux-users-of-victoria/events/'
 location: 'Victoria'
-eventsFetchedAt: '2026-09-15T05:23:12.044Z'
+eventsFetchedAt: '2026-09-21T02:27:12.000Z'
 communityFirst: true

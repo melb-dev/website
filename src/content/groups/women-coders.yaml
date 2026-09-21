@@ -7,5 +7,5 @@ eventTypes: ['meetup']
 websiteUrl: 'https://womencoders.com.au/'
 eventsUrl: 'https://www.meetup.com/women-coders/events/'
 location: 'Melbourne'
-eventsFetchedAt: '2026-09-15T05:25:17.215Z'
+eventsFetchedAt: '2026-09-21T02:27:14.000Z'
 communityFirst: true

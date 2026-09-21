@@ -1,5 +1,5 @@
 uid: '019f9427-1f33-7310-88b0-45301175c63e'
-title: 'KSUG.AI Australia #69 - Melbourne Meetup @AWS - 7 Oct 2026'
+title: 'AI Engineering: Agents, Harness & Production'
 start: '2026-10-07T17:30:00+11:00'
 end: '2026-10-07T19:30:00+11:00'
 group: 'ksug-ai-melbourne'
@@ -8,7 +8,7 @@ eventType: 'meetup'
 paid: false
 format: 'hybrid'
 venue: 'amazon-mel12-collins-street'
-url: 'https://www.meetup.com/en-au/ksug-au/events/315494963/'
+url: 'https://www.meetup.com/ksug-au/events/315494963/'
 cfpUrl: 'https://sessionize.com/ksug-au'
-revision: 1
-updated: '2026-09-16'
+revision: 2
+updated: '2026-09-21'

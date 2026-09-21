@@ -1,0 +1,15 @@
+uid: '01a0c2f1-7e53-7e26-8dc2-9352a47ee6f6'
+title: 'Cafe Compute Meetup: Melbourne'
+start: '2026-09-30T18:00:00+10:00'
+end: '2026-09-30T20:00:00+10:00'
+group: 'cerebras'
+topics:
+  - 'ai'
+  - 'developer-tools'
+  - 'software-engineering'
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'private-venue-melbourne-cbd'
+url: 'https://luma.com/ccmelbourne'
+rsvpNote: 'Registration requires approval; the exact venue address is shared after acceptance.'

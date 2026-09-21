@@ -1,0 +1,14 @@
+uid: '01a0c2f1-7e51-770a-9a54-c6389f3e54e1'
+name: 'Cerebras'
+summary: 'A global developer community running hands-on meetups about fast AI inference and building with open models.'
+description: 'Cerebras runs developer events about fast AI inference, its wafer-scale systems, and building applications with open models.'
+topics:
+  - 'ai'
+  - 'developer-tools'
+  - 'software-engineering'
+eventTypes:
+  - 'meetup'
+websiteUrl: 'https://www.cerebras.ai/'
+eventsUrl: 'https://luma.com/cerebras'
+eventsFetchedAt: '2026-09-21T07:47:02.824Z'
+location: 'Global'

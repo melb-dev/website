@@ -6,6 +6,9 @@ group: 'isaca-melbourne'
 topics: ['ai', 'infrastructure', 'software-engineering']
 eventType: 'meetup'
 paid: false
-format: 'online'
+format: 'in-person'
+venue: 'oxford-scholar-swanston-street'
 url: 'https://events.humanitix.com/when-ai-becomes-the-actor-cybersecurity-risk-and-trust-in-the-age-of-agentic-ai'
-rsvpNote: 'Online registration is required.'
+rsvpNote: 'Registration is required.'
+revision: 1
+updated: '2026-09-29'

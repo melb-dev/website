@@ -7,5 +7,7 @@ topics: ['software-engineering', 'ai', 'data-engineering']
 eventType: 'conference'
 paid: true
 format: 'in-person'
-url: 'https://www.signal-not-noise.com/melbourne'
+url: 'https://club.signal-not-noise.com/melbourne'
 rsvpNote: 'Registration is open; concession pricing is available for self-funded, early-stage founder, and unwaged attendees by request.'
+revision: 1
+updated: '2026-09-29'

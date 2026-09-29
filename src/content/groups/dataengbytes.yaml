@@ -10,8 +10,9 @@ topics:
   - 'software-engineering'
 eventTypes:
   - 'conference'
+  - 'meetup'
 websiteUrl: 'https://dataengbytes.com/'
-eventsUrl: 'https://www.tickettailor.com/events/'
+eventsUrl: 'https://dataengbytes.com/events'
 location: 'Australia'
-eventsFetchedAt: '2026-07-16T05:32:19.916Z'
+eventsFetchedAt: '2026-09-29T02:44:25.690Z'
 communityFirst: true

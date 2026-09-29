@@ -9,7 +9,7 @@ topics:
 eventTypes:
   - 'conference'
 websiteUrl: 'https://www.testingtalks.com.au/'
-eventsUrl: 'https://www.testingtalks.com.au/upcoming-events/'
+eventsUrl: 'https://www.testingtalks.com.au/'
 location: 'Australia'
-eventsFetchedAt: '2026-07-16T05:32:19.916Z'
+eventsFetchedAt: '2026-09-29T02:42:41.940Z'
 communityFirst: false

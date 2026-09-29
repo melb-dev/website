@@ -1,0 +1,11 @@
+uid: '01a0eb0b-6d6b-7707-8900-d51ff3964807'
+title: 'DataEngBytes 2027 — Melbourne'
+start: '2027-10-12T00:00:00+11:00'
+allDay: true
+group: 'dataengbytes'
+topics: ['backend', 'cloud', 'ai', 'machine-learning', 'software-engineering']
+eventType: 'conference'
+paid: true
+format: 'in-person'
+url: 'https://dataengbytes.com/2027/melbourne'
+rsvpNote: 'Tickets are on sale from A$199; the Melbourne venue is to be announced.'

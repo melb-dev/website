@@ -15,9 +15,9 @@ eventType: 'conference'
 paid: true
 format: 'in-person'
 venue: 'melbourne-convention-and-exhibition-centre'
-url: 'https://www.cloudnative.ai/'
+url: 'https://www.cloudnative.ai/events/melbourne'
 cfpDeadline: '2026-09-18T23:59:00+10:00'
 cfpUrl: 'https://sessionize.com/cloud-native-summit-apac'
 rsvpNote: 'Conference registration and tickets are required.'
-revision: 1
-updated: '2026-09-16'
+revision: 2
+updated: '2026-10-05'

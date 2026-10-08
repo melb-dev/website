@@ -1,7 +1,7 @@
 uid: 019f6969-5a4c-724e-a6ed-f357871f95d2
 title: 'Cloud Native AI Summit 2026'
-start: '2026-10-28T09:00:00+11:00'
-end: '2026-10-29T17:00:00+11:00'
+start: '2026-10-28T10:05:00+11:00'
+end: '2026-10-29T16:50:00+11:00'
 group: 'cloud-native-ai-summit'
 topics:
   - 'cloud'
@@ -19,5 +19,5 @@ url: 'https://www.cloudnative.ai/events/melbourne'
 cfpDeadline: '2026-09-18T23:59:00+10:00'
 cfpUrl: 'https://sessionize.com/cloud-native-summit-apac'
 rsvpNote: 'Conference registration and tickets are required.'
-revision: 2
-updated: '2026-10-05'
+revision: 3
+updated: '2026-10-08'

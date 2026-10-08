@@ -1,0 +1,11 @@
+uid: '01a11918-abd3-7410-afc2-b30980741ecc'
+title: 'Elixir Melbourne meetup'
+start: '2027-01-07T18:00:00+11:00'
+end: '2027-01-07T20:00:00+11:00'
+group: 'elixir-melbourne'
+topics: ['elixir', 'backend', 'software-engineering', 'open-source']
+eventType: 'meetup'
+paid: false
+format: 'in-person'
+venue: 'superapi-rialto'
+url: 'https://www.meetup.com/elixir-melbourne/events/znhlbvykccbkb/'

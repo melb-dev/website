@@ -9,6 +9,7 @@ paid: false
 format: 'hybrid'
 venue: 'amazon-mel12-collins-street'
 url: 'https://www.meetup.com/en-AU/ksug-au/events/316032216/'
-rsvpNote: 'External registration via Luma is required to secure a place.'
-revision: 1
-updated: '2026-09-29'
+cfpUrl: 'https://sessionize.com/ksug-au'
+rsvpNote: 'Register via https://ksug.ai/au-71 to secure a place; online attendance is also available.'
+revision: 2
+updated: '2026-10-08'

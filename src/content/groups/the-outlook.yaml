@@ -1,0 +1,14 @@
+uid: '01a119f9-c997-7b03-a416-6d1286aa9032'
+name: 'The Outlook'
+summary: 'Independent conferences, leadership summits, and community events for people working in product, design, and technology.'
+description: 'The Outlook brings product, design, engineering, and leadership communities together through conferences, peer-level leadership summits, and community events. Its programming combines practical insights and emerging talent with a commitment to diversity, accessibility, sustainability, and affordability.'
+topics:
+  - 'software-engineering'
+  - 'ai'
+eventTypes:
+  - 'meetup'
+  - 'conference'
+websiteUrl: 'https://theoutlook.io/'
+eventsUrl: 'https://theoutlook.io/'
+eventsFetchedAt: '2026-10-08T05:26:02.906Z'
+location: 'Melbourne'

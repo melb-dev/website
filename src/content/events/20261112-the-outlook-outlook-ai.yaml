@@ -1,0 +1,14 @@
+uid: '01a119f9-c99a-79a9-a980-a6161b12b00f'
+title: 'Outlook: AI'
+start: '2026-11-12T08:30:00+11:00'
+end: '2026-11-12T18:30:00+11:00'
+group: 'the-outlook'
+topics:
+  - 'ai'
+  - 'software-engineering'
+eventType: 'conference'
+paid: true
+format: 'in-person'
+venue: 'collins-square-events-centre-docklands'
+url: 'https://theoutlook.io/events/outlook-ai'
+rsvpNote: 'Paid ticket required; includes talks, roundtables, networking, and all-day catering.'

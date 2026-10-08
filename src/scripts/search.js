@@ -1,3 +1,5 @@
+import { refreshEventDates, watchEventDates } from './event-dates';
+
 const root = document.querySelector('#directory');
 if (root) {
   const form = root.querySelector('#filters');
@@ -171,6 +173,7 @@ if (root) {
   const run = async (write = false, replace = false) => {
     const version = ++runVersion;
     const state = readForm();
+    const orderedCards = refreshEventDates(cards, kind);
     let scores = null;
     if (state.q.length >= 3) {
       const { search } = await import('@orama/orama');
@@ -190,8 +193,15 @@ if (root) {
     );
     cards.forEach((card) => {
       card.hidden = !visible.includes(card);
-      card.style.order =
-        kind !== 'cfps' && scores?.has(card.dataset.id) ? String(scores.get(card.dataset.id)) : '';
+    });
+    if (kind !== 'cfps' && scores) {
+      orderedCards.sort(
+        (a, b) => (scores.get(a.dataset.id) ?? Infinity) - (scores.get(b.dataset.id) ?? Infinity),
+      );
+    }
+    const results = root.querySelector('#results');
+    orderedCards.forEach((card, index) => {
+      if (results.children[index] !== card) results.insertBefore(card, results.children[index]);
     });
     for (const fieldset of form.querySelectorAll('[data-facet-group]')) {
       const facet = fieldset.dataset.facetGroup;
@@ -291,5 +301,5 @@ if (root) {
     run();
   });
   applyUrl();
-  run(false);
+  watchEventDates(() => run(false));
 }

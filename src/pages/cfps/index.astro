@@ -2,9 +2,8 @@
 import { getCollection } from 'astro:content';
 import CfpCard from '../../components/CfpCard.astro';
 import Layout from '../../layouts/Layout.astro';
-import { isUpcomingCfp, slug, sortCfps } from '../../lib/events';
+import { slug, sortCfps } from '../../lib/events';
 
-const now = new Date();
 const [events, groups, venues, topics] = await Promise.all([
   getCollection('events'),
   getCollection('groups'),
@@ -14,14 +13,7 @@ const [events, groups, venues, topics] = await Promise.all([
 const cfps = events.filter(
   (event) => (event.data.cfpDeadline || event.data.cfpUrl) && event.data.status !== 'cancelled',
 );
-const upcoming = sortCfps(
-  cfps.filter((event) => isUpcomingCfp(event, now)),
-  true,
-);
-const past = sortCfps(
-  cfps.filter((event) => !isUpcomingCfp(event, now)),
-  false,
-);
+const sorted = sortCfps(cfps, true);
 const usedTopics = topics
   .filter((topic) => cfps.some((event) => event.data.topics.some((ref) => ref.id === topic.id)))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
@@ -210,18 +202,13 @@ const choices = {
     </aside>
     <div class="directory-results">
       <p id="count" class="result-summary font-semibold" role="status" aria-live="polite">
-        {upcoming.length} in person event CFP{upcoming.length === 1 ? '' : 's'} upcoming
+        {cfps.length} event CFP{cfps.length === 1 ? '' : 's'} listed
       </p>
+      <noscript>Enable JavaScript to filter CFPs by the current date and time.</noscript>
       <div id="results" class="grid gap-4 md:grid-cols-2">
         {
-          [...upcoming, ...past].map((event) => (
-            <CfpCard
-              event={event}
-              groups={groups}
-              venues={venues}
-              topics={topics}
-              period={isUpcomingCfp(event, now) ? 'future' : 'past'}
-            />
+          sorted.map((event) => (
+            <CfpCard event={event} groups={groups} venues={venues} topics={topics} />
           ))
         }
       </div>

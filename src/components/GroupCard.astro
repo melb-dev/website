@@ -1,5 +1,5 @@
 ---
-const { group, topics, next } = Astro.props;
+const { group, topics, events } = Astro.props;
 
 const d = group.data;
 const topicEntries = d.topics
@@ -27,6 +27,13 @@ const location = d.location
   data-location={location}
   data-event-types={d.eventTypes.join(',')}
   data-recommended={String(d.communityFirst)}
+  data-events={JSON.stringify(
+    events.map(({ data }: any) => ({
+      name: data.title,
+      start: data.start.toISOString(),
+      end: data.end?.toISOString(),
+    })),
+  )}
 >
   <h2 class="group-title text-xl font-bold">
     <a href={`/groups/${group.id}/`}>{d.name}</a>{
@@ -36,11 +43,5 @@ const location = d.location
   <p>{d.summary}</p>
   <p class="mt-2">{d.location}</p>
   <div>{topicEntries.map((topic: any) => <span class="pill">{topic.data.name}</span>)}</div>
-  {
-    next && (
-      <p class="mt-2">
-        Next: <strong>{next.data.title}</strong>
-      </p>
-    )
-  }
+  <p class="mt-2" data-next-event hidden>Next: <strong></strong></p>
 </article>

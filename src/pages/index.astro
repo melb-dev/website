@@ -3,24 +3,15 @@ import { getCollection } from 'astro:content';
 import EventSubscription from '../components/EventSubscription.astro';
 import Layout from '../layouts/Layout.astro';
 import EventCard from '../components/EventCard.astro';
-import { isFuture, localDate, sortEvents, slug } from '../lib/events';
+import { localDate, sortEvents, slug } from '../lib/events';
 
-const now = new Date();
 const [events, groups, venues, topics] = await Promise.all([
   getCollection('events'),
   getCollection('groups'),
   getCollection('venues'),
   getCollection('topics'),
 ]);
-const future = sortEvents(
-  events.filter((event) => isFuture(event, now)),
-  true,
-);
-const past = sortEvents(
-  events.filter((event) => !isFuture(event, now)),
-  false,
-);
-const sorted = [...future, ...past];
+const sorted = sortEvents(events, true);
 const usedTopics = topics
   .filter((topic) => events.some((event) => event.data.topics.some((ref) => ref.id === topic.id)))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
@@ -54,29 +45,27 @@ for (const [value, label] of locationMap) {
     });
   }
 }
-const jsonLd = events
-  .filter((event) => isFuture(event, now))
-  .map((event) => {
-    const group = groups.find((item) => item.id === event.data.group.id);
-    const venue = venues.find((item) => item.id === event.data.venue?.id);
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: event.data.title,
-      startDate: event.data.allDay ? localDate(event.data.start) : event.data.start.toISOString(),
-      endDate: event.data.end?.toISOString(),
-      eventStatus: `https://schema.org/Event${event.data.status === 'cancelled' ? 'Cancelled' : event.data.status === 'postponed' ? 'Postponed' : 'Scheduled'}`,
-      eventAttendanceMode: `https://schema.org/${event.data.format === 'online' ? 'OnlineEventAttendanceMode' : event.data.format === 'hybrid' ? 'MixedEventAttendanceMode' : 'OfflineEventAttendanceMode'}`,
-      isAccessibleForFree: !event.data.paid,
-      location: venue
-        ? { '@type': 'Place', name: venue.data.name, address: venue.data.address }
-        : event.data.format === 'online'
-          ? { '@type': 'VirtualLocation', url: event.data.url }
-          : undefined,
-      url: event.data.url,
-      organizer: { '@type': 'Organization', name: group?.data.name, url: group?.data.websiteUrl },
-    };
-  });
+const jsonLd = events.map((event) => {
+  const group = groups.find((item) => item.id === event.data.group.id);
+  const venue = venues.find((item) => item.id === event.data.venue?.id);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.data.title,
+    startDate: event.data.allDay ? localDate(event.data.start) : event.data.start.toISOString(),
+    endDate: event.data.end?.toISOString(),
+    eventStatus: `https://schema.org/Event${event.data.status === 'cancelled' ? 'Cancelled' : event.data.status === 'postponed' ? 'Postponed' : 'Scheduled'}`,
+    eventAttendanceMode: `https://schema.org/${event.data.format === 'online' ? 'OnlineEventAttendanceMode' : event.data.format === 'hybrid' ? 'MixedEventAttendanceMode' : 'OfflineEventAttendanceMode'}`,
+    isAccessibleForFree: !event.data.paid,
+    location: venue
+      ? { '@type': 'Place', name: venue.data.name, address: venue.data.address }
+      : event.data.format === 'online'
+        ? { '@type': 'VirtualLocation', url: event.data.url }
+        : undefined,
+    url: event.data.url,
+    organizer: { '@type': 'Organization', name: group?.data.name, url: group?.data.websiteUrl },
+  };
+});
 const choices = {
   period: [
     ['future', 'Upcoming'],
@@ -221,19 +210,13 @@ const choices = {
     </aside>
     <div class="directory-results">
       <p id="count" class="result-summary font-semibold" role="status" aria-live="polite">
-        {future.length} in person events upcoming
+        {events.length} events listed
       </p>
+      <noscript>Enable JavaScript to filter events by the current Melbourne date.</noscript>
       <div id="results" class="grid gap-4 md:grid-cols-2">
         {
           sorted.map((event) => (
-            <EventCard
-              event={event}
-              groups={groups}
-              venues={venues}
-              topics={topics}
-              period={isFuture(event, now) ? 'future' : 'past'}
-              hideUntilFiltered={true}
-            />
+            <EventCard event={event} groups={groups} venues={venues} topics={topics} />
           ))
         }
       </div>

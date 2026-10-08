@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import EventCard from '../../components/EventCard.astro';
-import { isFuture, sortEvents } from '../../lib/events';
+import { sortEvents } from '../../lib/events';
 
 export async function getStaticPaths() {
   return (await getCollection('groups')).map((g) => ({
@@ -12,21 +12,15 @@ export async function getStaticPaths() {
 }
 
 const { group } = Astro.props;
-const now = new Date();
 const [events, groups, venues, topics] = await Promise.all([
   getCollection('events'),
   getCollection('groups'),
   getCollection('venues'),
   getCollection('topics'),
 ]);
-const own = events.filter((e) => e.data.group.id === group.id);
-const future = sortEvents(
-  own.filter((e) => isFuture(e, now)),
+const own = sortEvents(
+  events.filter((e) => e.data.group.id === group.id),
   true,
-);
-const past = sortEvents(
-  own.filter((e) => !isFuture(e, now)),
-  false,
 );
 const groupTopics = group.data.topics.map((r) => topics.find((t) => t.id === r.id)).filter(Boolean);
 const contactIsExternal = group.data.contact && !group.data.contact.includes('@');
@@ -68,28 +62,44 @@ const contactIsExternal = group.data.contact && !group.data.contact.includes('@'
       )
     }
   </p>
-  <h2 class="text-2xl font-bold mt-8 mb-3">Upcoming events</h2>
-  <div class="grid gap-4 md:grid-cols-2">
-    {
-      future.length ? (
-        future.map((e) => (
-          <EventCard event={e} groups={groups} venues={venues} topics={topics} period="future" />
-        ))
-      ) : (
-        <p>No upcoming events are listed.</p>
-      )
-    }
-  </div>
-  <h2 class="text-2xl font-bold mt-8 mb-3">Past events</h2>
-  <div class="grid gap-4 md:grid-cols-2">
-    {
-      past.length ? (
-        past.map((e) => (
-          <EventCard event={e} groups={groups} venues={venues} topics={topics} period="past" />
-        ))
-      ) : (
-        <p>No past events are listed.</p>
-      )
-    }
-  </div>
+  <section id="group-events">
+    <h2 id="upcoming-heading" class="text-2xl font-bold mt-8 mb-3">Events</h2>
+    <noscript>Enable JavaScript to separate upcoming and past events.</noscript>
+    <div id="upcoming-events" class="grid gap-4 md:grid-cols-2">
+      {own.map((e) => <EventCard event={e} groups={groups} venues={venues} topics={topics} />)}
+    </div>
+    <p id="no-upcoming-events" hidden={own.length > 0}>No events are listed.</p>
+    <section id="past-events-section" hidden>
+      <h2 class="text-2xl font-bold mt-8 mb-3">Past events</h2>
+      <div id="past-events" class="grid gap-4 md:grid-cols-2"></div>
+      <p id="no-past-events">No past events are listed.</p>
+    </section>
+  </section>
+  <script>
+    import { refreshEventDates, watchEventDates } from '../../scripts/event-dates';
+
+    const root = document.querySelector('#group-events')!;
+    const cards = [...root.querySelectorAll<HTMLElement>('.directory-card')];
+    const upcoming = root.querySelector('#upcoming-events')!;
+    const past = root.querySelector('#past-events')!;
+    root.querySelector('#upcoming-heading')!.textContent = 'Upcoming events';
+    root.querySelector<HTMLElement>('#past-events-section')!.hidden = false;
+    root.querySelector('#no-upcoming-events')!.textContent = 'No upcoming events are listed.';
+    watchEventDates(() => {
+      const ordered: HTMLElement[] = refreshEventDates(cards);
+      for (const [period, list] of [
+        ['future', upcoming],
+        ['past', past],
+      ] as const) {
+        ordered
+          .filter((card) => card.dataset.period === period)
+          .forEach((card, index) => {
+            if (list.children[index] !== card) list.insertBefore(card, list.children[index]);
+          });
+      }
+      root.querySelector<HTMLElement>('#no-upcoming-events')!.hidden =
+        upcoming.childElementCount > 0;
+      root.querySelector<HTMLElement>('#no-past-events')!.hidden = past.childElementCount > 0;
+    });
+  </script>
 </Layout>

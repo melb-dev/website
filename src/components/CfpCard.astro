@@ -1,7 +1,7 @@
 ---
 import { formatEventDate, formatMelbourneDateTime, localDate, slug } from '../lib/events';
 
-const { event, groups, venues, topics, period } = Astro.props;
+const { event, groups, venues, topics } = Astro.props;
 const d = event.data;
 const group = groups.find((item: any) => item.id === d.group.id);
 const venue = venues.find((item: any) => item.id === d.venue?.id);
@@ -18,18 +18,16 @@ const searchText = [
 ]
   .filter(Boolean)
   .join(' ');
-const isPast = period === 'past';
-const isClosed = Boolean(d.cfpDeadline) && isPast;
-const hasEnded = !d.cfpDeadline && isPast;
 ---
 
 <article
   class="cardx directory-card"
-  hidden={isPast}
   data-id={d.uid}
   data-search={searchText}
   data-name={d.title}
-  data-period={period}
+  data-start={d.start.toISOString()}
+  data-end={d.end?.toISOString()}
+  data-deadline={d.cfpDeadline?.toISOString()}
   data-cfp-type={d.cfpDeadline ? 'fixed' : 'rolling'}
   data-date={d.cfpDeadline ? localDate(d.cfpDeadline) : undefined}
   data-topics={d.topics.map((ref: any) => ref.id).join(',')}
@@ -40,23 +38,18 @@ const hasEnded = !d.cfpDeadline && isPast;
   <h2 class="event-title text-xl font-bold">
     <a href={d.url} rel="nofollow noopener noreferrer" target="_blank">{d.title}</a>
     {d.paid && <span class="cost-badge">Paid</span>}
-    {isClosed && <span class="past-badge">CFP closed</span>}
-    {hasEnded && <span class="past-badge">Event ended</span>}
+    <span class="past-badge" data-past-badge hidden></span>
     {!d.cfpDeadline && <span class="event-type-badge">Rolling CFP</span>}
   </h2>
   {
-    (d.cfpDeadline || !hasEnded) && (
+    d.cfpDeadline ? (
       <p class="mt-2 font-bold">
-        {d.cfpDeadline ? (
-          <>
-            CFP {isClosed ? 'closed' : 'closes'}{' '}
-            <time datetime={d.cfpDeadline.toISOString()}>
-              {formatMelbourneDateTime(d.cfpDeadline)}
-            </time>
-          </>
-        ) : (
-          'Submissions are accepted on a rolling basis with no fixed deadline.'
-        )}
+        CFP <span data-cfp-verb>closes</span>{' '}
+        <time datetime={d.cfpDeadline.toISOString()}>{formatMelbourneDateTime(d.cfpDeadline)}</time>
+      </p>
+    ) : (
+      <p class="mt-2 font-bold" data-cfp-rolling>
+        Submissions are accepted on a rolling basis with no fixed deadline.
       </p>
     )
   }
@@ -83,13 +76,10 @@ const hasEnded = !d.cfpDeadline && isPast;
       <span class="sr-only">details for {d.title}</span>
     </a>
     {
-      isPast ? (
-        <span class="btn btn-sm btn-past" aria-disabled="true">
-          {isClosed ? 'Submissions closed' : 'Event ended'}
-        </span>
-      ) : d.cfpUrl ? (
+      d.cfpUrl ? (
         <a
           class="btn btn-sm btn-primary"
+          data-cfp-open
           href={d.cfpUrl}
           rel="nofollow noopener noreferrer"
           target="_blank"
@@ -98,10 +88,11 @@ const hasEnded = !d.cfpDeadline && isPast;
           <span class="sr-only">for {d.title}</span>
         </a>
       ) : (
-        <span class="btn btn-sm" aria-disabled="true">
+        <span class="btn btn-sm" data-cfp-open aria-disabled="true">
           Submission link unavailable
         </span>
       )
     }
+    <span class="btn btn-sm btn-past" data-cfp-closed aria-disabled="true" hidden></span>
   </div>
 </article>

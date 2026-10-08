@@ -1,7 +1,7 @@
 ---
 import { formatEventDate, localDate, slug } from '../lib/events';
 
-const { event, groups, venues, topics, period, hideUntilFiltered = false } = Astro.props;
+const { event, groups, venues, topics } = Astro.props;
 const d = event.data;
 const group = groups.find((item: any) => item.id === d.group.id);
 const venue = venues.find((item: any) => item.id === d.venue?.id);
@@ -19,16 +19,15 @@ const searchText = [
 ]
   .filter(Boolean)
   .join(' ');
-const isPast = period === 'past';
 ---
 
 <article
   class="cardx directory-card"
-  hidden={hideUntilFiltered && isPast}
   data-id={d.uid}
   data-search={searchText}
   data-name={d.title}
-  data-period={period}
+  data-start={d.start.toISOString()}
+  data-end={d.end?.toISOString()}
   data-date={localDate(d.start)}
   data-topics={d.topics.map((ref: any) => ref.id).join(',')}
   data-location={locationId}
@@ -40,7 +39,7 @@ const isPast = period === 'past';
     <a href={d.url} rel="nofollow noopener noreferrer" target="_blank">{d.title}</a>
     <span class="event-type-badge">{d.eventType === 'meetup' ? 'Meetup' : 'Conference'}</span>
     {d.paid && <span class="cost-badge">Paid</span>}
-    {isPast && <span class="past-badge">Past event</span>}
+    <span class="past-badge" data-past-badge hidden>Past event</span>
   </h2>
   <p class="mt-2 font-medium">
     <time datetime={d.allDay ? localDate(d.start) : d.start.toISOString()}>
@@ -63,12 +62,13 @@ const isPast = period === 'past';
   </div>
   {d.rsvpNote && <p class="text-sm">{d.rsvpNote}</p>}
   <a
-    class:list={['btn btn-sm mt-3', isPast ? 'btn-past' : 'btn-primary']}
+    class="btn btn-sm mt-3 btn-primary"
+    data-event-action
     href={d.url}
     rel="nofollow noopener noreferrer"
     target="_blank"
   >
-    {isPast ? 'View past event' : 'View event & RSVP'}
+    <span data-event-action-label>View event & RSVP</span>
     <span class="sr-only">for {d.title}</span>
   </a>
 </article>

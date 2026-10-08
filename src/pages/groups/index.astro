@@ -2,9 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import GroupCard from '../../components/GroupCard.astro';
-import { isFuture, sortEvents, slug } from '../../lib/events';
+import { slug } from '../../lib/events';
 
-const now = new Date();
 const [groups, topics, events] = await Promise.all([
   getCollection('groups'),
   getCollection('topics'),
@@ -146,13 +145,13 @@ const eventTypeChoices = [
       </p>
       <div id="results" class="grid gap-4 md:grid-cols-2">
         {
-          active.map((group) => {
-            const next = sortEvents(
-              events.filter((event) => event.data.group.id === group.id && isFuture(event, now)),
-              true,
-            )[0];
-            return <GroupCard group={group} topics={topics} next={next} />;
-          })
+          active.map((group) => (
+            <GroupCard
+              group={group}
+              topics={topics}
+              events={events.filter((event) => event.data.group.id === group.id)}
+            />
+          ))
         }
       </div>
       <p id="empty" class="cardx hidden">
